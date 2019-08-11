@@ -1,0 +1,10 @@
+type Query {
+  employees: [Employee] 
+}
+
+type Employee {
+  id: ID
+  firstName: String
+  lastName: String
+  description: String
+}

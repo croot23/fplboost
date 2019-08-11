@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+  
+  <changeSet author="joseph.croot" id="changelog-1.0" runAlways="true">
+    
+    <!-- CREATE LEAGUE TABLE -->
+    
+    <createTable tableName="league">
+      <column name="fantasy_football_id" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="league_name" type="TEXT"/>
+    </createTable>
+  
+  	<!-- CREATE PLAYER TABLE -->
+  	
+  	<createTable tableName="player">
+      <column name="fantasy_football_id" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="web_name" type="VARCHAR(45)" defaultValue='null'/>
+      <column name="first_name" type="VARCHAR(45)" defaultValue='null'/>
+      <column name="last_name" type="VARCHAR(45)" defaultValue='null'/>
+      <column name="total_points" type="INT(3)" defaultValue='null'/>
+      <column name="gameweek_points" type="INT(2)" defaultValue='null'/>
+      <column name="form" type="DECIMAL(3,1)" defaultValue='null'/>
+      <column name="price" type="DECIMAL(3,1)" defaultValue='null'/>
+      <column name="points_per_game" type="DECIMAL(3,1)" defaultValue='null'/>
+      <column name="bonus_points" type="INT(3)" defaultValue='null'/>
+      <column name="position" type="DECIMAL(1,0)" defaultValue='null'/>
+      <column name="team" type="INT(3)" defaultValue='null'/>
+      <column name="injured" type="BIT" defaultValue='0'/>
+      <column name="did_not_play" type="BIT" defaultValue='0'/>
+    </createTable>
+    
+    <!-- CREATE TEAM TABLE -->
+  	
+  	<createTable tableName="team">
+      <column name="fantasy_football_id" type="INT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="team_name" type="VARCHAR(45)" defaultValue='null'/>
+      <column name="manager_name" type="VARCHAR(45)" defaultValue='null'/>
+      <column name="gameweek_points" type="INT" defaultValue='null'/>
+      <column name="total_points" type="INT" defaultValue='null'/>
+      <column name="captain_id" type="INT(3)" defaultValue='null'/>
+      <column name="vice_captain_id" type="INT(3)" defaultValue='null'/>
+      <column name="wildcard" type="BIT" defaultValue='0'/>
+      <column name="bench_boost" type="BIT" defaultValue='0'/>
+      <column name="triple_captain" type="BIT" defaultValue='0'/>
+      <column name="free_hit" type="BIT" defaultValue='0'/>
+      <column name="form" type="INT" defaultValue='null'/>
+      <column name="team_value" type="INT" defaultValue='null'/>
+      <column name="bank" type="INT" defaultValue='null'/>
+      <column name="total_transfers" type="INT" defaultValue='null'/>
+      <column name="overall_rank" type="INT" defaultValue='null'/>
+      <column name="transfer_hits" type="INT" defaultValue='null'/>
+    </createTable>
+    
+    <!-- CREATE TEAM TO PLAYER REFERENCE TABLE -->
+    
+    <createTable tableName="team_player">
+    	<column name="team_id" type="INT" >
+      	  <constraints nullable="false" primaryKey="true" foreignKeyName="fk_team_player" references="player(fantasy_football_id)"/>
+    	</column>
+    </createTable>
+  
+  </changeSet>
+</databaseChangeLog> 
