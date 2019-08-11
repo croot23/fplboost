@@ -1,10 +1,10 @@
 {
-  "name": "spring-data-rest-and-reactjs",
+  "name": "fplboost.com",
   "version": "0.1.0",
-  "description": "Demo of ReactJS + Spring Data REST",
+  "description": "Enhanced fantasy.premierleague.com interface",
   "repository": {
     "type": "git",
-    "url": "git@github.com:spring-guides/tut-react-and-spring-data-rest.git"
+    "url": "git@github.com/croot23/fplboost/"
   },
   "keywords": [
     "rest",
@@ -13,12 +13,12 @@
     "data",
     "react"
   ],
-  "author": "Greg L. Turnquist",
+  "author": "Joseph Croot",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/spring-guides/tut-react-and-spring-data-rest/issues"
+    "url": "fplboost.com"
   },
-  "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
+  "homepage": "fplboost.com",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
