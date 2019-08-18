@@ -65,7 +65,7 @@ public class Team {
 	
 	@Column(name = "transfer_hits")
 	private int transferHits;
-
+	/*
 	@ManyToOne
 	@JoinColumn(name = "captain_id")
 	private Player captain;
@@ -73,7 +73,7 @@ public class Team {
 	@ManyToOne
 	@JoinColumn(name = "vice_captain_id")
 	private Player viceCaptain;
-
+	
 	public Player getViceCaptain() {
 		return viceCaptain;
 	}
@@ -81,7 +81,7 @@ public class Team {
 	public void setViceCaptain(Player viceCaptain) {
 		this.viceCaptain = viceCaptain;
 	}
-
+	/*
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, })
 	@JoinTable(name = "team_player", 
 	joinColumns = @JoinColumn(name = "team_id"), 
@@ -100,7 +100,7 @@ public class Team {
 	inverseJoinColumns=@JoinColumn(name="player_out"))
 	@MapKeyJoinColumn(name="player_in")
 	private Map<Player, Player> weeklyTransfers;
-
+	
 	public Set<Player> getAllPlayers() {
 		Set<Player> allPlayers = new HashSet<Player>(getPlayers());
 		allPlayers.addAll(getSubstitutes());
@@ -126,11 +126,11 @@ public class Team {
 		else
 			return gameweekPoints;
 	}
-	
+	*/
 	public int getCurrentFantasyGameweekPoints() {
 		return gameweekPoints;
 	}
-	
+	/*
 	public int getTotalPoints() {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
 			return totalPoints + (firstElevenPoints - transferHits);
@@ -160,7 +160,7 @@ public class Team {
 	public void setPlayers(Set<Player> players) {
 		this.players = players;
 	}
-
+	*/
 	public int getFantasyFootballId() {
 		return fantasyFootballId;
 	}
@@ -256,7 +256,7 @@ public class Team {
 	public void setTripleCaptain(boolean tripleCaptain) {
 		this.tripleCaptain = tripleCaptain;
 	}
-
+	/*
 	public Player getCaptain() {
 		if (captain.didNotPlay() == false)
 			return captain;
@@ -267,7 +267,7 @@ public class Team {
 	public void setCaptain(Player captain) {
 		this.captain = captain;
 	}
-	
+	*/
 	public int getOverallRank() {
 		return overallRank;
 	}
@@ -275,7 +275,7 @@ public class Team {
 	public void setOverallRank(int overallRank) {
 		this.overallRank = overallRank;
 	}
-	
+	/*
 	public Map<Player, Player> getWeeklyTransfers() {
 		return weeklyTransfers;
 	}
@@ -283,7 +283,7 @@ public class Team {
 	public void setWeeklyTransfers(Map<Player, Player> weeklySubstitutes) {
 		this.weeklyTransfers = weeklySubstitutes;
 	}
-
+*/
 	public int getTransferHits() {
 		return transferHits;
 	}

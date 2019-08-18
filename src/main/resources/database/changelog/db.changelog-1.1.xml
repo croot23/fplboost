@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+  
+  <changeSet author="joseph.croot" id="changelog-1.1" runAlways="false">
+  
+  	<!-- INSERT LEAGUES -->
+  	
+    <insert tableName="league">
+        <column name="fantasy_football_id" value="257171"/>
+        <column name="league_name" value="RPRemier League"/>
+    </insert>
+    <insert tableName="league">
+        <column name="fantasy_football_id" value="269242"/>
+        <column name="league_name" value="IBB League"/>
+    </insert>
+
+	<!-- INSERT TEAMS -->
+	
+	<insert tableName="team">
+        <column name="fantasy_football_id" value="146521"/>
+        <column name="team_name" value="DAVID LUIZ TRAITOR"/>
+        <column name="manager_name" value="Joseph Croot"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1084267"/>
+        <column name="team_name" value="Sky Bleak Army"/>
+        <column name="manager_name" value="Rhys Morris"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1079211"/>
+        <column name="team_name" value="Athletico Snowflakes"/>
+        <column name="manager_name" value="Ben Gilchrist"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="2463673"/>
+        <column name="team_name" value="FuSisu"/>
+        <column name="manager_name" value="Mark Gill"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="3936931"/>
+        <column name="team_name" value="Ashley Out"/>
+        <column name="manager_name" value="Christopher Smith"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="562066"/>
+        <column name="team_name" value="Count Emery"/>
+        <column name="manager_name" value="Alexander Walsh"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1973036"/>
+        <column name="team_name" value="Chelsea Tube Pushers"/>
+        <column name="manager_name" value="Nik Goodley"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1600875"/>
+        <column name="team_name" value="Club Atletico Andy"/>
+        <column name="manager_name" value="Andrew Cowlin"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1029694"/>
+        <column name="team_name" value="FullTimers United FC"/>
+        <column name="manager_name" value="Phil Brezovszky"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="2166198"/>
+        <column name="team_name" value="."/>
+        <column name="manager_name" value="Amit Bains"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1996874"/>
+        <column name="team_name" value="Reds Under the Bed"/>
+        <column name="manager_name" value="Shane Dobson"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="2929456"/>
+        <column name="team_name" value="Spartak Muaaz Cow"/>
+        <column name="manager_name" value="Muaaz Khan"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="1127104"/>
+        <column name="team_name" value="D3s Army"/>
+        <column name="manager_name" value="David B"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <!-- JOIN TEAMS TO LEAGUE -->
+    
+    	<!-- RPR -->
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="146521"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="1084267"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="1079211"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="2463673"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="3936931"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="257171"/>
+        <column name="team_id" value="562066"/>
+    </insert>
+    
+    	<!-- IBB -->
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="1973036"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="146521"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="1600875"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="1029694"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="2166198"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="2929456"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="1127104"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="269242"/>
+        <column name="team_id" value="1996874"/>
+    </insert>
+    
+  </changeSet>
+  
+</databaseChangeLog> 

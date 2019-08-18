@@ -1,10 +1,27 @@
 type Query {
-  employees: [Employee] 
+  leagueById(id: ID): League 
 }
 
-type Employee {
-  id: ID
-  firstName: String
-  lastName: String
-  description: String
+type League {
+  fantasyFootballId: ID
+  name: String
+  teams: [Team]
+}
+
+type Team {
+	fantasyFootballId: ID
+	teamName: String
+	managerName: String
+	totalPoints: Int
+	form: Float
+	teamValue: Float
+	totalTransfers: Int
+	bank: Float
+	gameweekPoints: Int
+	wildcard: Boolean
+	benchBoost: Boolean
+	freeHit: Boolean
+	tripleCaptain: Boolean
+	overallRank: Int
+	transferHits: Int
 }

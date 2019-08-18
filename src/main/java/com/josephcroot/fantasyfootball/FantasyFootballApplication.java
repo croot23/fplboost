@@ -9,11 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = "com.josephcroot.*")
 @SpringBootApplication(scanBasePackages = "com.josephcroot.*")
 public class FantasyFootballApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(FantasyFootballApplication.class, args);
-		
-		
 	}
 	
 }

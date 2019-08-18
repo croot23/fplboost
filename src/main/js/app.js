@@ -1,73 +1,66 @@
 'use strict';
 
-// tag::vars[]
+const { createApolloFetch } = require('apollo-fetch');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
-// end::vars[]
+const fetch = createApolloFetch({
+	  	// Will need to get app context here
+		uri: 'http://localhost:8080/graphql',
+	});
 
-// tag::app[]
 class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {employees: []};
+		this.state = {league: []};
 	}
 
 	componentDidMount() {
-		client({method: 'GET', path: '/api/employees'}).done(response => {
-			this.setState({employees: response.entity._embedded.employees});
-		});
+		fetch({
+			  query: '{leagueById(id: 269242) { name teams { teamName totalPoints } }}',
+			}).then(res => {
+				this.setState({teams: res.data.leagueById.teams});
+			});
 	}
 
 	render() {
 		return (
-			<EmployeeList employees={this.state.employees}/>
+			<LeagueList teams={this.state.teams}/>
 		)
 	}
 }
-// end::app[]
 
-// tag::employee-list[]
-class EmployeeList extends React.Component{
+class LeagueList extends React.Component{
 	render() {
-		const employees = this.props.employees.map(employee =>
-			<Employee key={employee._links.self.href} employee={employee}/>
-		);
+		console.log(this.props.teams);
 		return (
 			<table>
 				<tbody>
 					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Description</th>
+						<th>Team</th>
+						<th>Points</th>
 					</tr>
-					{employees}
+
 				</tbody>
 			</table>
 		)
 	}
 }
-// end::employee-list[]
 
-// tag::employee[]
-class Employee extends React.Component{
+class Team extends React.Component{
 	render() {
 		return (
 			<tr>
-				<td>{this.props.employee.firstName}</td>
-				<td>{this.props.employee.lastName}</td>
-				<td>{this.props.employee.description}</td>
+			 <td>{this.props.team.teamName}</td>
+			 <td>{this.props.team.totalPoints}</td>
 			</tr>
 		)
 	}
 }
-// end::employee[]
 
-// tag::render[]
+
 ReactDOM.render(
 	<App />,
 	document.getElementById('react')
 )
-// end::render[]
-

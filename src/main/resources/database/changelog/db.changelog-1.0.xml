@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
   
-  <changeSet author="joseph.croot" id="changelog-1.0" runAlways="true">
+  <changeSet author="joseph.croot" id="changelog-1.0" runAlways="false">
     
     <!-- CREATE LEAGUE TABLE -->
     
@@ -61,13 +61,29 @@
       <column name="transfer_hits" type="INT" defaultValue='null'/>
     </createTable>
     
-    <!-- CREATE TEAM TO PLAYER REFERENCE TABLE -->
+    <!-- CREATE LEAGUE TEAM JOIN TABLE -->
     
-    <createTable tableName="team_player">
-    	<column name="team_id" type="INT" >
-      	  <constraints nullable="false" primaryKey="true" foreignKeyName="fk_team_player" references="player(fantasy_football_id)"/>
+    <createTable tableName="league_team">
+    	<column name="league_id" type="INT">
+    		<constraints nullable="false" primaryKey="true"/>
     	</column>
+    	<column name="team_id" type="INT">
+    		<constraints nullable="false" primaryKey="true"/>
+    	</column>
+    	
     </createTable>
-  
+    
+    <addForeignKeyConstraint
+            constraintName="FK_LEAGUE"
+            referencedTableName="league"
+            baseColumnNames="league_id"
+            baseTableName="league_team" referencedColumnNames="fantasy_football_id" />
+            
+	    <addForeignKeyConstraint
+            constraintName="FK_TEAM"
+            referencedTableName="team"
+            baseColumnNames="team_id"
+            baseTableName="league_team" referencedColumnNames="fantasy_football_id" />
+    
   </changeSet>
 </databaseChangeLog> 

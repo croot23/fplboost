@@ -1,22 +1,22 @@
 package com.josephcroot.fantasyfootball;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.josephcroot.entity.Employee;
-import com.josephcroot.repository.EmployeeRepository;
+import com.josephcroot.entity.League;
+import com.josephcroot.repository.LeagueRepository;
 
 @Component
 public class Query implements GraphQLQueryResolver {
 	
 	@Autowired
-	private EmployeeRepository EmployeeRepository;
+	private LeagueRepository LeagueRepository;
 	
-	public List<Employee> employees() {
-        return (List<Employee>) EmployeeRepository.findAll();
+	public Optional<League> leagueById(int id) {
+        return LeagueRepository.findById(id);
     }
 
 }
