@@ -86,6 +86,701 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/apollo-fetch/dist/apollo-fetch.js":
+/*!********************************************************!*\
+  !*** ./node_modules/apollo-fetch/dist/apollo-fetch.js ***!
+  \********************************************************/
+/*! exports provided: constructDefaultOptions, createApolloFetch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "constructDefaultOptions", function() { return constructDefaultOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createApolloFetch", function() { return createApolloFetch; });
+/* harmony import */ var cross_fetch_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch/polyfill */ "./node_modules/cross-fetch/dist/browser-polyfill.js");
+/* harmony import */ var cross_fetch_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch_polyfill__WEBPACK_IMPORTED_MODULE_0__);
+var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+function buildWareStack(funcs, modifiedObject, resolve) {
+    var _this = this;
+    var next = function () {
+        if (funcs.length > 0) {
+            var f = funcs.shift();
+            if (f) {
+                f.apply(_this, [modifiedObject, next]);
+            }
+        }
+        else {
+            resolve(modifiedObject);
+        }
+    };
+    next();
+}
+function constructDefaultOptions(requestOrRequests, options) {
+    var body;
+    try {
+        body = JSON.stringify(requestOrRequests);
+    }
+    catch (e) {
+        throw new Error("Network request failed. Payload is not serializable: " + e.message);
+    }
+    return __assign({ body: body, method: 'POST' }, options, { headers: __assign({ Accept: '*/*', 'Content-Type': 'application/json' }, options.headers || []) });
+}
+function throwHttpError(response, error) {
+    var httpError;
+    if (response && response.status >= 300) {
+        httpError = new Error("Network request failed with status " + response.status + " - \"" + response.statusText + "\"");
+    }
+    else {
+        httpError = new Error("Network request failed to return valid JSON");
+    }
+    httpError.response = response;
+    httpError.parseError = error;
+    throw httpError;
+}
+function throwBatchError(response) {
+    var httpError = new Error("A batched Operation of responses for ");
+    httpError.response = response;
+    throw httpError;
+}
+function createApolloFetch(params) {
+    if (params === void 0) { params = {}; }
+    var constructOptions = params.constructOptions, customFetch = params.customFetch;
+    var _uri = params.uri || '/graphql';
+    var middlewares = [];
+    var batchedMiddlewares = [];
+    var afterwares = [];
+    var batchedAfterwares = [];
+    var applyMiddlewares = function (requestAndOptions, batched) {
+        return new Promise(function (resolve, reject) {
+            if (batched) {
+                buildWareStack(batchedMiddlewares.slice(), requestAndOptions, resolve);
+            }
+            else {
+                buildWareStack(middlewares.slice(), requestAndOptions, resolve);
+            }
+        });
+    };
+    var applyAfterwares = function (responseObject, batched) {
+        return new Promise(function (resolve, reject) {
+            if (batched) {
+                buildWareStack(batchedAfterwares.slice(), responseObject, resolve);
+            }
+            else {
+                buildWareStack(afterwares.slice(), responseObject, resolve);
+            }
+        });
+    };
+    var apolloFetch = function (request) {
+        var options = {};
+        var parseError;
+        var batched = Array.isArray(request);
+        var requestObject = (batched
+            ? {
+                requests: request,
+                options: options,
+            }
+            : {
+                request: request,
+                options: options,
+            });
+        return applyMiddlewares(requestObject, batched)
+            .then(function (reqOpts) {
+            var construct = constructOptions || constructDefaultOptions;
+            var requestOrRequests = reqOpts.request ||
+                reqOpts.requests;
+            return construct(requestOrRequests, reqOpts.options);
+        })
+            .then(function (opts) {
+            options = __assign({}, opts);
+            return (customFetch || fetch)(_uri, options);
+        })
+            .then(function (response) {
+            return response.text().then(function (raw) {
+                try {
+                    var parsed = JSON.parse(raw);
+                    response.raw = raw;
+                    response.parsed = parsed;
+                    return response;
+                }
+                catch (e) {
+                    parseError = e;
+                    response.raw = raw;
+                    return response;
+                }
+            });
+        })
+            .then(function (response) {
+            return applyAfterwares({
+                response: response,
+                options: options,
+            }, batched);
+        })
+            .then(function (_a) {
+            var response = _a.response;
+            if (response.parsed) {
+                if (batched) {
+                    if (Array.isArray(response.parsed)) {
+                        return response.parsed;
+                    }
+                    else {
+                        throwBatchError(response);
+                    }
+                }
+                else {
+                    return __assign({}, response.parsed);
+                }
+            }
+            else {
+                throwHttpError(response, parseError);
+            }
+        });
+    };
+    apolloFetch.use = function (middleware) {
+        if (typeof middleware === 'function') {
+            middlewares.push(middleware);
+        }
+        else {
+            throw new Error('Middleware must be a function');
+        }
+        return apolloFetch;
+    };
+    apolloFetch.useAfter = function (afterware) {
+        if (typeof afterware === 'function') {
+            afterwares.push(afterware);
+        }
+        else {
+            throw new Error('Afterware must be a function');
+        }
+        return apolloFetch;
+    };
+    apolloFetch.batchUse = function (middleware) {
+        if (typeof middleware === 'function') {
+            batchedMiddlewares.push(middleware);
+        }
+        else {
+            throw new Error('Middleware must be a function');
+        }
+        return apolloFetch;
+    };
+    apolloFetch.batchUseAfter = function (afterware) {
+        if (typeof afterware === 'function') {
+            batchedAfterwares.push(afterware);
+        }
+        else {
+            throw new Error('Afterware must be a function');
+        }
+        return apolloFetch;
+    };
+    return apolloFetch;
+}
+//# sourceMappingURL=apollo-fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/apollo-fetch/dist/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/apollo-fetch/dist/index.js ***!
+  \*************************************************/
+/*! exports provided: constructDefaultOptions, createApolloFetch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _apollo_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apollo-fetch */ "./node_modules/apollo-fetch/dist/apollo-fetch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "constructDefaultOptions", function() { return _apollo_fetch__WEBPACK_IMPORTED_MODULE_0__["constructDefaultOptions"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createApolloFetch", function() { return _apollo_fetch__WEBPACK_IMPORTED_MODULE_0__["createApolloFetch"]; });
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/cross-fetch/dist/browser-polyfill.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/cross-fetch/dist/browser-polyfill.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function(self) {
+  'use strict';
+
+  if (self.fetch) {
+    return
+  }
+
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob: 'FileReader' in self && 'Blob' in self && (function() {
+      try {
+        new Blob();
+        return true
+      } catch(e) {
+        return false
+      }
+    })(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
+
+  if (support.arrayBuffer) {
+    var viewClasses = [
+      '[object Int8Array]',
+      '[object Uint8Array]',
+      '[object Uint8ClampedArray]',
+      '[object Int16Array]',
+      '[object Uint16Array]',
+      '[object Int32Array]',
+      '[object Uint32Array]',
+      '[object Float32Array]',
+      '[object Float64Array]'
+    ];
+
+    var isDataView = function(obj) {
+      return obj && DataView.prototype.isPrototypeOf(obj)
+    };
+
+    var isArrayBufferView = ArrayBuffer.isView || function(obj) {
+      return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+    };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name')
+    }
+    return name.toLowerCase()
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function() {
+        var value = items.shift();
+        return {done: value === undefined, value: value}
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function() {
+        return iterator
+      };
+    }
+
+    return iterator
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function(value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue+','+value : value;
+  };
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function(name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null
+  };
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(normalizeName(name))
+  };
+
+  Headers.prototype.set = function(name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function(callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function() {
+    var items = [];
+    this.forEach(function(value, name) { items.push(name); });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.values = function() {
+    var items = [];
+    this.forEach(function(value) { items.push(value); });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.entries = function() {
+    var items = [];
+    this.forEach(function(value, name) { items.push([name, value]); });
+    return iteratorFor(items)
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result);
+      };
+      reader.onerror = function() {
+        reject(reader.error);
+      };
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('')
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0)
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function(body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        throw new Error('unsupported BodyInit type')
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function() {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      };
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      };
+    }
+
+    this.text = function() {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob)
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text')
+      } else {
+        return Promise.resolve(this._bodyText)
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      };
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    };
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return (methods.indexOf(upcased) > -1) ? upcased : method
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read')
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'omit';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function() {
+    return new Request(this, { body: this._bodyInit })
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body.trim().split('&').forEach(function(bytes) {
+      if (bytes) {
+        var split = bytes.split('=');
+        var name = split.shift().replace(/\+/g, ' ');
+        var value = split.join('=').replace(/\+/g, ' ');
+        form.append(decodeURIComponent(name), decodeURIComponent(value));
+      }
+    });
+    return form
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    rawHeaders.split(/\r?\n/).forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = 'status' in options ? options.status : 200;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function() {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    })
+  };
+
+  Response.error = function() {
+    var response = new Response(null, {status: 0, statusText: ''});
+    response.type = 'error';
+    return response
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function(url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code')
+    }
+
+    return new Response(null, {status: status, headers: {location: url}})
+  };
+
+  self.Headers = Headers;
+  self.Request = Request;
+  self.Response = Response;
+
+  self.fetch = function(input, init) {
+    return new Promise(function(resolve, reject) {
+      var request = new Request(input, init);
+      var xhr = new XMLHttpRequest();
+
+      xhr.onload = function() {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function(value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    })
+  };
+  self.fetch.polyfill = true;
+})(typeof self !== 'undefined' ? self : this);
+
+/*
+ * Rollup wraps up the whatwg-fetch code on ponyfill mode in
+ * order to prevent it from adding fetch to the global object.
+ */
+
+
+/***/ }),
+
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
@@ -30158,72 +30853,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-20
 
 /***/ }),
 
-/***/ "./src/main/js/api/uriListConverter.js":
-/*!*********************************************!*\
-  !*** ./src/main/js/api/uriListConverter.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-  'use strict';
-  /* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
-
-  return {
-    read: function read(str
-    /*, opts */
-    ) {
-      return str.split('\n');
-    },
-    write: function write(obj
-    /*, opts */
-    ) {
-      // If this is an Array, extract the self URI and then join using a newline
-      if (obj instanceof Array) {
-        return obj.map(function (resource) {
-          return resource._links.self.href;
-        }).join('\n');
-      } else {
-        // otherwise, just return the self URI
-        return obj._links.self.href;
-      }
-    }
-  };
-}).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ }),
-
-/***/ "./src/main/js/api/uriTemplateInterceptor.js":
-/*!***************************************************!*\
-  !*** ./src/main/js/api/uriTemplateInterceptor.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (require) {
-  'use strict';
-
-  var interceptor = __webpack_require__(/*! rest/interceptor */ "./node_modules/rest/interceptor.js");
-
-  return interceptor({
-    request: function request(_request
-    /*, config, meta */
-    ) {
-      /* If the URI is a URI Template per RFC 6570 (http://tools.ietf.org/html/rfc6570), trim out the template part */
-      if (_request.path.indexOf('{') === -1) {
-        return _request;
-      } else {
-        _request.path = _request.path.split('{')[0];
-        return _request;
-      }
-    }
-  });
-}).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ }),
-
 /***/ "./src/main/js/app.js":
 /*!****************************!*\
   !*** ./src/main/js/app.js ***!
@@ -30232,7 +30861,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
- // tag::vars[]
+
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -30244,21 +30873,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var _require = __webpack_require__(/*! apollo-fetch */ "./node_modules/apollo-fetch/dist/index.js"),
+    createApolloFetch = _require.createApolloFetch;
+
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js"); // end::vars[]
-// tag::app[]
+var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
+var fetch = createApolloFetch({
+  uri: window.location.href + 'graphql'
+});
 
 var App =
 /*#__PURE__*/
@@ -30272,92 +30906,121 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      employees: []
+      teams: []
     };
+    _this.updateLeague = _this.updateLeague.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "updateLeague",
+    value: function updateLeague() {
       var _this2 = this;
 
-      client({
-        method: 'GET',
-        path: '/api/employees'
-      }).done(function (response) {
+      var selectBox = document.getElementById("selectLeague");
+      var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      fetch({
+        // Need to extrapolate out to a reusable query function
+        query: '{leagueById(id: ' + selectedValue + ') { name teams { fantasyFootballId teamName totalPoints managerName teamValue totalTransfers bank gameweekPoints wildcard benchBoost freeHit tripleCaptain} }}'
+      }).then(function (res) {
         _this2.setState({
-          employees: response.entity._embedded.employees
+          teams: res.data.leagueById.teams
+        });
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      fetch({
+        // Need to extrapolate out to a reusable query function
+        query: '{leagueById(id: 269242) { name teams { fantasyFootballId teamName totalPoints managerName teamValue totalTransfers bank gameweekPoints wildcard benchBoost freeHit tripleCaptain} }}'
+      }).then(function (res) {
+        _this3.setState({
+          teams: res.data.leagueById.teams
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(EmployeeList, {
-        employees: this.state.employees
-      });
+      var _this4 = this;
+
+      return React.createElement("div", {
+        class: "mainTable"
+      }, React.createElement("select", {
+        id: "selectLeague",
+        onChange: function onChange() {
+          return _this4.updateLeague();
+        }
+      }, React.createElement("option", {
+        value: "269242"
+      }, "IBB League"), React.createElement("option", {
+        value: "257171"
+      }, "RPRemier League")), React.createElement(LeagueList, {
+        teams: this.state.teams
+      }));
     }
   }]);
 
   return App;
-}(React.Component); // end::app[]
-// tag::employee-list[]
+}(React.Component);
 
-
-var EmployeeList =
+var LeagueList =
 /*#__PURE__*/
 function (_React$Component2) {
-  _inherits(EmployeeList, _React$Component2);
+  _inherits(LeagueList, _React$Component2);
 
-  function EmployeeList() {
-    _classCallCheck(this, EmployeeList);
+  function LeagueList() {
+    _classCallCheck(this, LeagueList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EmployeeList).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(LeagueList).apply(this, arguments));
   }
 
-  _createClass(EmployeeList, [{
+  _createClass(LeagueList, [{
     key: "render",
     value: function render() {
-      var employees = this.props.employees.map(function (employee) {
-        return React.createElement(Employee, {
-          key: employee._links.self.href,
-          employee: employee
+      var teams = this.props.teams.sort(function (a, b) {
+        return b.totalPoints - a.totalPoints;
+      }).map(function (team) {
+        return React.createElement(Team, {
+          key: team.fantasyFootballId,
+          team: team
         });
       });
-      return React.createElement("table", null, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "First Name"), React.createElement("th", null, "Last Name"), React.createElement("th", null, "Description")), employees));
+      return React.createElement("div", null, React.createElement("br", null), React.createElement("table", {
+        id: "table_id",
+        class: "display"
+      }, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "Team Name"), React.createElement("th", null, "Manager"), React.createElement("th", null, "Team Value"), React.createElement("th", null, "Transfers"), React.createElement("th", null, "Wildcard"), React.createElement("th", null, "FH"), React.createElement("th", null, "BB"), React.createElement("th", null, "TC"), React.createElement("th", null, "Gameweek Points"), React.createElement("th", null, "Total Points")), teams)));
     }
   }]);
 
-  return EmployeeList;
-}(React.Component); // end::employee-list[]
-// tag::employee[]
+  return LeagueList;
+}(React.Component);
 
-
-var Employee =
+var Team =
 /*#__PURE__*/
 function (_React$Component3) {
-  _inherits(Employee, _React$Component3);
+  _inherits(Team, _React$Component3);
 
-  function Employee() {
-    _classCallCheck(this, Employee);
+  function Team() {
+    _classCallCheck(this, Team);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Employee).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Team).apply(this, arguments));
   }
 
-  _createClass(Employee, [{
+  _createClass(Team, [{
     key: "render",
     value: function render() {
-      return React.createElement("tr", null, React.createElement("td", null, this.props.employee.firstName), React.createElement("td", null, this.props.employee.lastName), React.createElement("td", null, this.props.employee.description));
+      return React.createElement("tr", null, React.createElement("td", null, this.props.team.teamName), React.createElement("td", null, this.props.team.managerName), React.createElement("td", null, this.props.team.teamValue / 10), React.createElement("td", null, this.props.team.totalTransfers), React.createElement("td", null, this.props.team.wildcard == true ? "Y" : ""), React.createElement("td", null, this.props.team.freeHit == true ? "Y" : ""), React.createElement("td", null, this.props.team.benchBoost == true ? "Y" : ""), React.createElement("td", null, this.props.team.tripleCaptain == true ? "Y" : ""), React.createElement("td", null, this.props.team.gameweekPoints), React.createElement("td", null, this.props.team.totalPoints));
     }
   }]);
 
-  return Employee;
-}(React.Component); // end::employee[]
-// tag::render[]
+  return Team;
+}(React.Component);
 
-
-ReactDOM.render(React.createElement(App, null), document.getElementById('react')); // end::render[]
+ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
 
 /***/ }),
 
@@ -30377,18 +31040,15 @@ var defaultRequest = __webpack_require__(/*! rest/interceptor/defaultRequest */ 
 
 var mime = __webpack_require__(/*! rest/interceptor/mime */ "./node_modules/rest/interceptor/mime.js");
 
-var uriTemplateInterceptor = __webpack_require__(/*! ./api/uriTemplateInterceptor */ "./src/main/js/api/uriTemplateInterceptor.js");
-
 var errorCode = __webpack_require__(/*! rest/interceptor/errorCode */ "./node_modules/rest/interceptor/errorCode.js");
 
 var baseRegistry = __webpack_require__(/*! rest/mime/registry */ "./node_modules/rest/mime/registry.js");
 
 var registry = baseRegistry.child();
-registry.register('text/uri-list', __webpack_require__(/*! ./api/uriListConverter */ "./src/main/js/api/uriListConverter.js"));
 registry.register('application/hal+json', __webpack_require__(/*! rest/mime/type/application/hal */ "./node_modules/rest/mime/type/application/hal.js"));
 module.exports = rest.wrap(mime, {
   registry: registry
-}).wrap(uriTemplateInterceptor).wrap(errorCode).wrap(defaultRequest, {
+}).wrap(errorCode).wrap(defaultRequest, {
   headers: {
     'Accept': 'application/hal+json'
   }

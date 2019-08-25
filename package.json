@@ -18,7 +18,7 @@
   "bugs": {
     "url": "fplboost.com"
   },
-  "homepage": "fplboost.com",
+  "homepage": "localhost:8080",
   "dependencies": {
     "apollo-fetch": "^0.7.0",
     "react": "^16.5.2",

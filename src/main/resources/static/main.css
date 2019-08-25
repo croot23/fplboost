@@ -3,7 +3,35 @@ table {
 }
 
 td, th {
-    border: 1px solid #999;
     padding: 0.5rem;
-    text-align: left;
+}
+
+table {
+  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #FFFFFF;
+  text-align: center;
+  border-collapse: collapse;
+  width:100%;
+}
+table td, table.paleBlueRows th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 2px;
+}
+table tbody td {
+  font-size: 16px;
+  text-align: center;
+}
+table tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table thead {
+  background: #0B6FA4;
+  border-bottom: 5px solid #FFFFFF;
+}
+table thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
 }

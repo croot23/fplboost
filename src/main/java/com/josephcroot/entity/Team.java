@@ -130,6 +130,10 @@ public class Team {
 	public int getCurrentFantasyGameweekPoints() {
 		return gameweekPoints;
 	}
+	
+	public int getTotalPoints() {
+			return totalPoints;
+	}
 	/*
 	public int getTotalPoints() {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
