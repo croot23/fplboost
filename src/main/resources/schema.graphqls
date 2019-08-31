@@ -24,4 +24,21 @@ type Team {
 	tripleCaptain: Boolean
 	overallRank: Int
 	transferHits: Int
+	players: [Player]
+}
+type Player {
+	fantasyFootballId: ID
+	webName: String
+	firstName: String
+	lastName: String
+	totalPoints: Int
+	gameweekPoints: Int
+	form: Float
+	price: Float
+	injured: Boolean
+	pointsPerGame: Float
+	bonusPoints: Int
+	position: Int
+	team: Int
+	didNotPlay: Boolean
 }

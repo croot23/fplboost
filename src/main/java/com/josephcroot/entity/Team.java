@@ -81,13 +81,13 @@ public class Team {
 	public void setViceCaptain(Player viceCaptain) {
 		this.viceCaptain = viceCaptain;
 	}
-	/*
+	*/
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, })
 	@JoinTable(name = "team_player", 
 	joinColumns = @JoinColumn(name = "team_id"), 
 	inverseJoinColumns = @JoinColumn(name = "player_id"))
 	private Set<Player> players;
-
+/*
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, })
 	@JoinTable(name = "team_substitutes", 
 	joinColumns = @JoinColumn(name = "team_id"), 
@@ -156,15 +156,15 @@ public class Team {
 	public void setSubstitutes(Set<Player> substitutes) {
 		this.substitutes = substitutes;
 	}
-
+*/
 	public Set<Player> getPlayers() {
 		return players;
 	}
-
+	
 	public void setPlayers(Set<Player> players) {
 		this.players = players;
 	}
-	*/
+	
 	public int getFantasyFootballId() {
 		return fantasyFootballId;
 	}
@@ -283,7 +283,7 @@ public class Team {
 	public Map<Player, Player> getWeeklyTransfers() {
 		return weeklyTransfers;
 	}
-
+	
 	public void setWeeklyTransfers(Map<Player, Player> weeklySubstitutes) {
 		this.weeklyTransfers = weeklySubstitutes;
 	}
