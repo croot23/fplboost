@@ -40,14 +40,13 @@ public class PlayerServiceImpl implements PlayerService  {
 	@Transactional
 	@Override
 	public void updatePlayerInfo() throws JSONException, IOException {
-		/*
-		List<Integer> result = new ArrayList<Integer>(PlayerRepository.findAll());
+		
+		List<Integer> result = new ArrayList<Integer>(PlayerRepository.getallPlayerIds());
 		for (int playerId : result) {
-			Player updatedPlayer = PlayerRepository.save(playerId);
+			Player updatedPlayer = PlayerRepository.findById(playerId).orElse(null);
 			updatePlayer(updatedPlayer);
 			PlayerRepository.save(updatedPlayer);
 		}
-		*/
 	}
 
 	@Transactional

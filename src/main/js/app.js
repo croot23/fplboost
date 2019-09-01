@@ -67,7 +67,7 @@ class MyReactTable extends React.Component {
 		  },{
 			id: 'teamValue',
 		    Header: 'Team Value',
-		    accessor: team => (team.teamValue/10.toFixed(1)),
+		    accessor: team => ((team.teamValue/10).toFixed(1)),
 		    width:100,
 		  },{
 		    Header: 'Transfers',

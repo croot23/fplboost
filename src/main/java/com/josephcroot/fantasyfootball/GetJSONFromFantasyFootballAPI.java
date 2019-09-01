@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class GetJSONFromFantasyFootballAPI {
 	
 	private static JSONObject playerInfo;
-	private static int gameweek = 3;
+	private static int gameweek = 4;
 
 	@Scheduled(fixedDelay = 300000)
 	public void updatePlayers() throws JSONException, IOException {
