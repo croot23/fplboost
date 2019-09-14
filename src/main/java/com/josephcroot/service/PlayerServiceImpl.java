@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -23,8 +22,8 @@ import com.josephcroot.repository.PlayerRepository;
 
 @Component
 @Service
-public class PlayerServiceImpl implements PlayerService  {
-	
+public class PlayerServiceImpl implements PlayerService {
+
 	@Autowired
 	private PlayerRepository PlayerRepository;
 
@@ -36,11 +35,11 @@ public class PlayerServiceImpl implements PlayerService  {
 		} catch (JSONException e) {
 		}
 	}
-	
+
 	@Transactional
 	@Override
 	public void updatePlayerInfo() throws JSONException, IOException {
-		
+
 		List<Integer> result = new ArrayList<Integer>(PlayerRepository.getallPlayerIds());
 		for (int playerId : result) {
 			Player updatedPlayer = PlayerRepository.findById(playerId).orElse(null);
@@ -77,24 +76,21 @@ public class PlayerServiceImpl implements PlayerService  {
 		player.setPosition(playerInfo.getInt("element_type"));
 		player.setWebName(playerInfo.getString("web_name"));
 		player.setTeam(playerInfo.getInt("team_code"));
-		//player.setDidNotPlay(didNotPlay(player.getFantasyFootballId()));
+		player.setDidNotPlay(didNotPlay(player.getFantasyFootballId()));
 	}
 
 	public static boolean didNotPlay(int id) throws JSONException, IOException {
 		JSONArray playerGameweekInfo = GetJSONFromFantasyFootballAPI.getPlayerGameweekInfo(id);
-		for (int i = 0; i < playerGameweekInfo.length(); i++) {
-			JSONObject currentFixture = (JSONObject) playerGameweekInfo.getJSONObject(i).get("fixture");
-			JSONObject explain = (JSONObject) playerGameweekInfo.getJSONObject(i).get("explain");
-			JSONObject minutes = (JSONObject) explain.get("minutes");
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-			Date now = new Date();
-			try {
-				Date kickoff = df.parse(currentFixture.get("kickoff_time").toString());
-				if ((now.getTime() - kickoff.getTime()) > 7200000 && minutes.getInt("value") == 0) {
-					return true;
+		int lastObjectInArray = playerGameweekInfo.length() - 1;
+		JSONObject playerGameweekDetails = (JSONObject) playerGameweekInfo.getJSONObject(lastObjectInArray);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		Date now = new Date();
+		try {
+			Date kickoff = df.parse(playerGameweekDetails.get("kickoff_time").toString());
+			if ((now.getTime() - kickoff.getTime()) > 7200000 && playerGameweekDetails.getInt("minutes") == 0) {
+				return true;
 				}
 			} catch (ParseException e) {
-			}
 		}
 		return false;
 	}
@@ -104,6 +100,5 @@ public class PlayerServiceImpl implements PlayerService  {
 	public void deletePlayer(int playerId) {
 		PlayerRepository.deleteById(playerId);
 	}
-
 
 }

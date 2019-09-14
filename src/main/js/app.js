@@ -1,51 +1,59 @@
 'use strict';
 
+require("babel-core/register");
+require("babel-polyfill");
+import mainTableHeaders from './Tools/main_table_columns.js'
+import playerTableHeaders from './Tools/player_table_columns.js'
+import transferTableHeaders from './Tools/transfer_table_columns.js'
+import mainQuery from './Queries/main_table_query.js'
+import combineTransferLists from './Tools/combine_transfers_lists.js'
 const { createApolloFetch } = require('apollo-fetch');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactTable = require('react-table').default
 const client = require('./client');
 const fetch = createApolloFetch({
-		uri: window.location.href+'graphql',
-	});
+	uri: window.location.href+'graphql',
+});
 
 class App extends React.Component {
-
+	
+	// Create initial state
 	constructor(props) {
 		super(props);
 		this.state = {teams: []};
-		this.updateLeague = this.updateLeague.bind(this);
+		this.reload = this.reload.bind(this);
 	}
 	
-	updateLeague() {
-	    var selectBox = document.getElementById("selectLeague");
-	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-	    fetch({
-			  // Need to extrapolate out to a reusable query function
-			  query: '{leagueById(id: '+selectedValue+') { name teams { fantasyFootballId teamName totalPoints managerName teamValue totalTransfers bank gameweekPoints wildcard benchBoost freeHit tripleCaptain players { firstName lastName webName gameweekPoints form price	bonusPoints position team didNotPlay }} }}',
-			}).then(res => {
-				this.setState({teams: res.data.leagueById.teams});
-			});
-	}
-
+	// Populate the table on initial page load and start the automatic refresh timer
 	componentDidMount() {
+		this.reload();
+		setInterval(this.reload.bind(this),100000);
+	}
+	
+	// Function to update the table when the league changes and automatically reload the table with league information at set intervals
+	async reload() {
+		//Get current league ID from the dropdown
+		var selectBox = document.getElementById("selectLeague");
+		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 		fetch({
-			  // Need to extrapolate out to a reusable query function
-			  query: '{leagueById(id: 269242) { name teams { fantasyFootballId teamName totalPoints managerName teamValue totalTransfers bank gameweekPoints wildcard benchBoost freeHit tripleCaptain players { firstName lastName webName gameweekPoints form price	bonusPoints position team didNotPlay }} }}',
+			// The query is built ina function imported from ./Tools/*.js files
+			query: mainQuery(selectedValue),
 			}).then(res => {
 				this.setState({teams: res.data.leagueById.teams});
 			});
 	}
-
+	
+	// Main page render method
 	render() {
 		return (
-				<div class="mainTable">
-					<select id="selectLeague" onChange={() => this.updateLeague()}>
-						<option value="269242">IBB League</option>
-						<option value="257171">RPRemier League</option>
-					</select>
-					<MyReactTable teams={this.state.teams}></MyReactTable>
-				</div>
+			<div class="mainTable">
+				<select id="selectLeague" onChange={() => this.reload()}>
+					<option value="269242">IBB League</option>
+					<option value="257171">RPRemier League</option>
+				</select>
+				<MyReactTable teams={this.state.teams}></MyReactTable>
+			</div>
 		)
 	}
 }
@@ -53,105 +61,17 @@ class App extends React.Component {
 class MyReactTable extends React.Component {
 	
 	render() {
-		  
+		
+		// Sort the teams descending by total points before passing to the react table
 		const data = this.props.teams.sort((a, b) => b.totalPoints - a.totalPoints);
-		 
-		  const mainTableColumns = [{
-		    Header: 'Team Name',
-		    accessor: 'teamName',
-		    width:220,
-		  },{
-		    Header: 'Manager',
-		    accessor: 'managerName',
-		    width:200,
-		  },{
-			id: 'teamValue',
-		    Header: 'Team Value',
-		    accessor: team => ((team.teamValue/10).toFixed(1)),
-		    width:100,
-		  },{
-		    Header: 'Transfers',
-		    accessor: 'totalTransfers',
-		    width:125,
-		  },{
-			id: 'wildcard',
-		    Header: 'Wildcard',
-		    accessor: team => (team.wildcard ? "Y" : ""),
-		    width:100,
-		  },{
-			id: 'freeHit',
-		    Header: 'FH',
-		    accessor: team => (team.freeHit ? "Y" : ""),
-		    width:70,
-		  },{
-			id: 'benchBoost',
-		    Header: 'BB',
-		    accessor: team => (team.benchBoost ? "Y" : ""),
-		    width:70,
-		  },{
-			id: 'tripleCaptain',
-		    Header: 'TC',
-		    accessor: team => (team.tripleCaptain ? "Y" : ""),
-		    width:70,
-		  },{
-		    Header: 'Gameweek Points',
-		    accessor: 'gameweekPoints',
-		    width:140,
-		  },{
-		    Header: 'Total Points',
-		    accessor: 'totalPoints',
-		    width:140,
-		  }];
+		
+		// All the table column information is imported from ./Tools/*.js files
+		const mainTableColumns = mainTableHeaders;
+		const subTableColumns = playerTableHeaders;
+		const transferTableColumns = transferTableHeaders;
 		  
-		  const subTableColumns = [{
-			    id: 'firstName',
-			    Header: 'Name',
-			    accessor: player => (player.firstName +" "+player.lastName),
-			    width:180,
-			  },{
-				  id: 'position',
-				  Header: 'Position',
-				  accessor: player => (player.position == 1 ? "GK" : (player.position == 2) ? "DEF ": (player.position == 3) ? "MID" : "FWD"),
-				  width:60,
-			  },{
-				  id: 'price',
-				  Header: 'Price',
-				  accessor: player => (player.price.toFixed(1)),
-				  width:50,
-			  },{
-				  Header: 'Change %',
-				  accessor: 'change',
-				  width:100,
-			  },{
-				  Header: 'Form',
-				  accessor: 'form',
-				  width:50,
-			  },{
-				  Header: 'Mins',
-				  accessor: 'minutes',
-				  width:50,
-			  },{
-				  Header: 'CS',
-				  accessor: 'cleanSheets',
-				  width:50,
-			  },{
-				  Header: 'GS',
-				  accessor: 'goalsScored',
-				  width:50,
-			  },{
-				  Header: 'A',
-				  accessor: 'assists',
-				  width:50,
-			  },{
-				  Header: 'BP',
-				  accessor: 'bonusPoints',
-				  width:50,
-			  },{
-				Header: 'Gameweek Points',
-			    accessor: 'gameweekPoints',
-			  }];
-	 
-		  return <ReactTable
+		  // Render the react tables	
+		return <ReactTable
 		    data={data}
 		    columns={mainTableColumns}
 		    className='-striped -highlight'
@@ -163,7 +83,7 @@ class MyReactTable extends React.Component {
 		  	SubComponent={row => {
 			    return (
 			    <div class='sub-table' style={{ padding: "20px" }}>
-			      <ReactTable
+			    <ReactTable
 				      data={row.original.players.sort((a, b) => a.position - b.position)}
 				      columns={subTableColumns}
 				      minRows={0}
@@ -171,13 +91,32 @@ class MyReactTable extends React.Component {
 					  showPaginationTop={false}
 					  showPaginationBottom={true}
 					  showPageSizeOptions={true}>
-			      </ReactTable>
+			    </ReactTable>
+			    <br></br>
+			    <ReactTable
+			    	className='substitutes'
+			    	data={row.original.substitutes.sort((a, b) => a.position - b.position)}
+			    	columns={subTableColumns}
+			    	minRows={0}
+			    	showPagination={false}
+					showPaginationTop={false}
+					showPaginationBottom={true}
+					showPageSizeOptions={true}>
+			    </ReactTable>
+			    <br></br>
+			    <ReactTable
+		    	data={combineTransferLists(row.original.weeklyTransfersListIn,row.original.weeklyTransfersListOut)}
+		    	columns={transferTableColumns}
+		    	minRows={0}
+		    	showPagination={false}
+				showPaginationTop={false}
+				showPaginationBottom={true}
+				showPageSizeOptions={true}>
+		    </ReactTable>
 			    </div>
-			    )
-			  }}>
-		  </ReactTable>
-		}
-	
+			)}}>
+		</ReactTable>
+	}
 }
 
 ReactDOM.render(

@@ -2,8 +2,10 @@ package com.josephcroot.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +24,20 @@ import com.josephcroot.repository.TeamRepository;
 @Component
 @Service
 public class TeamServiceImpl implements TeamService {
-	
+
 	@Autowired
 	private TeamRepository teamRepository;
-	
+
 	@Autowired
 	private PlayerService playerService;
-	
+
 	@Override
 	@Scheduled(fixedRate = 150000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
-		System.out.println("Updating");
+		System.out.println("Updating Teams");
 		updateTeamInfo();
 	}
-	
+
 	@Override
 	public void updateTeamInfo() throws JSONException, IOException {
 		List<Integer> teamIds = new ArrayList<Integer>(teamRepository.getallTeamIds());
@@ -61,7 +63,7 @@ public class TeamServiceImpl implements TeamService {
 			return newTeam;
 		}
 	}
-	
+
 	public void updateTeam(Team newTeam) throws JSONException, IOException {
 		try {
 			// General team info
@@ -75,9 +77,9 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setManagerName(
 					teamInfo.getString("player_first_name") + " " + teamInfo.getString("player_last_name"));
 			// delete this eventually (when live points set up)
-			newTeam.setTotalPoints(teamInfo.getInt("summary_overall_points"));
+			// newTeam.setTotalPoints(teamInfo.getInt("summary_overall_points"));
 			// Chips info
-			
+
 			JSONArray chipInfo = GetJSONFromFantasyFootballAPI.getTeamChipsInfo(newTeam.getFantasyFootballId());
 			for (int i = 0; i < chipInfo.length(); i++) {
 				JSONObject currentChip = chipInfo.getJSONObject(i);
@@ -94,7 +96,7 @@ public class TeamServiceImpl implements TeamService {
 					newTeam.setBenchBoost(true);
 				}
 			}
-			/*
+
 			// T-1 Total Points (we add current live points to last weeks score for live
 			// totals)
 			JSONArray totalPointsInfo = GetJSONFromFantasyFootballAPI.getTeamPoints(newTeam.getFantasyFootballId());
@@ -104,9 +106,8 @@ public class TeamServiceImpl implements TeamService {
 					newTeam.setTotalPoints(lastGameweek.getInt("total_points"));
 				}
 			}
-*/
 			// Players and substitutes info
-			
+
 			Set<Player> players = new HashSet<>();
 			Set<Player> substitutes = new HashSet<>();
 			int defenders = 0;
@@ -114,15 +115,15 @@ public class TeamServiceImpl implements TeamService {
 			JSONArray playersJSON = GetJSONFromFantasyFootballAPI.getTeamPlayers(newTeam.getFantasyFootballId());
 			for (int i = 0; i < playersJSON.length(); i++) {
 				// Create Player
-				
+
 				JSONObject currentPlayer = playersJSON.getJSONObject(i);
 				Player player = playerService.getPlayer(currentPlayer.getInt("element"));
-				/*if (currentPlayer.getBoolean("is_captain")) {
+				if (currentPlayer.getBoolean("is_captain")) {
 					newTeam.setCaptain(player);
 				}
 				if (currentPlayer.getBoolean("is_vice_captain")) {
 					newTeam.setViceCaptain(player);
-				}*/
+				}
 				if (currentPlayer.getInt("position") < 12) {
 					players.add(player);
 					if (player.getPosition() == 2)
@@ -135,7 +136,6 @@ public class TeamServiceImpl implements TeamService {
 			}
 
 			// Automatic substitutes
-				/*
 			Set<Player> playersToAdd = new HashSet<>();
 			Set<Player> playersToRemove = new HashSet<>();
 			for (Player player : players) {
@@ -146,7 +146,7 @@ public class TeamServiceImpl implements TeamService {
 							if (substitute.getPosition() == 1 && substitute.didNotPlay() == false) {
 								playersToAdd.add(substitute);
 								playersToRemove.add(player);
-								
+
 							}
 						}
 					}
@@ -174,7 +174,7 @@ public class TeamServiceImpl implements TeamService {
 					// Midfielders
 					if (player.getPosition() == 3) {
 						for (Player substitute : substitutes) {
-							if (substitute.didNotPlay() == false) {
+							if (substitute.didNotPlay() == false && substitute.getPosition() != 1) {
 								playersToAdd.add(substitute);
 								playersToRemove.add(player);
 								break;
@@ -184,7 +184,7 @@ public class TeamServiceImpl implements TeamService {
 						// Forwards
 						if (player.getPosition() == 4) {
 							for (Player substitute : substitutes) {
-								if (substitute.didNotPlay() == false) {
+								if (substitute.didNotPlay() == false && substitute.getPosition() != 1) {
 									if (forwards > 1) {
 										playersToAdd.add(substitute);
 										playersToRemove.add(substitute);
@@ -203,7 +203,7 @@ public class TeamServiceImpl implements TeamService {
 					}
 				}
 			}
-			
+
 			for (Player player : playersToRemove) {
 				players.remove(player);
 				substitutes.add(player);
@@ -212,10 +212,8 @@ public class TeamServiceImpl implements TeamService {
 				players.add(player);
 				substitutes.remove(player);
 			}
-			*/
 			newTeam.setPlayers(players);
-			//newTeam.setSubstitutes(substitutes);
-/*
+			newTeam.setSubstitutes(substitutes);
 			// Transfer info
 			Map<Player, Player> transfers = new HashMap<Player, Player>();
 			JSONArray transfersJSON = GetJSONFromFantasyFootballAPI.getTransfers(newTeam.getFantasyFootballId());
@@ -228,15 +226,14 @@ public class TeamServiceImpl implements TeamService {
 				}
 			}
 			newTeam.setWeeklyTransfers(transfers);
-
 			// Transfer hits
 			JSONObject teamHits = GetJSONFromFantasyFootballAPI.getTeamHits(newTeam.getFantasyFootballId());
 			newTeam.setTransferHits(teamHits.getInt("event_transfers_cost"));
-*/
+
 		} catch (JSONException e) {
-			//log.error(e);
+			// log.error(e);
 		} catch (IOException e) {
-			//log.error(e);
+			// log.error(e);
 		}
 	}
 

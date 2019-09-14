@@ -25,6 +25,11 @@ type Team {
 	overallRank: Int
 	transferHits: Int
 	players: [Player]
+	substitutes: [Player]
+	captain: Player
+	viceCaptain: Player
+	weeklyTransfersListOut: [Player]
+	weeklyTransfersListIn: [Player]
 }
 type Player {
 	fantasyFootballId: ID

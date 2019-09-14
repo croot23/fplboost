@@ -1,6 +1,8 @@
 package com.josephcroot.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -65,7 +67,7 @@ public class Team {
 	
 	@Column(name = "transfer_hits")
 	private int transferHits;
-	/*
+	
 	@ManyToOne
 	@JoinColumn(name = "captain_id")
 	private Player captain;
@@ -81,13 +83,13 @@ public class Team {
 	public void setViceCaptain(Player viceCaptain) {
 		this.viceCaptain = viceCaptain;
 	}
-	*/
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, })
 	@JoinTable(name = "team_player", 
 	joinColumns = @JoinColumn(name = "team_id"), 
 	inverseJoinColumns = @JoinColumn(name = "player_id"))
 	private Set<Player> players;
-/*
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, })
 	@JoinTable(name = "team_substitutes", 
 	joinColumns = @JoinColumn(name = "team_id"), 
@@ -106,7 +108,6 @@ public class Team {
 		allPlayers.addAll(getSubstitutes());
 		return allPlayers;
 	}
-	
 	public int getFirstElevenGameweekPoints() {
 		int firstElevenGameweekPoints = 0;
 		Set<Player> firstEleven = new HashSet<Player>(getPlayers());
@@ -126,20 +127,15 @@ public class Team {
 		else
 			return gameweekPoints;
 	}
-	*/
+
 	public int getCurrentFantasyGameweekPoints() {
 		return gameweekPoints;
 	}
 	
 	public int getTotalPoints() {
-			return totalPoints;
-	}
-	/*
-	public int getTotalPoints() {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
 			return totalPoints + (firstElevenPoints - transferHits);
 	}
-	
 	public int getSubstitutePoints() {
 		int substitutePoints = 0;
 		Set<Player> substitutes = new HashSet<Player>(getSubstitutes());
@@ -156,7 +152,6 @@ public class Team {
 	public void setSubstitutes(Set<Player> substitutes) {
 		this.substitutes = substitutes;
 	}
-*/
 	public Set<Player> getPlayers() {
 		return players;
 	}
@@ -260,7 +255,7 @@ public class Team {
 	public void setTripleCaptain(boolean tripleCaptain) {
 		this.tripleCaptain = tripleCaptain;
 	}
-	/*
+	
 	public Player getCaptain() {
 		if (captain.didNotPlay() == false)
 			return captain;
@@ -271,7 +266,7 @@ public class Team {
 	public void setCaptain(Player captain) {
 		this.captain = captain;
 	}
-	*/
+	
 	public int getOverallRank() {
 		return overallRank;
 	}
@@ -279,7 +274,6 @@ public class Team {
 	public void setOverallRank(int overallRank) {
 		this.overallRank = overallRank;
 	}
-	/*
 	public Map<Player, Player> getWeeklyTransfers() {
 		return weeklyTransfers;
 	}
@@ -287,7 +281,6 @@ public class Team {
 	public void setWeeklyTransfers(Map<Player, Player> weeklySubstitutes) {
 		this.weeklyTransfers = weeklySubstitutes;
 	}
-*/
 	public int getTransferHits() {
 		return transferHits;
 	}
@@ -295,6 +288,18 @@ public class Team {
 	public void setTransferHits(int transferHits) {
 		this.transferHits = transferHits;
 	}
-
+	
+	// GrpahQL doesn't handle Maps very well, so splitting the transfers Map out to two Lists 
+	public List<Player> getWeeklyTransfersListOut() {
+		Map<Player, Player> weeklyTransfers = getWeeklyTransfers();
+		ArrayList<Player> playersOut = new ArrayList<Player>(weeklyTransfers.keySet());
+		return playersOut;
+	}
+	
+	public List<Player> getWeeklyTransfersListIn() {
+		Map<Player, Player> weeklyTransfers = getWeeklyTransfers();
+		ArrayList<Player> playersOut = new ArrayList<Player>(weeklyTransfers.values());
+		return playersOut;
+	}
 	
 }
