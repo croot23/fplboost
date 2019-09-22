@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.josephcroot.entity.Player;
-import com.josephcroot.fantasyfootball.GetJSONFromFantasyFootballAPI;
+import com.josephcroot.fantasyfootballAPI.PlayersAPIData;
 import com.josephcroot.repository.PlayerRepository;
 
 @Component
@@ -64,7 +64,7 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	public void updatePlayer(Player player) throws JSONException, IOException {
-		JSONObject playerInfo = GetJSONFromFantasyFootballAPI.getPlayer(player.getFantasyFootballId());
+		JSONObject playerInfo = PlayersAPIData.getPlayer(player.getFantasyFootballId());
 		player.setFirstName(playerInfo.getString("first_name"));
 		player.setLastName(playerInfo.getString("second_name"));
 		player.setForm(playerInfo.getDouble("form"));
@@ -78,15 +78,16 @@ public class PlayerServiceImpl implements PlayerService {
 		player.setTeam(playerInfo.getInt("team_code"));
 		player.setDidNotPlay(didNotPlay(player.getFantasyFootballId()));
 	}
+	
+	static SimpleDateFormat fantasyFootballDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
 	public static boolean didNotPlay(int id) throws JSONException, IOException {
-		JSONArray playerGameweekInfo = GetJSONFromFantasyFootballAPI.getPlayerGameweekInfo(id);
+		JSONArray playerGameweekInfo = PlayersAPIData.getPlayerGameweekInfo(id);
 		int lastObjectInArray = playerGameweekInfo.length() - 1;
 		JSONObject playerGameweekDetails = (JSONObject) playerGameweekInfo.getJSONObject(lastObjectInArray);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		Date now = new Date();
 		try {
-			Date kickoff = df.parse(playerGameweekDetails.get("kickoff_time").toString());
+			Date kickoff = fantasyFootballDateFormat.parse(playerGameweekDetails.get("kickoff_time").toString());
 			if ((now.getTime() - kickoff.getTime()) > 7200000 && playerGameweekDetails.getInt("minutes") == 0) {
 				return true;
 				}

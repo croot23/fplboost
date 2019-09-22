@@ -1,4 +1,4 @@
-package com.josephcroot.fantasyfootball;
+package com.josephcroot.graphQL;
 
 import java.util.Optional;
 

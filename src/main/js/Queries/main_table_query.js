@@ -24,7 +24,8 @@ function mainQuery(n) {
 					bonusPoints 
 					position 
 					team 
-					didNotPlay 
+					didNotPlay
+					totalPoints
 				} 
 				substitutes { 
 					firstName 
@@ -36,7 +37,8 @@ function mainQuery(n) {
 					bonusPoints 
 					position 
 					team 
-					didNotPlay 
+					didNotPlay
+					totalPoints
 				} captain { 
 					webName 
 					gameweekPoints 

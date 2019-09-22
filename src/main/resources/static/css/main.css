@@ -1,7 +1,10 @@
+/*Stops the appearance of a scrollbar moving elements*/
+html {
+  overflow-y: scroll;
+}
 table {
     border-collapse: collapse;
 }
-
 td, th {
     padding: 0.5rem;
 }
@@ -38,32 +41,20 @@ table thead th {
 .rt-td {
 	text-align: center;
 }
-.mainTable {
+.mainContainer {
 	max-width: 1280px;
 	margin: auto;
 }
-.rt-resizable-header-content {
-	font-size: 16px;
-	font-weight: bold;
-	color: #4c16aa;
+.comingSoon {
+	display: block;
+	margin: 0 auto;
 }
-.rt-td {
-	font-size: 14px !important;
+.navbar-nav a {
+	color: #c9c6c5 !important;
+	text-decoration: none !important;
 }
-.sub-table .rt-td {
-	padding: 1px 1px !important;
-}
-.sub-table .rt-resizable-header-content {
-	font-size: 12px;
-	font-weight: bold;
-	color: #4c16aa;
-}
-.sub-table {
-	max-width: 850px;
-	min-width: 600px !important;
-}
-.ReactTable.substitutes .rt-thead.-header {
-	display: none;
+.navbar-nav a:hover {
+  color: white !important;
 }
 .dark {
 	background-color: #1d1a1f;

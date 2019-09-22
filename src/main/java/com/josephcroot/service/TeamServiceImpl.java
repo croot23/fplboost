@@ -18,7 +18,8 @@ import org.springframework.stereotype.Service;
 
 import com.josephcroot.entity.Player;
 import com.josephcroot.entity.Team;
-import com.josephcroot.fantasyfootball.GetJSONFromFantasyFootballAPI;
+import com.josephcroot.fantasyfootballAPI.GameweekData;
+import com.josephcroot.fantasyfootballAPI.TeamsAPIData;
 import com.josephcroot.repository.TeamRepository;
 
 @Component
@@ -67,7 +68,7 @@ public class TeamServiceImpl implements TeamService {
 	public void updateTeam(Team newTeam) throws JSONException, IOException {
 		try {
 			// General team info
-			JSONObject teamInfo = GetJSONFromFantasyFootballAPI.getTeamInfo(newTeam.getFantasyFootballId());
+			JSONObject teamInfo = TeamsAPIData.getTeamInfo(newTeam.getFantasyFootballId());
 			newTeam.setTeamName(teamInfo.getString("name"));
 			newTeam.setTeamValue(teamInfo.getDouble("last_deadline_value"));
 			newTeam.setBank(teamInfo.getDouble("last_deadline_bank"));
@@ -76,11 +77,8 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setOverallRank(teamInfo.getInt("summary_overall_rank"));
 			newTeam.setManagerName(
 					teamInfo.getString("player_first_name") + " " + teamInfo.getString("player_last_name"));
-			// delete this eventually (when live points set up)
-			// newTeam.setTotalPoints(teamInfo.getInt("summary_overall_points"));
 			// Chips info
-
-			JSONArray chipInfo = GetJSONFromFantasyFootballAPI.getTeamChipsInfo(newTeam.getFantasyFootballId());
+			JSONArray chipInfo = TeamsAPIData.getTeamChipsInfo(newTeam.getFantasyFootballId());
 			for (int i = 0; i < chipInfo.length(); i++) {
 				JSONObject currentChip = chipInfo.getJSONObject(i);
 				if (currentChip.getString("name").equals("freehit")) {
@@ -99,20 +97,19 @@ public class TeamServiceImpl implements TeamService {
 
 			// T-1 Total Points (we add current live points to last weeks score for live
 			// totals)
-			JSONArray totalPointsInfo = GetJSONFromFantasyFootballAPI.getTeamPoints(newTeam.getFantasyFootballId());
+			JSONArray totalPointsInfo = TeamsAPIData.getTeamPoints(newTeam.getFantasyFootballId());
 			for (int i = 0; i < totalPointsInfo.length(); i++) {
 				if (i == totalPointsInfo.length() - 2) {
 					JSONObject lastGameweek = totalPointsInfo.getJSONObject(i);
 					newTeam.setTotalPoints(lastGameweek.getInt("total_points"));
 				}
 			}
-			// Players and substitutes info
-
+			// Players info
 			Set<Player> players = new HashSet<>();
 			Set<Player> substitutes = new HashSet<>();
 			int defenders = 0;
 			int forwards = 0;
-			JSONArray playersJSON = GetJSONFromFantasyFootballAPI.getTeamPlayers(newTeam.getFantasyFootballId());
+			JSONArray playersJSON = TeamsAPIData.getTeamPlayers(newTeam.getFantasyFootballId());
 			for (int i = 0; i < playersJSON.length(); i++) {
 				// Create Player
 
@@ -216,10 +213,10 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setSubstitutes(substitutes);
 			// Transfer info
 			Map<Player, Player> transfers = new HashMap<Player, Player>();
-			JSONArray transfersJSON = GetJSONFromFantasyFootballAPI.getTransfers(newTeam.getFantasyFootballId());
+			JSONArray transfersJSON = TeamsAPIData.getTransfers(newTeam.getFantasyFootballId());
 			for (int i = 0; i < transfersJSON.length(); i++) {
 				JSONObject currentTransfer = transfersJSON.getJSONObject(i);
-				if (currentTransfer.getInt("event") == GetJSONFromFantasyFootballAPI.getGameweek()) {
+				if (currentTransfer.getInt("event") == GameweekData.getGameweek()) {
 					Player playerOut = playerService.getPlayer(currentTransfer.getInt("element_out"));
 					Player playerIn = playerService.getPlayer(currentTransfer.getInt("element_in"));
 					transfers.put(playerOut, playerIn);
@@ -227,7 +224,7 @@ public class TeamServiceImpl implements TeamService {
 			}
 			newTeam.setWeeklyTransfers(transfers);
 			// Transfer hits
-			JSONObject teamHits = GetJSONFromFantasyFootballAPI.getTeamHits(newTeam.getFantasyFootballId());
+			JSONObject teamHits = TeamsAPIData.getTeamHits(newTeam.getFantasyFootballId());
 			newTeam.setTransferHits(teamHits.getInt("event_transfers_cost"));
 
 		} catch (JSONException e) {

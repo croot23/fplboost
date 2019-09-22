@@ -10,6 +10,7 @@ const mainTableHeaders = [{
 			id: 'teamValue',
 		    Header: 'Team Value',
 		    accessor: team => ((team.teamValue/10).toFixed(1)),
+		    sortMethod: (a, b) => Number(a)-Number(b),
 		    width:100,
 		  },{
 		    Header: 'Transfers',

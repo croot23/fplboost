@@ -11,15 +11,18 @@ const playerTableHeaders = [{
 				  id: 'price',
 				  Header: 'Price',
 				  accessor: player => (player.price.toFixed(1)),
+				  sortMethod: (a, b) => Number(a)-Number(b),
 				  width:50,
 			  },{
 				  Header: 'Change %',
 				  accessor: 'change',
 				  width:100,
+				  sortMethod: (a, b) => Number(a)-Number(b),
 			  },{
 				  Header: 'Form',
 				  accessor: 'form',
 				  width:50,
+				  sortMethod: (a, b) => Number(a)-Number(b),
 			  },{
 				  Header: 'Mins',
 				  accessor: 'minutes',
