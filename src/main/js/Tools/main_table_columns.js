@@ -14,7 +14,7 @@ const mainTableHeaders = [{
 		    width:100,
 		  },{
 		    Header: 'Transfers',
-		    accessor: 'totalTransfers',
+		    accessor: 'transfersThisGameweek',
 		    width:125,
 		  },{
 			id: 'wildcard',
@@ -49,7 +49,11 @@ const mainTableHeaders = [{
 		    Header: 'Total Points',
 		    accessor: 'totalPoints',
 		    width:110,
-		  }];
+		  },{
+			Header: 'Total Points',
+			accessor: 'totalPoints',
+			width:110,
+			  }];
 
 
 export default mainTableHeaders

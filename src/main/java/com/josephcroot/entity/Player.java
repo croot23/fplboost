@@ -52,6 +52,25 @@ public class Player {
 	@Column(name = "did_not_play")
 	private boolean didNotPlay;
 	
+	@Column(name = "minutes_played")
+	private int minutesPlayed;
+	
+	@Column(name = "clean_sheet")
+	private boolean cleanSheet;
+	
+	@Column(name = "goals_scored")
+	private int goalsScored;
+	
+	@Column(name = "assists")
+	private int assists;
+	
+	@Column(name = "change_percentage")
+	private double changePercentage;
+	
+	public boolean isDidNotPlay() {
+		return didNotPlay;
+	}
+
 	public double getTeam() {
 		return team;
 	}
@@ -170,6 +189,46 @@ public class Player {
 
 	public void setDidNotPlay(boolean didNotPlay) {
 		this.didNotPlay = didNotPlay;
+	}
+	
+	public int getMinutesPlayed() {
+		return minutesPlayed;
+	}
+
+	public void setMinutesPlayed(int minutesPlayed) {
+		this.minutesPlayed = minutesPlayed;
+	}
+
+	public boolean isCleanSheet() {
+		return cleanSheet;
+	}
+
+	public void setCleanSheet(boolean cleanSheet) {
+		this.cleanSheet = cleanSheet;
+	}
+
+	public int getGoalsScored() {
+		return goalsScored;
+	}
+
+	public void setGoalsScored(int goalsScored) {
+		this.goalsScored = goalsScored;
+	}
+
+	public int getAssists() {
+		return assists;
+	}
+
+	public void setAssists(int assists) {
+		this.assists = assists;
+	}
+
+	public double getChangePercentage() {
+		return changePercentage;
+	}
+
+	public void setChangePercentage(double changePercentage) {
+		this.changePercentage = changePercentage;
 	}
 
 }

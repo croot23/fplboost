@@ -17,8 +17,8 @@ import { Button, Navbar, Nav, NavItem, MenuItem } from 'react-bootstrap';
 			  <Navbar.Collapse id="basic-navbar-nav">
 			    <Nav className="mr-auto">
 			      <Nav.Link><Link to="/">Home</Link></Nav.Link>
-			      <Nav.Link><Link to="/graphs/">Graphs</Link></Nav.Link>
-			      <Nav.Link><Link to="/all_teams/">All Teams</Link></Nav.Link>
+			      <Nav.Link className='hide_on_mobile'><Link to="/graphs/">Graphs</Link></Nav.Link>
+			      <Nav.Link className='hide_on_mobile'><Link to="/all_teams/">All Teams</Link></Nav.Link>
 			      <Nav.Link><Link to="/about/">About</Link></Nav.Link>
 			    </Nav>
 			  </Navbar.Collapse>

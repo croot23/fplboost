@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -77,6 +78,7 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setOverallRank(teamInfo.getInt("summary_overall_rank"));
 			newTeam.setManagerName(
 					teamInfo.getString("player_first_name") + " " + teamInfo.getString("player_last_name"));
+			newTeam.setGameweekRank(teamInfo.getInt("summary_event_rank"));
 			// Chips info
 			JSONArray chipInfo = TeamsAPIData.getTeamChipsInfo(newTeam.getFantasyFootballId());
 			for (int i = 0; i < chipInfo.length(); i++) {
@@ -103,10 +105,32 @@ public class TeamServiceImpl implements TeamService {
 					JSONObject lastGameweek = totalPointsInfo.getJSONObject(i);
 					newTeam.setTotalPoints(lastGameweek.getInt("total_points"));
 				}
+				if (i == totalPointsInfo.length() - 1) {
+					JSONObject thisGameweek = totalPointsInfo.getJSONObject(i);
+					newTeam.setTransfersThisGameweek(thisGameweek.getInt("event_transfers"));
+				}
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// Players info
-			Set<Player> players = new HashSet<>();
-			Set<Player> substitutes = new HashSet<>();
+			Set<Player> players = new LinkedHashSet<>();
+			Set<Player> substitutes = new LinkedHashSet<>();
 			int defenders = 0;
 			int forwards = 0;
 			JSONArray playersJSON = TeamsAPIData.getTeamPlayers(newTeam.getFantasyFootballId());
@@ -131,7 +155,8 @@ public class TeamServiceImpl implements TeamService {
 					substitutes.add(player);
 				}
 			}
-
+			
+			
 			// Automatic substitutes
 			Set<Player> playersToAdd = new HashSet<>();
 			Set<Player> playersToRemove = new HashSet<>();
@@ -211,6 +236,27 @@ public class TeamServiceImpl implements TeamService {
 			}
 			newTeam.setPlayers(players);
 			newTeam.setSubstitutes(substitutes);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// Transfer info
 			Map<Player, Player> transfers = new HashMap<Player, Player>();
 			JSONArray transfersJSON = TeamsAPIData.getTransfers(newTeam.getFantasyFootballId());

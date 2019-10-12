@@ -71,20 +71,28 @@ public class PlayerServiceImpl implements PlayerService {
 		player.setTotalPoints(playerInfo.getInt("total_points"));
 		player.setPrice(playerInfo.getDouble("now_cost") / 10);
 		player.setGameweekPoints(playerInfo.getInt("event_points"));
-		player.setBonusPoints(playerInfo.getInt("bonus"));
 		player.setPointsPerGame(playerInfo.getDouble("points_per_game"));
 		player.setPosition(playerInfo.getInt("element_type"));
 		player.setWebName(playerInfo.getString("web_name"));
 		player.setTeam(playerInfo.getInt("team_code"));
-		player.setDidNotPlay(didNotPlay(player.getFantasyFootballId()));
+		updatePlayersGameweek(player);
+	}
+	
+	public void updatePlayersGameweek(Player player) throws JSONException, IOException {
+		JSONArray playerGameweekInfo = PlayersAPIData.getPlayerGameweekInfo(player.getFantasyFootballId());
+		int lastObjectInArray = playerGameweekInfo.length() - 1;
+		JSONObject playerGameweekDetails = (JSONObject) playerGameweekInfo.getJSONObject(lastObjectInArray);
+		player.setDidNotPlay(didNotPlay(playerGameweekDetails));
+		player.setMinutesPlayed(Integer.parseInt(playerGameweekDetails.get("minutes").toString()));
+		player.setGoalsScored(Integer.parseInt(playerGameweekDetails.get("goals_scored").toString()));
+		player.setAssists(Integer.parseInt(playerGameweekDetails.get("assists").toString()));
+		player.setCleanSheet(Integer.parseInt(playerGameweekDetails.get("clean_sheets").toString()) == 1 ? true : false);
+		player.setBonusPoints(Integer.parseInt(playerGameweekDetails.get("bonus").toString()));
 	}
 	
 	static SimpleDateFormat fantasyFootballDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
-	public static boolean didNotPlay(int id) throws JSONException, IOException {
-		JSONArray playerGameweekInfo = PlayersAPIData.getPlayerGameweekInfo(id);
-		int lastObjectInArray = playerGameweekInfo.length() - 1;
-		JSONObject playerGameweekDetails = (JSONObject) playerGameweekInfo.getJSONObject(lastObjectInArray);
+	public static boolean didNotPlay(JSONObject playerGameweekDetails) throws JSONException, IOException {
 		Date now = new Date();
 		try {
 			Date kickoff = fantasyFootballDateFormat.parse(playerGameweekDetails.get("kickoff_time").toString());

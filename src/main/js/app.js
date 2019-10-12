@@ -16,7 +16,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 const fetch = createApolloFetch({
-	uri: window.location.href+'graphql',
+	uri: window.location+'graphql',
 });
 
 class App extends React.Component {

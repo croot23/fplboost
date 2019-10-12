@@ -1,7 +1,7 @@
 const playerTableHeaders = [{
 			    Header: 'Name',
 			    accessor: 'webName',
-			    width:165,
+			    width:150,
 			  },{
 				  id: 'position',
 				  Header: 'Position',
@@ -14,9 +14,13 @@ const playerTableHeaders = [{
 				  sortMethod: (a, b) => Number(a)-Number(b),
 				  width:50,
 			  },{
+				  Header: 'Total Points',
+				  accessor: 'totalPoints',
+				  width:85,
+			  },{
 				  Header: 'Change %',
 				  accessor: 'change',
-				  width:100,
+				  width:80,
 				  sortMethod: (a, b) => Number(a)-Number(b),
 			  },{
 				  Header: 'Form',
@@ -25,32 +29,36 @@ const playerTableHeaders = [{
 				  sortMethod: (a, b) => Number(a)-Number(b),
 			  },{
 				  Header: 'Mins',
-				  accessor: 'minutes',
+				  accessor: 'minutesPlayed',
 				  width:50,
 			  },{
+				  id: 'cleanSheet',
 				  Header: 'CS',
-				  accessor: 'cleanSheets',
 				  width:50,
+				  accessor: player => (player.cleanSheet == true && player.position != 4 ? "1" : (player.cleanSheet == false && player.position != 4) ? "-" : "-"),
 			  },{
+				  id: 'goalScored',
 				  Header: 'GS',
-				  accessor: 'goalsScored',
+				  accessor: player => (player.goalsScored == 0 ? "-" : player.goalsScored),
 				  width:50,
 			  },{
+				  id: 'assists',
 				  Header: 'A',
-				  accessor: 'assists',
+				  accessor: player => (player.assists == 0 ? "-" : player.assists),
 				  width:50,
 			  },{
+				  id: 'bonusPoints',
 				  Header: 'BP',
-				  accessor: 'bonusPoints',
+				  accessor: player => (player.bonusPoints == 0 ? "-" : player.bonusPoints),
 				  width:50,
-			  },{
-				Header: 'Total Points',
-			    accessor: 'totalPoints',
-			    width:65,
 			  },{
 				Header: 'Points',
 			    accessor: 'gameweekPoints',
-			    width:65,
-				  }];
+			    width:0,
+			  },{
+				Header: 'Points',
+				accessor: 'gameweekPoints',
+				width:65,
+			}];
 
 export default playerTableHeaders

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+  
+  <changeSet author="joseph.croot" id="changelog-1.2" runAlways="false">
+  	
+  	<addColumn tableName="player">
+        <column name="minutes_played" type="INT(2)" defaultValue='0'/>
+       	<column name="clean_sheet" type="BIT" defaultValue='0'/>
+       	<column name="goals_scored" type="INT(2)" defaultValue='0'/>
+       	<column name="assists" type="INT(2)" defaultValue='0'/>
+       	<column name="change_percentage" type="DECIMAL(2,2)" defaultValue='0'/>
+    </addColumn>
+    
+    <addColumn tableName="team">
+        <column name="gameweek_rank" type="INT" defaultValue='0'/>
+       	<column name="hits" type="INT" defaultValue='0'/>
+       	<column name="expected_points" type="INT" defaultValue='0'/>
+       	<column name="weekly_transfers" type="INT" defaultValue='0'/>
+    </addColumn>
+
+  </changeSet>
+  
+</databaseChangeLog> 

@@ -7,13 +7,18 @@ function mainQuery(n) {
 				totalPoints 
 				managerName 
 				teamValue 
-				totalTransfers 
-				bank 
+				bank
+				transfersThisGameweek
+				gameweekRank
 				gameweekPoints 
 				wildcard 
 				benchBoost 
 				freeHit 
-				tripleCaptain 
+				tripleCaptain
+				gameweekRank
+        		overallRank
+        		totalTransfers
+        		expectedPoints
 				players { 
 					firstName 
 					lastName 
@@ -26,6 +31,11 @@ function mainQuery(n) {
 					team 
 					didNotPlay
 					totalPoints
+					goalsScored
+					assists
+					cleanSheet
+					minutesPlayed
+					changePercentage
 				} 
 				substitutes { 
 					firstName 
@@ -39,9 +49,16 @@ function mainQuery(n) {
 					team 
 					didNotPlay
 					totalPoints
+					goalsScored
+					assists
+					cleanSheet
+					minutesPlayed
+					changePercentage
 				} captain { 
 					webName 
 					gameweekPoints 
+				} viceCaptain { 
+					webName 
 				} weeklyTransfersListIn {
 					webName
 					gameweekPoints

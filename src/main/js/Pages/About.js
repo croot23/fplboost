@@ -4,12 +4,14 @@ export default class Graphs extends React.Component {
     render() {  
       return (
     		  <div class="mainContainer">
+    		  <div style={{ padding: "20px" }}>
     		  <br></br>
     		  Created by Joseph Croot.
     		  <br></br>
-    		  Code can be viewed at https://github.com/croot23/fplboost
+    		  Code can be viewed at <a href="https://github.com/croot23/fplboost" target="_blank">https://github.com/croot23/fplboost</a>
     		  <br></br>
-    		  Built using spring boot, java, javascript, maven, graphQL, liquibase, hibernate, mysql, react, react table, apollo
+    		  Built using java, spring boot, maven, hibernate, liquibase, mysql, javascript, graphQL & react
+    		  </div>
     		  </div>
     		  )
     }

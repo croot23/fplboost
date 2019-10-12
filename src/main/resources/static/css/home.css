@@ -1,27 +1,37 @@
 .rt-td {
 	text-align: center;
 }
+
 .rt-resizable-header-content {
 	font-size: 16px;
 	font-weight: bold;
 	color: #4c16aa;
 }
+
 .rt-td {
 	font-size: 14px !important;
 }
+
 .sub-table .rt-td {
 	padding: 1px 1px !important;
 }
+
 .sub-table .rt-resizable-header-content {
 	font-size: 12px;
 	font-weight: bold;
 	color: #4c16aa;
 }
+
 .sub-table {
 	max-width: 850px;
 	min-width: 600px !important;
 }
+
 .ReactTable.substitutes .rt-thead.-header {
+	display: none;
+}
+
+.additional-transfer-table .rt-thead.-header{
 	display: none;
 }
 .centre_header_text {
@@ -31,6 +41,21 @@
 	margin-right:15px;
 	margin-top:3px;
 }
+
 #selectLeague {
 	margin: 15px;
+}
+
+.transfer-table {
+	width: 385px !important;
+}
+
+.transfer-table .rt-td {
+	padding: 1px 1px !important;
+}
+
+.transfer-table .rt-resizable-header-content {
+	font-size: 12px;
+	font-weight: bold;
+	color: #4c16aa;
 }

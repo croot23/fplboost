@@ -1,19 +1,23 @@
 const transferTableHeaders = [{
+		Header: 'Weekly Transfers',
+		headerClassName: 'my-favorites-column-header-group',
+		columns: [{
 			    Header: 'Transfer In',
 			    accessor: 'playerInName',
-			    width:165,
-			  },{
+			    width:135,
+			  	},{
 				  Header: 'Points',
 				  accessor: 'playerInPoints',
-				  width:165,
-			  },{
+				  width:55,
+			  	},{
 				  Header: 'Transfer Out',
 				  accessor: 'playerOutName',
-				  width:165,
-			  },{
+				  width:135,
+			  	},{
 				  Header: 'Points',
 				  accessor: 'playerOutPoints',
-				  width:165,
-			  }];
+				  width:55,
+			  	}]
+		}];
 
 export default transferTableHeaders

@@ -68,6 +68,15 @@ public class Team {
 	@Column(name = "transfer_hits")
 	private int transferHits;
 	
+	@Column(name = "gameweek_rank")
+	private int gameweekRank;
+	
+	@Column(name = "expected_points")
+	private int expectedPoints;
+	
+	@Column(name = "weekly_transfers")
+	private int transfersThisGameweek;
+	
 	@ManyToOne
 	@JoinColumn(name = "captain_id")
 	private Player captain;
@@ -301,5 +310,30 @@ public class Team {
 		ArrayList<Player> playersOut = new ArrayList<Player>(weeklyTransfers.values());
 		return playersOut;
 	}
+	
+	public int getGameweekRank() {
+		return gameweekRank;
+	}
+
+	public void setGameweekRank(int gameweekRank) {
+		this.gameweekRank = gameweekRank;
+	}
+
+	public int getExpectedPoints() {
+		return expectedPoints;
+	}
+
+	public void setExpectedPoints(int expectedPoints) {
+		this.expectedPoints = expectedPoints;
+	}
+
+	public int getTransfersThisGameweek() {
+		return transfersThisGameweek;
+	}
+
+	public void setTransfersThisGameweek(int transfers_this_gameweek) {
+		this.transfersThisGameweek = transfers_this_gameweek;
+	}
+
 	
 }

@@ -24,6 +24,9 @@ type Team {
 	tripleCaptain: Boolean
 	overallRank: Int
 	transferHits: Int
+	transfersThisGameweek: Int
+	expectedPoints: Int
+	gameweekRank: Int
 	players: [Player]
 	substitutes: [Player]
 	captain: Player
@@ -46,4 +49,9 @@ type Player {
 	position: Int
 	team: Int
 	didNotPlay: Boolean
+	minutesPlayed: Int
+	cleanSheet: Boolean
+	assists: Int
+	goalsScored: Int
+	changePercentage: Int
 }
