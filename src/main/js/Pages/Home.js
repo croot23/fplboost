@@ -6,7 +6,7 @@ import additionalTeamInfoTableHeaders from '../Tools/additional_team_info_column
 import mainQuery from '../Queries/main_table_query.js'
 import combineTransferLists from '../Tools/combine_transfers_lists.js'
 import additionalTeamInfo from '../Tools/additional_team_info.js'
-import '../../resources/static/css/home.css'
+import '../../resources/static/css/main.css'
 const ReactTable = require('react-table').default
 const ReactDOM = require('react-dom');
 const { createApolloFetch } = require('apollo-fetch');

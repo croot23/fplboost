@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -26,6 +27,8 @@ import com.josephcroot.repository.TeamRepository;
 @Component
 @Service
 public class TeamServiceImpl implements TeamService {
+	
+	final static Logger log = Logger.getLogger(TeamServiceImpl.class);
 
 	@Autowired
 	private TeamRepository teamRepository;
@@ -78,7 +81,9 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setOverallRank(teamInfo.getInt("summary_overall_rank"));
 			newTeam.setManagerName(
 					teamInfo.getString("player_first_name") + " " + teamInfo.getString("player_last_name"));
-			newTeam.setGameweekRank(teamInfo.getInt("summary_event_rank"));
+			if (teamInfo.getString("summary_event_rank") != "null") {
+				newTeam.setGameweekRank(teamInfo.getInt("summary_event_rank"));
+			}
 			// Chips info
 			JSONArray chipInfo = TeamsAPIData.getTeamChipsInfo(newTeam.getFantasyFootballId());
 			for (int i = 0; i < chipInfo.length(); i++) {
@@ -274,9 +279,10 @@ public class TeamServiceImpl implements TeamService {
 			newTeam.setTransferHits(teamHits.getInt("event_transfers_cost"));
 
 		} catch (JSONException e) {
-			// log.error(e);
+			log.error(e);
 		} catch (IOException e) {
-			// log.error(e);
+			System.out.println(e);
+			log.error(e);
 		}
 	}
 

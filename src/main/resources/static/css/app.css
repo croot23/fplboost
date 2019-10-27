@@ -1,0 +1,30 @@
+/*Stops the appearance of a scrollbar moving elements*/
+html {
+  overflow-y: scroll;
+}
+
+.centre_header_text {
+	margin-left:37%;
+}
+
+@media only screen and (max-width: 1350px) {
+	.centre_header_text {
+		margin-left:33%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+
+	.navbar {
+		width: 1010px;
+	}
+	
+	.hide_on_mobile {
+		display:none !important;
+	}
+}
+
+.centre_header_text img {
+	margin-right:15px;
+	margin-top:3px;
+}

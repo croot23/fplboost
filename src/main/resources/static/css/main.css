@@ -1,7 +1,3 @@
-/*Stops the appearance of a scrollbar moving elements*/
-html {
-  overflow-y: scroll;
-}
 table {
     border-collapse: collapse;
 }
@@ -67,15 +63,72 @@ table thead th {
 	min-width: 340px !important;
 }
 
+.sub-table .rt-tr .rt-th:nth-child(12n+12) {
+    display: none;
+}
+	
+.sub-table .rt-tr .rt-td:nth-child(12n+12) {
+    display: none;
+}
+
+.rt-td {
+	text-align: center;
+}
+
+.rt-resizable-header-content {
+	font-size: 16px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+.rt-td {
+	font-size: 14px !important;
+}
+
+.sub-table .rt-td {
+	padding: 1px 1px !important;
+}
+
+.sub-table .rt-resizable-header-content {
+	font-size: 12px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+.sub-table {
+	max-width: 850px;
+	min-width: 600px !important;
+}
+
+.ReactTable.substitutes .rt-thead.-header {
+	display: none;
+}
+
+.additional-transfer-table .rt-thead.-header{
+	display: none;
+}
+
+
+#selectLeague {
+	margin: 15px;
+}
+
+.transfer-table {
+	width: 385px !important;
+}
+
+.transfer-table .rt-td {
+	padding: 1px 1px !important;
+}
+
+.transfer-table .rt-resizable-header-content {
+	font-size: 12px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
 @media only screen and (min-width: 1000px) {
-	.sub-table .rt-tr .rt-th:nth-child(12n+12) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(12n+12) {
-	    display: none;
-	}
-	
+
 	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(12n+12) {
 		display: none;
 	}
@@ -92,128 +145,39 @@ table thead th {
 		display: none !important;
 	}
 	
-	.navbar {
-		width: 1010px;
-	}
-	
-	.hide_on_mobile {
-		display:none !important;
-	}
-	
 	.centre_header_text {
 		margin-left: 5% !important;
-	}
-	.sub-table .rt-tr .rt-th:nth-child(4n+4) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(4n+4) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(5n+5) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(5n+5) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(6n+6) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(6n+6) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(7n+7) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(7n+7) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(8n+8) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(8n+8) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(9n+9) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(9n+9) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(10n+10) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(10n+10) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-th:nth-child(11n+11) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tr .rt-td:nth-child(11n+11) {
-	    display: none;
-	}
-	
-	.sub-table .rt-tbody {
-		width: 340px !important;
-		min-width: 0px !important;
-	}
-	.sub-table .rt-thead {
-		width: 340px !important;
-		min-width: 0px !important;
-	}
-	
-	.sub-table .ReactTable  {
-		width: 340px !important;
-		min-width: 0px !important;
-	}
-	
-	.sub-table .ReactTable .rt-table {
-		width: 380px !important;
 	}
 	
 	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(6n+6) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {
+	.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {
+	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {
+	.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {
+	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {
+	.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {
+	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {
 		display: none;
 	}
 	
-.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {
+	.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {
 		display: none;
 	}
 	
@@ -234,6 +198,10 @@ table thead th {
 	
 	.teamTable > .rt-table {
 		width: 1010px !important;
+	}
+	
+	.sub-table {
+	width: 100% !important;
 	}
 	
 }

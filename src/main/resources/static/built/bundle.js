@@ -12436,16 +12436,16 @@ module.exports = __webpack_require__(/*! ./modules/_core */ "./node_modules/core
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/home.css":
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/main.css":
 /*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/home.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/main.css ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".rt-td {\r\n\ttext-align: center;\r\n}\r\n.rt-resizable-header-content {\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n.rt-td {\r\n\tfont-size: 14px !important;\r\n}\r\n.sub-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n.sub-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n.sub-table {\r\n\tmax-width: 850px;\r\n\tmin-width: 600px !important;\r\n}\r\n.ReactTable.substitutes .rt-thead.-header {\r\n\tdisplay: none;\r\n}\r\n.centre_header_text {\r\n\tmargin-left:37%;\r\n}\r\n.centre_header_text img {\r\n\tmargin-right:15px;\r\n\tmargin-top:3px;\r\n}\r\n#selectLeague {\r\n\tmargin: 15px;\r\n}\r\n", ""]);
+exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n}\r\ntd, th {\r\n    padding: 0.5rem;\r\n}\r\n\r\ntable {\r\n  font-family: \"Times New Roman\", Times, serif;\r\n  border: 1px solid #FFFFFF;\r\n  text-align: center;\r\n  border-collapse: collapse;\r\n  width:100%;\r\n}\r\ntable td, table.paleBlueRows th {\r\n  border: 1px solid #FFFFFF;\r\n  padding: 3px 2px;\r\n}\r\ntable tbody td {\r\n  font-size: 14px;\r\n  text-align: center;\r\n}\r\ntable tr:nth-child(even) {\r\n  background: #D0E4F5;\r\n}\r\ntable thead {\r\n  background: #0B6FA4;\r\n  border-bottom: 5px solid #FFFFFF;\r\n}\r\ntable thead th {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  color: #FFFFFF;\r\n  text-align: center;\r\n  border-left: 2px solid #FFFFFF;\r\n}\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n.mainContainer {\r\n\tmax-width: 1310px;\r\n\tmargin: auto;\r\n}\r\n.comingSoon {\r\n\tdisplay: block;\r\n\tmargin: 0 auto;\r\n}\r\n.navbar-nav a {\r\n\tcolor: #c9c6c5 !important;\r\n\ttext-decoration: none !important;\r\n}\r\n.navbar-nav a:hover {\r\n  color: white !important;\r\n}\r\n.dark {\r\n\tbackground-color: #1d1a1f;\r\n}\r\n\r\n.rt-tbody {\r\n\tmin-width: 340px !important;\r\n}\r\n.rt-thead {\r\n\tmin-width: 340px !important;\r\n}\r\n\r\n.sub-table .rt-tr .rt-th:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\t\r\n.sub-table .rt-tr .rt-td:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n\r\n.rt-resizable-header-content {\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.rt-td {\r\n\tfont-size: 14px !important;\r\n}\r\n\r\n.sub-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.sub-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.sub-table {\r\n\tmax-width: 850px;\r\n\tmin-width: 600px !important;\r\n}\r\n\r\n.ReactTable.substitutes .rt-thead.-header {\r\n\tdisplay: none;\r\n}\r\n\r\n.additional-transfer-table .rt-thead.-header{\r\n\tdisplay: none;\r\n}\r\n\r\n\r\n#selectLeague {\r\n\tmargin: 15px;\r\n}\r\n\r\n.transfer-table {\r\n\twidth: 385px !important;\r\n}\r\n\r\n.transfer-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.transfer-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n@media only screen and (min-width: 1000px) {\r\n\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\t\r\n\t.transfer-table {\r\n\t\tdisplay: none !important;\r\n\t}\r\n\t\r\n\t.centre_header_text {\r\n\t\tmargin-left: 5% !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table {\r\n\t\twidth: 1010px !important;\r\n\t}\r\n\t\r\n\t.sub-table {\r\n\twidth: 100% !important;\r\n\t}\r\n\t\r\n}\r\n\r\n.sub-table-container {\r\n\twidth: 99%;\r\n\tmargin: auto;\r\n}\r\n\r\n.sub-table {\r\n\tfloat: left;\r\n\twidth: 70%;\r\n\tpadding-top: 20px;\r\n\tpadding-left: 20px;\r\n\tpadding-right: 20px;\r\n}\r\n\r\n.transfer-table {\r\n\tmargin-left: 68%;\r\n\tpadding-top: 20px;\r\n}", ""]);
 
 
 /***/ }),
@@ -65353,9 +65353,13 @@ function (_React$Component) {
         className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
+        className: "hide_on_mobile"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/graphs/"
-      }, "Graphs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Graphs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
+        className: "hide_on_mobile"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/all_teams/"
       }, "All Teams")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/about/"
@@ -65477,7 +65481,14 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         class: "mainContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Created by Joseph Croot.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Code can be viewed at https://github.com/croot23/fplboost", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Built using spring boot, java, javascript, maven, graphQL, liquibase, hibernate, mysql, react, react table, apollo");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          padding: "20px"
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Created by Joseph Croot.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Code can be viewed at ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/croot23/fplboost",
+        target: "_blank"
+      }, "https://github.com/croot23/fplboost"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Built using java, spring boot, maven, hibernate, liquibase, mysql, javascript, graphQL & react"));
     }
   }]);
 
@@ -65566,10 +65577,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tools_main_table_columns_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Tools/main_table_columns.js */ "./src/main/js/Tools/main_table_columns.js");
 /* harmony import */ var _Tools_player_table_columns_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Tools/player_table_columns.js */ "./src/main/js/Tools/player_table_columns.js");
 /* harmony import */ var _Tools_transfer_table_columns_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Tools/transfer_table_columns.js */ "./src/main/js/Tools/transfer_table_columns.js");
-/* harmony import */ var _Queries_main_table_query_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Queries/main_table_query.js */ "./src/main/js/Queries/main_table_query.js");
-/* harmony import */ var _Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Tools/combine_transfers_lists.js */ "./src/main/js/Tools/combine_transfers_lists.js");
-/* harmony import */ var _resources_static_css_home_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../resources/static/css/home.css */ "./src/main/resources/static/css/home.css");
-/* harmony import */ var _resources_static_css_home_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_home_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Tools_additional_team_info_columns_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Tools/additional_team_info_columns.js */ "./src/main/js/Tools/additional_team_info_columns.js");
+/* harmony import */ var _Queries_main_table_query_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Queries/main_table_query.js */ "./src/main/js/Queries/main_table_query.js");
+/* harmony import */ var _Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Tools/combine_transfers_lists.js */ "./src/main/js/Tools/combine_transfers_lists.js");
+/* harmony import */ var _Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Tools/additional_team_info.js */ "./src/main/js/Tools/additional_team_info.js");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../resources/static/css/main.css */ "./src/main/resources/static/css/main.css");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -65600,6 +65613,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ReactTable = __webpack_require__(/*! react-table */ "./node_modules/react-table/es/index.js").default;
 
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -65610,7 +65625,7 @@ var _require = __webpack_require__(/*! apollo-fetch */ "./node_modules/apollo-fe
 var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
 
 var fetch = createApolloFetch({
-  uri: window.location.href + 'graphql'
+  uri: window.location.href.replace("#/", "") + 'graphql'
 });
 
 var Home =
@@ -65626,9 +65641,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
     _this.state = {
-      teams: []
+      teams: [],
+      expanded: {}
     };
     _this.reload = _this.reload.bind(_assertThisInitialized(_this));
+    _this.persistOpenedRows = _this.persistOpenedRows.bind(_assertThisInitialized(_this));
     return _this;
   } // Populate the table on initial page load and start the automatic refresh timer
 
@@ -65636,7 +65653,6 @@ function (_React$Component) {
   _createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("here");
       this.reload();
       setInterval(this.reload.bind(this), 100000);
     } // Function to update the table when the league changes and automatically reload the table with league information at set intervals
@@ -65646,7 +65662,7 @@ function (_React$Component) {
     value: function () {
       var _reload = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee() {
+      regeneratorRuntime.mark(function _callee(leagueChanged) {
         var _this2 = this;
 
         var selectBox, selectedValue;
@@ -65654,16 +65670,22 @@ function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                //Get current league ID from the dropdown
                 selectBox = document.getElementById("selectLeague");
                 selectedValue = selectBox.options[selectBox.selectedIndex].value;
                 fetch({
                   // The query is built ina function imported from ./Tools/*.js files
-                  query: Object(_Queries_main_table_query_js__WEBPACK_IMPORTED_MODULE_4__["default"])(selectedValue)
+                  query: Object(_Queries_main_table_query_js__WEBPACK_IMPORTED_MODULE_5__["default"])(selectedValue)
                 }).then(function (res) {
-                  _this2.setState({
-                    teams: res.data.leagueById.teams
-                  });
+                  if (leagueChanged) {
+                    _this2.setState({
+                      teams: res.data.leagueById.teams,
+                      expanded: {}
+                    });
+                  } else {
+                    _this2.setState({
+                      teams: res.data.leagueById.teams
+                    });
+                  }
                 });
 
               case 3:
@@ -65674,12 +65696,28 @@ function (_React$Component) {
         }, _callee);
       }));
 
-      function reload() {
+      function reload(_x) {
         return _reload.apply(this, arguments);
       }
 
       return reload;
-    }()
+    }() // Function to persist the expanded rows (on automatic reload only, not when changing leagues)
+
+  }, {
+    key: "persistOpenedRows",
+    value: function persistOpenedRows(expanded, index, event) {
+      var newExpanded = this.state.expanded;
+
+      if (newExpanded[index] == 'true') {
+        delete newExpanded[index];
+      } else {
+        newExpanded[index] = 'true';
+      }
+
+      this.setState({
+        expanded: newExpanded
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -65690,14 +65728,16 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "selectLeague",
         onChange: function onChange() {
-          return _this3.reload();
+          return _this3.reload(true);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "269242"
       }, "IBB League"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "257171"
       }, "RPRemier League")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MyReactTable, {
-        teams: this.state.teams
+        teams: this.state.teams,
+        expanded: this.state.expanded,
+        persistOpenedRows: this.persistOpenedRows
       }));
     }
   }]);
@@ -65721,10 +65761,13 @@ function (_React$Component2) {
   _createClass(MyReactTable, [{
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       // Sort the teams descending by total points before passing to the react table
       var data = this.props.teams.sort(function (a, b) {
         return b.totalPoints - a.totalPoints;
-      }); // All the table column information is imported from ./Tools/*.js files
+      });
+      var expandedRows = this.props.expanded; // All the table column information is imported from ./Tools/*.js files
 
       var mainTableColumns = _Tools_main_table_columns_js__WEBPACK_IMPORTED_MODULE_1__["default"];
       var subTableColumns = _Tools_player_table_columns_js__WEBPACK_IMPORTED_MODULE_2__["default"];
@@ -65733,18 +65776,21 @@ function (_React$Component2) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
         data: data,
         columns: mainTableColumns,
-        className: "-striped -highlight",
+        className: "-striped -highlight teamTable",
         minRows: 0,
         showPagination: false,
         showPaginationTop: false,
         showPaginationBottom: true,
         showPageSizeOptions: true,
+        expanded: expandedRows,
+        onExpandedChange: function onExpandedChange(newExpanded, index, event) {
+          return _this4.props.persistOpenedRows(newExpanded, index, event);
+        },
         SubComponent: function SubComponent(row) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            class: "sub-table",
-            style: {
-              padding: "20px"
-            }
+            class: "sub-table-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            class: "sub-table"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
             data: row.original.players.sort(function (a, b) {
               return a.position - b.position;
@@ -65766,15 +65812,27 @@ function (_React$Component2) {
             showPaginationTop: false,
             showPaginationBottom: true,
             showPageSizeOptions: true
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
-            data: Object(_Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_5__["default"])(row.original.weeklyTransfersListIn, row.original.weeklyTransfersListOut),
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            class: "transfer-table"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
+            data: Object(_Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_6__["default"])(row.original.weeklyTransfersListIn, row.original.weeklyTransfersListOut),
             columns: transferTableColumns,
             minRows: 0,
             showPagination: false,
             showPaginationTop: false,
             showPaginationBottom: true,
             showPageSizeOptions: true
-          }));
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            class: "transfer-table additional-transfer-table"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
+            data: Object(_Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_7__["default"])(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.viceCaptain.webName),
+            columns: _Tools_additional_team_info_columns_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+            minRows: 0,
+            showPagination: false,
+            showPaginationTop: false,
+            showPaginationBottom: true,
+            showPageSizeOptions: true
+          })));
         }
       });
     }
@@ -65795,10 +65853,84 @@ function (_React$Component2) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function mainQuery(n) {
-  return "{leagueById(id: " + n + ") {\n\t\t\tname \n\t\t\tteams { \n\t\t\t\tfantasyFootballId \n\t\t\t\tteamName \n\t\t\t\ttotalPoints \n\t\t\t\tmanagerName \n\t\t\t\tteamValue \n\t\t\t\ttotalTransfers \n\t\t\t\tbank \n\t\t\t\tgameweekPoints \n\t\t\t\twildcard \n\t\t\t\tbenchBoost \n\t\t\t\tfreeHit \n\t\t\t\ttripleCaptain \n\t\t\t\tplayers { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t} \n\t\t\t\tsubstitutes { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t} captain { \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t} weeklyTransfersListIn {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t} weeklyTransfersListOut {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}";
+  return "{leagueById(id: " + n + ") {\n\t\t\tname \n\t\t\tteams { \n\t\t\t\tfantasyFootballId \n\t\t\t\tteamName \n\t\t\t\ttotalPoints \n\t\t\t\tmanagerName \n\t\t\t\tteamValue \n\t\t\t\tbank\n\t\t\t\ttransfersThisGameweek\n\t\t\t\tgameweekRank\n\t\t\t\tgameweekPoints \n\t\t\t\twildcard \n\t\t\t\tbenchBoost \n\t\t\t\tfreeHit \n\t\t\t\ttripleCaptain\n\t\t\t\tgameweekRank\n        \t\toverallRank\n        \t\ttotalTransfers\n        \t\texpectedPoints\n\t\t\t\tplayers { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} \n\t\t\t\tsubstitutes { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} captain { \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t} viceCaptain { \n\t\t\t\t\twebName \n\t\t\t\t} weeklyTransfersListIn {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t} weeklyTransfersListOut {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}";
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (mainQuery);
+
+/***/ }),
+
+/***/ "./src/main/js/Tools/additional_team_info.js":
+/*!***************************************************!*\
+  !*** ./src/main/js/Tools/additional_team_info.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, viceCaptain) {
+  var rows = [];
+  var totalTransfers = {
+    "key": "Total Transfers",
+    "value": totalTransfers
+  };
+  var hits = {
+    "key": "Transfer Hits",
+    "value": hits
+  };
+  var gameweekRank = {
+    "key": "Gameweek Rank",
+    "value": gameweekRank
+  };
+  var overallRank = {
+    "key": "Overall Rank",
+    "value": overallRank
+  };
+  var expectedPoints = {
+    "key": "Expected Points",
+    "value": expectedPoints
+  };
+  var viceCaptain = {
+    "key": "Vice Captain",
+    "value": viceCaptain
+  };
+  rows.push(totalTransfers);
+  rows.push(hits);
+  rows.push(gameweekRank);
+  rows.push(overallRank);
+  rows.push(expectedPoints);
+  rows.push(viceCaptain);
+  return rows;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (additionalTeamInfo);
+
+/***/ }),
+
+/***/ "./src/main/js/Tools/additional_team_info_columns.js":
+/*!***********************************************************!*\
+  !*** ./src/main/js/Tools/additional_team_info_columns.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var transferTableHeaders = [{
+  Header: 'Additional Team Info',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Key',
+    accessor: 'key',
+    width: 190
+  }, {
+    Header: 'Value',
+    accessor: 'value',
+    width: 190
+  }]
+}];
+/* harmony default export */ __webpack_exports__["default"] = (transferTableHeaders);
 
 /***/ }),
 
@@ -65872,7 +66004,7 @@ var mainTableHeaders = [{
   width: 100
 }, {
   Header: 'Transfers',
-  accessor: 'totalTransfers',
+  accessor: 'transfersThisGameweek',
   width: 125
 }, {
   id: 'wildcard',
@@ -65917,6 +66049,10 @@ var mainTableHeaders = [{
   Header: 'Total Points',
   accessor: 'totalPoints',
   width: 110
+}, {
+  Header: 'Total Points',
+  accessor: 'totalPoints',
+  width: 110
 }];
 /* harmony default export */ __webpack_exports__["default"] = (mainTableHeaders);
 
@@ -65934,7 +66070,7 @@ __webpack_require__.r(__webpack_exports__);
 var playerTableHeaders = [{
   Header: 'Name',
   accessor: 'webName',
-  width: 165
+  width: 150
 }, {
   id: 'position',
   Header: 'Position',
@@ -65953,9 +66089,13 @@ var playerTableHeaders = [{
   },
   width: 50
 }, {
+  Header: 'Total Points',
+  accessor: 'totalPoints',
+  width: 85
+}, {
   Header: 'Change %',
   accessor: 'change',
-  width: 100,
+  width: 80,
   sortMethod: function sortMethod(a, b) {
     return Number(a) - Number(b);
   }
@@ -65968,28 +66108,40 @@ var playerTableHeaders = [{
   }
 }, {
   Header: 'Mins',
-  accessor: 'minutes',
+  accessor: 'minutesPlayed',
   width: 50
 }, {
+  id: 'cleanSheet',
   Header: 'CS',
-  accessor: 'cleanSheets',
-  width: 50
+  width: 50,
+  accessor: function accessor(player) {
+    return player.cleanSheet == true && player.position != 4 ? "1" : player.cleanSheet == false && player.position != 4 ? "-" : "-";
+  }
 }, {
+  id: 'goalScored',
   Header: 'GS',
-  accessor: 'goalsScored',
+  accessor: function accessor(player) {
+    return player.goalsScored == 0 ? "-" : player.goalsScored;
+  },
   width: 50
 }, {
+  id: 'assists',
   Header: 'A',
-  accessor: 'assists',
+  accessor: function accessor(player) {
+    return player.assists == 0 ? "-" : player.assists;
+  },
   width: 50
 }, {
+  id: 'bonusPoints',
   Header: 'BP',
-  accessor: 'bonusPoints',
+  accessor: function accessor(player) {
+    return player.bonusPoints == 0 ? "-" : player.bonusPoints;
+  },
   width: 50
 }, {
-  Header: 'Total Points',
-  accessor: 'totalPoints',
-  width: 65
+  Header: 'Points',
+  accessor: 'gameweekPoints',
+  width: 0
 }, {
   Header: 'Points',
   accessor: 'gameweekPoints',
@@ -66009,21 +66161,25 @@ var playerTableHeaders = [{
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var transferTableHeaders = [{
-  Header: 'Transfer In',
-  accessor: 'playerInName',
-  width: 165
-}, {
-  Header: 'Points',
-  accessor: 'playerInPoints',
-  width: 165
-}, {
-  Header: 'Transfer Out',
-  accessor: 'playerOutName',
-  width: 165
-}, {
-  Header: 'Points',
-  accessor: 'playerOutPoints',
-  width: 165
+  Header: 'Weekly Transfers',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Transfer In',
+    accessor: 'playerInName',
+    width: 135
+  }, {
+    Header: 'Points',
+    accessor: 'playerInPoints',
+    width: 55
+  }, {
+    Header: 'Transfer Out',
+    accessor: 'playerOutName',
+    width: 135
+  }, {
+    Header: 'Points',
+    accessor: 'playerOutPoints',
+    width: 55
+  }]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (transferTableHeaders);
 
@@ -66088,7 +66244,7 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
 var fetch = createApolloFetch({
-  uri: window.location.href + 'graphql'
+  uri: window.location + 'graphql'
 });
 
 var App =
@@ -66164,14 +66320,14 @@ module.exports = rest.wrap(mime, {
 
 /***/ }),
 
-/***/ "./src/main/resources/static/css/home.css":
+/***/ "./src/main/resources/static/css/main.css":
 /*!************************************************!*\
-  !*** ./src/main/resources/static/css/home.css ***!
+  !*** ./src/main/resources/static/css/main.css ***!
   \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!./home.css */ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/home.css");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!./main.css */ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/main.css");
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
