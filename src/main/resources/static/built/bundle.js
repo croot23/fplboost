@@ -65580,9 +65580,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tools_additional_team_info_columns_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Tools/additional_team_info_columns.js */ "./src/main/js/Tools/additional_team_info_columns.js");
 /* harmony import */ var _Queries_main_table_query_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Queries/main_table_query.js */ "./src/main/js/Queries/main_table_query.js");
 /* harmony import */ var _Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Tools/combine_transfers_lists.js */ "./src/main/js/Tools/combine_transfers_lists.js");
-/* harmony import */ var _Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Tools/additional_team_info.js */ "./src/main/js/Tools/additional_team_info.js");
-/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../resources/static/css/main.css */ "./src/main/resources/static/css/main.css");
-/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _Tools_calculate_bench_points_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Tools/calculate_bench_points.js */ "./src/main/js/Tools/calculate_bench_points.js");
+/* harmony import */ var _Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Tools/additional_team_info.js */ "./src/main/js/Tools/additional_team_info.js");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../resources/static/css/main.css */ "./src/main/resources/static/css/main.css");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -65604,6 +65605,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65642,12 +65644,21 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
     _this.state = {
       teams: [],
-      expanded: {}
+      expanded: {},
+      // leagues should be retrieved from the database ideally (//todo)
+      leagues: [{
+        "name": "IBB League",
+        "id": "269242"
+      }, {
+        "name": "RPRemier League",
+        "id": "257171"
+      }]
     };
     _this.reload = _this.reload.bind(_assertThisInitialized(_this));
     _this.persistOpenedRows = _this.persistOpenedRows.bind(_assertThisInitialized(_this));
     return _this;
-  } // Populate the table on initial page load and start the automatic refresh timer
+  } // Populate the table on initial page load and start the automatic refresh
+  // timer
 
 
   _createClass(Home, [{
@@ -65655,7 +65666,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.reload();
       setInterval(this.reload.bind(this), 100000);
-    } // Function to update the table when the league changes and automatically reload the table with league information at set intervals
+    } // Function to update the table when the league changes and automatically
+    // reload the table with league information at set intervals
 
   }, {
     key: "reload",
@@ -65701,7 +65713,8 @@ function (_React$Component) {
       }
 
       return reload;
-    }() // Function to persist the expanded rows (on automatic reload only, not when changing leagues)
+    }() // Function to persist the expanded rows (on automatic reload only, not when
+    // changing leagues)
 
   }, {
     key: "persistOpenedRows",
@@ -65723,6 +65736,11 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      var leagues = this.state.leagues.map(function (league) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LeagueOption, {
+          league: league
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         class: "mainContainer mainTable"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -65730,11 +65748,7 @@ function (_React$Component) {
         onChange: function onChange() {
           return _this3.reload(true);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "269242"
-      }, "IBB League"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "257171"
-      }, "RPRemier League")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MyReactTable, {
+      }, leagues), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainPageTable, {
         teams: this.state.teams,
         expanded: this.state.expanded,
         persistOpenedRows: this.persistOpenedRows
@@ -65747,23 +65761,47 @@ function (_React$Component) {
 
 
 
-var MyReactTable =
+var LeagueOption =
 /*#__PURE__*/
 function (_React$Component2) {
-  _inherits(MyReactTable, _React$Component2);
+  _inherits(LeagueOption, _React$Component2);
 
-  function MyReactTable() {
-    _classCallCheck(this, MyReactTable);
+  function LeagueOption() {
+    _classCallCheck(this, LeagueOption);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MyReactTable).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(LeagueOption).apply(this, arguments));
   }
 
-  _createClass(MyReactTable, [{
+  _createClass(LeagueOption, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: this.props.league.id
+      }, this.props.league.name);
+    }
+  }]);
+
+  return LeagueOption;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var MainPageTable =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(MainPageTable, _React$Component3);
+
+  function MainPageTable() {
+    _classCallCheck(this, MainPageTable);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainPageTable).apply(this, arguments));
+  }
+
+  _createClass(MainPageTable, [{
     key: "render",
     value: function render() {
       var _this4 = this;
 
-      // Sort the teams descending by total points before passing to the react table
+      // Sort the teams descending by total points before passing to the react
+      // table
       var data = this.props.teams.sort(function (a, b) {
         return b.totalPoints - a.totalPoints;
       });
@@ -65771,7 +65809,7 @@ function (_React$Component2) {
 
       var mainTableColumns = _Tools_main_table_columns_js__WEBPACK_IMPORTED_MODULE_1__["default"];
       var subTableColumns = _Tools_player_table_columns_js__WEBPACK_IMPORTED_MODULE_2__["default"];
-      var transferTableColumns = _Tools_transfer_table_columns_js__WEBPACK_IMPORTED_MODULE_3__["default"]; // Render the react tables	
+      var transferTableColumns = _Tools_transfer_table_columns_js__WEBPACK_IMPORTED_MODULE_3__["default"]; // Render the react tables
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
         data: data,
@@ -65825,7 +65863,7 @@ function (_React$Component2) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             class: "transfer-table additional-transfer-table"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReactTable, {
-            data: Object(_Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_7__["default"])(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.viceCaptain.webName),
+            data: Object(_Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_8__["default"])(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.captain.webName, row.original.viceCaptain.webName, Object(_Tools_calculate_bench_points_js__WEBPACK_IMPORTED_MODULE_7__["default"])(row.original.substitutes)),
             columns: _Tools_additional_team_info_columns_js__WEBPACK_IMPORTED_MODULE_4__["default"],
             minRows: 0,
             showPagination: false,
@@ -65838,7 +65876,7 @@ function (_React$Component2) {
     }
   }]);
 
-  return MyReactTable;
+  return MainPageTable;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /***/ }),
@@ -65853,7 +65891,7 @@ function (_React$Component2) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function mainQuery(n) {
-  return "{leagueById(id: " + n + ") {\n\t\t\tname \n\t\t\tteams { \n\t\t\t\tfantasyFootballId \n\t\t\t\tteamName \n\t\t\t\ttotalPoints \n\t\t\t\tmanagerName \n\t\t\t\tteamValue \n\t\t\t\tbank\n\t\t\t\ttransfersThisGameweek\n\t\t\t\tgameweekRank\n\t\t\t\tgameweekPoints \n\t\t\t\twildcard \n\t\t\t\tbenchBoost \n\t\t\t\tfreeHit \n\t\t\t\ttripleCaptain\n\t\t\t\tgameweekRank\n        \t\toverallRank\n        \t\ttotalTransfers\n        \t\texpectedPoints\n\t\t\t\tplayers { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} \n\t\t\t\tsubstitutes { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} captain { \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t} viceCaptain { \n\t\t\t\t\twebName \n\t\t\t\t} weeklyTransfersListIn {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t} weeklyTransfersListOut {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}";
+  return "{leagueById(id: " + n + ") {\n\t\t\tname \n\t\t\tteams { \n\t\t\t\tfantasyFootballId \n\t\t\t\tteamName \n\t\t\t\ttotalPoints \n\t\t\t\tmanagerName \n\t\t\t\tteamValue \n\t\t\t\tbank\n\t\t\t\ttransfersThisGameweek\n\t\t\t\tgameweekRank\n\t\t\t\tgameweekPoints \n\t\t\t\twildcard \n\t\t\t\tbenchBoost \n\t\t\t\tfreeHit \n\t\t\t\ttripleCaptain\n\t\t\t\tgameweekRank\n        \t\toverallRank\n        \t\ttotalTransfers\n        \t\texpectedPoints\n        \t\ttransferHits\n\t\t\t\tplayers { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} \n\t\t\t\tsubstitutes { \n\t\t\t\t\tfirstName \n\t\t\t\t\tlastName \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t\tform \n\t\t\t\t\tprice \n\t\t\t\t\tbonusPoints \n\t\t\t\t\tposition \n\t\t\t\t\tteam \n\t\t\t\t\tdidNotPlay\n\t\t\t\t\ttotalPoints\n\t\t\t\t\tgoalsScored\n\t\t\t\t\tassists\n\t\t\t\t\tcleanSheet\n\t\t\t\t\tminutesPlayed\n\t\t\t\t\tchangePercentage\n\t\t\t\t} captain { \n\t\t\t\t\twebName \n\t\t\t\t\tgameweekPoints \n\t\t\t\t} viceCaptain { \n\t\t\t\t\twebName \n\t\t\t\t} weeklyTransfersListIn {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t} weeklyTransfersListOut {\n\t\t\t\t\twebName\n\t\t\t\t\tgameweekPoints\n\t\t\t\t\tposition\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}";
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (mainQuery);
@@ -65869,7 +65907,7 @@ function mainQuery(n) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, viceCaptain) {
+function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, captain, viceCaptain, benchPoints) {
   var rows = [];
   var totalTransfers = {
     "key": "Total Transfers",
@@ -65891,16 +65929,26 @@ function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, exp
     "key": "Expected Points",
     "value": expectedPoints
   };
+  var captain = {
+    "key": "Captain",
+    "value": captain
+  };
   var viceCaptain = {
     "key": "Vice Captain",
     "value": viceCaptain
   };
+  var benchPoints = {
+    "key": "Points On Bench",
+    "value": benchPoints
+  };
+  rows.push(expectedPoints);
+  rows.push(captain);
+  rows.push(viceCaptain);
   rows.push(totalTransfers);
   rows.push(hits);
+  rows.push(benchPoints);
   rows.push(gameweekRank);
   rows.push(overallRank);
-  rows.push(expectedPoints);
-  rows.push(viceCaptain);
   return rows;
 }
 
@@ -65931,6 +65979,27 @@ var transferTableHeaders = [{
   }]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (transferTableHeaders);
+
+/***/ }),
+
+/***/ "./src/main/js/Tools/calculate_bench_points.js":
+/*!*****************************************************!*\
+  !*** ./src/main/js/Tools/calculate_bench_points.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function calculateBenchPoints(substitutes) {
+  var pointsOnTheBench = 0;
+  substitutes.forEach(function (sub) {
+    pointsOnTheBench += sub.gameweekPoints;
+  });
+  return pointsOnTheBench;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (calculateBenchPoints);
 
 /***/ }),
 

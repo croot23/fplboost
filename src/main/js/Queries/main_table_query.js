@@ -19,6 +19,7 @@ function mainQuery(n) {
         		overallRank
         		totalTransfers
         		expectedPoints
+        		transferHits
 				players { 
 					firstName 
 					lastName 

@@ -1,6 +1,5 @@
 package com.josephcroot.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 import lombok.Data;
 
@@ -46,17 +44,4 @@ public class League {
 		this.name = name;
 	}
 
-	public Set<Team> getTeams() {
-		return teams;
-	}
-
-	public void setTeams(Set<Team> teams) {
-		this.teams = teams;
-	}
-	
-	public void addTeams(Team team) {
-		if (team == null)
-			teams = new HashSet<>();
-		teams.add(team);
-	}
 }

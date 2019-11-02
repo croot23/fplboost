@@ -1,4 +1,4 @@
-function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, viceCaptain) {
+function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, captain, viceCaptain, benchPoints) {
 	
 	var rows = [];
 
@@ -7,14 +7,18 @@ function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, exp
 	var gameweekRank = {"key" : "Gameweek Rank", "value" : gameweekRank};
 	var overallRank = {"key" : "Overall Rank", "value" : overallRank};
 	var expectedPoints = {"key" : "Expected Points", "value" : expectedPoints};
+	var captain = {"key" : "Captain", "value" : captain};
 	var viceCaptain = {"key" : "Vice Captain", "value" : viceCaptain};
+	var benchPoints = {"key" : "Points On Bench", "value" : benchPoints}
 	
+	rows.push(expectedPoints);
+	rows.push(captain);
+	rows.push(viceCaptain);
 	rows.push(totalTransfers);
 	rows.push(hits);
+	rows.push(benchPoints);
 	rows.push(gameweekRank);
 	rows.push(overallRank);
-	rows.push(expectedPoints);
-	rows.push(viceCaptain);
 	
 	return rows;
 }

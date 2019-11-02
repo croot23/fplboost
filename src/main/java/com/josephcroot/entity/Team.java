@@ -320,7 +320,15 @@ public class Team {
 	}
 
 	public int getExpectedPoints() {
-		return expectedPoints;
+		double calculatedExpectedPoints = 0;
+		for (Player P : players) {
+			if (P.getWebName().equals(captain.getWebName())) {
+				calculatedExpectedPoints += (P.getForm()*2);
+			} else {
+				calculatedExpectedPoints += P.getForm();
+			}
+		}
+		return (int) calculatedExpectedPoints;
 	}
 
 	public void setExpectedPoints(int expectedPoints) {

@@ -44,7 +44,7 @@ public class Player {
 	private int bonusPoints;
 
 	@Column(name = "position")
-	private double position;
+	private int position;
 
 	@Column(name = "team")
 	private int team;
@@ -83,10 +83,6 @@ public class Player {
 		this.bonusPoints = bonusPoints;
 	}
 
-	public void setPosition(double position) {
-		this.position = position;
-	}
-
 	public String getWebName() {
 		return webName;
 	}
@@ -107,7 +103,7 @@ public class Player {
 		return bonusPoints;
 	}
 
-	public double getPosition() {
+	public int getPosition() {
 		return position;
 	}
 
@@ -230,5 +226,5 @@ public class Player {
 	public void setChangePercentage(double changePercentage) {
 		this.changePercentage = changePercentage;
 	}
-
+	
 }

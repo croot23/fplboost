@@ -5,6 +5,7 @@ import transferTableHeaders from '../Tools/transfer_table_columns.js'
 import additionalTeamInfoTableHeaders from '../Tools/additional_team_info_columns.js'
 import mainQuery from '../Queries/main_table_query.js'
 import combineTransferLists from '../Tools/combine_transfers_lists.js'
+import calculateBenchPoints from '../Tools/calculate_bench_points.js'
 import additionalTeamInfo from '../Tools/additional_team_info.js'
 import '../../resources/static/css/main.css'
 const ReactTable = require('react-table').default
@@ -20,18 +21,25 @@ export default class Home extends React.Component {
 	// Create initial state
 	constructor(props) {
 		super(props);
-		this.state = {teams: [], expanded: {}};
+		this.state = {
+				teams: [], 
+				expanded: {},
+				// leagues should be retrieved from the database ideally (//todo)
+				leagues: [{"name": "IBB League", "id" : "269242"},{"name": "RPRemier League", "id" : "257171"}]
+				};
 		this.reload = this.reload.bind(this);
 		this.persistOpenedRows = this.persistOpenedRows.bind(this);
 	}
 	
-	// Populate the table on initial page load and start the automatic refresh timer
+	// Populate the table on initial page load and start the automatic refresh
+	// timer
 	componentDidMount() {
 		this.reload();
 		setInterval(this.reload.bind(this),100000);
 	}
 	
-	// Function to update the table when the league changes and automatically reload the table with league information at set intervals
+	// Function to update the table when the league changes and automatically
+	// reload the table with league information at set intervals
 	async reload(leagueChanged) {
 		var selectBox = document.getElementById("selectLeague");
 		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -47,7 +55,8 @@ export default class Home extends React.Component {
 			});
 	}
 	
-	// Function to persist the expanded rows (on automatic reload only, not when changing leagues)
+	// Function to persist the expanded rows (on automatic reload only, not when
+	// changing leagues)
 	persistOpenedRows(expanded, index, event) {
 		let newExpanded = this.state.expanded;
 		if (newExpanded[index] == 'true') {
@@ -58,24 +67,35 @@ export default class Home extends React.Component {
         this.setState({expanded: newExpanded });
     }
 	
-    render() {  
-      return (
+    render() { 
+    	const leagues = this.state.leagues.map(league =>
+    		<LeagueOption league={league}></LeagueOption>
+    	);
+    	return (
     		  <div class="mainContainer mainTable">
 				<select id="selectLeague" onChange={() => this.reload(true)}>
-					<option value="269242">IBB League</option>
-					<option value="257171">RPRemier League</option>
+					{leagues}
 				</select>
-				<MyReactTable teams={this.state.teams} expanded={this.state.expanded} persistOpenedRows={this.persistOpenedRows}></MyReactTable>
+				<MainPageTable teams={this.state.teams} expanded={this.state.expanded} persistOpenedRows={this.persistOpenedRows}></MainPageTable>
 			</div>
-    		  )
+    	)
     }
 }
 
-class MyReactTable extends React.Component {
+class LeagueOption extends React.Component {
+	render() {
+		return (
+				<option value={this.props.league.id}>{this.props.league.name}</option>
+		)
+	}
+}
+
+class MainPageTable extends React.Component {
 	
 	render() {
 		
-		// Sort the teams descending by total points before passing to the react table
+		// Sort the teams descending by total points before passing to the react
+		// table
 		const data = this.props.teams.sort((a, b) => b.totalPoints - a.totalPoints);
 		let expandedRows = this.props.expanded;
 		// All the table column information is imported from ./Tools/*.js files
@@ -83,7 +103,7 @@ class MyReactTable extends React.Component {
 		const subTableColumns = playerTableHeaders;
 		const transferTableColumns = transferTableHeaders;
 		
-		  // Render the react tables	
+		  // Render the react tables
 		return <ReactTable
 		    data={data}
 		    columns={mainTableColumns}
@@ -134,7 +154,7 @@ class MyReactTable extends React.Component {
 			    </div>
 			    <div class='transfer-table additional-transfer-table'>
 			    <ReactTable
-			    	data={additionalTeamInfo(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.viceCaptain.webName)}
+			    	data={additionalTeamInfo(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.captain.webName, row.original.viceCaptain.webName, calculateBenchPoints(row.original.substitutes))}
 			    	columns={additionalTeamInfoTableHeaders}
 			    	minRows={0}
 			    	showPagination={false}

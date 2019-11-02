@@ -3,7 +3,6 @@ package com.josephcroot.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class TeamServiceImpl implements TeamService {
 	private PlayerService playerService;
 
 	@Override
-	@Scheduled(fixedRate = 150000)
+	@Scheduled(fixedRate = 180000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		System.out.println("Updating Teams");
 		updateTeamInfo();
@@ -69,202 +68,43 @@ public class TeamServiceImpl implements TeamService {
 		}
 	}
 
-	public void updateTeam(Team newTeam) throws JSONException, IOException {
+	public void updateTeam(Team teamToUpdate) throws JSONException, IOException {
 		try {
 			// General team info
-			JSONObject teamInfo = TeamsAPIData.getTeamInfo(newTeam.getFantasyFootballId());
-			newTeam.setTeamName(teamInfo.getString("name"));
-			newTeam.setTeamValue(teamInfo.getDouble("last_deadline_value"));
-			newTeam.setBank(teamInfo.getDouble("last_deadline_bank"));
-			newTeam.setTotalTransfers(teamInfo.getInt("last_deadline_total_transfers"));
-			newTeam.setGameweekPoints(teamInfo.getInt("summary_event_points"));
-			newTeam.setOverallRank(teamInfo.getInt("summary_overall_rank"));
-			newTeam.setManagerName(
+			JSONObject teamInfo = TeamsAPIData.getTeamInfo(teamToUpdate.getFantasyFootballId());
+			teamToUpdate.setTeamName(teamInfo.getString("name"));
+			teamToUpdate.setTeamValue(teamInfo.getDouble("last_deadline_value"));
+			teamToUpdate.setBank(teamInfo.getDouble("last_deadline_bank"));
+			teamToUpdate.setTotalTransfers(teamInfo.getInt("last_deadline_total_transfers"));
+			teamToUpdate.setGameweekPoints(teamInfo.getInt("summary_event_points"));
+			teamToUpdate.setOverallRank(teamInfo.getInt("summary_overall_rank"));
+			teamToUpdate.setManagerName(
 					teamInfo.getString("player_first_name") + " " + teamInfo.getString("player_last_name"));
 			if (teamInfo.getString("summary_event_rank") != "null") {
-				newTeam.setGameweekRank(teamInfo.getInt("summary_event_rank"));
+				teamToUpdate.setGameweekRank(teamInfo.getInt("summary_event_rank"));
 			}
+			
 			// Chips info
-			JSONArray chipInfo = TeamsAPIData.getTeamChipsInfo(newTeam.getFantasyFootballId());
+			JSONArray chipInfo = TeamsAPIData.getTeamChipsInfo(teamToUpdate.getFantasyFootballId());
 			for (int i = 0; i < chipInfo.length(); i++) {
 				JSONObject currentChip = chipInfo.getJSONObject(i);
 				if (currentChip.getString("name").equals("freehit")) {
-					newTeam.setFreeHit(true);
+					teamToUpdate.setFreeHit(true);
 				}
 				if (currentChip.getString("name").equals("wildcard")) {
-					newTeam.setWildcard(true);
+					teamToUpdate.setWildcard(true);
 				}
 				if (currentChip.getString("name").equals("3xc")) {
-					newTeam.setTripleCaptain(true);
+					teamToUpdate.setTripleCaptain(true);
 				}
 				if (currentChip.getString("name").equals("bboost")) {
-					newTeam.setBenchBoost(true);
-				}
-			}
-
-			// T-1 Total Points (we add current live points to last weeks score for live
-			// totals)
-			JSONArray totalPointsInfo = TeamsAPIData.getTeamPoints(newTeam.getFantasyFootballId());
-			for (int i = 0; i < totalPointsInfo.length(); i++) {
-				if (i == totalPointsInfo.length() - 2) {
-					JSONObject lastGameweek = totalPointsInfo.getJSONObject(i);
-					newTeam.setTotalPoints(lastGameweek.getInt("total_points"));
-				}
-				if (i == totalPointsInfo.length() - 1) {
-					JSONObject thisGameweek = totalPointsInfo.getJSONObject(i);
-					newTeam.setTransfersThisGameweek(thisGameweek.getInt("event_transfers"));
+					teamToUpdate.setBenchBoost(true);
 				}
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			// Players info
-			Set<Player> players = new LinkedHashSet<>();
-			Set<Player> substitutes = new LinkedHashSet<>();
-			int defenders = 0;
-			int forwards = 0;
-			JSONArray playersJSON = TeamsAPIData.getTeamPlayers(newTeam.getFantasyFootballId());
-			for (int i = 0; i < playersJSON.length(); i++) {
-				// Create Player
-
-				JSONObject currentPlayer = playersJSON.getJSONObject(i);
-				Player player = playerService.getPlayer(currentPlayer.getInt("element"));
-				if (currentPlayer.getBoolean("is_captain")) {
-					newTeam.setCaptain(player);
-				}
-				if (currentPlayer.getBoolean("is_vice_captain")) {
-					newTeam.setViceCaptain(player);
-				}
-				if (currentPlayer.getInt("position") < 12) {
-					players.add(player);
-					if (player.getPosition() == 2)
-						defenders++;
-					else if (player.getPosition() == 4)
-						forwards++;
-				} else {
-					substitutes.add(player);
-				}
-			}
-			
-			
-			// Automatic substitutes
-			Set<Player> playersToAdd = new HashSet<>();
-			Set<Player> playersToRemove = new HashSet<>();
-			for (Player player : players) {
-				if (player.didNotPlay() == true) {
-					// Goalkeepers
-					if (player.getPosition() == 1) {
-						for (Player substitute : substitutes) {
-							if (substitute.getPosition() == 1 && substitute.didNotPlay() == false) {
-								playersToAdd.add(substitute);
-								playersToRemove.add(player);
-
-							}
-						}
-					}
-
-					// Defenders
-					if (player.getPosition() == 2) {
-						for (Player substitute : substitutes) {
-							if (substitute.didNotPlay() == false) {
-								if (defenders > 3) {
-									playersToAdd.add(substitute);
-									playersToRemove.add(player);
-									defenders = (substitute.getPosition() == 2) ? defenders + 1 : defenders - 1;
-									break;
-								} else {
-									if (substitute.getPosition() == 2 && substitute.didNotPlay() == false) {
-										playersToAdd.add(substitute);
-										playersToRemove.add(substitute);
-										break;
-									}
-								}
-							}
-						}
-					}
-
-					// Midfielders
-					if (player.getPosition() == 3) {
-						for (Player substitute : substitutes) {
-							if (substitute.didNotPlay() == false && substitute.getPosition() != 1) {
-								playersToAdd.add(substitute);
-								playersToRemove.add(player);
-								break;
-							}
-						}
-
-						// Forwards
-						if (player.getPosition() == 4) {
-							for (Player substitute : substitutes) {
-								if (substitute.didNotPlay() == false && substitute.getPosition() != 1) {
-									if (forwards > 1) {
-										playersToAdd.add(substitute);
-										playersToRemove.add(substitute);
-										forwards = (substitute.getPosition() == 4) ? forwards + 1 : forwards - 1;
-										break;
-									} else {
-										if (substitute.getPosition() == 4 && substitute.didNotPlay() == false) {
-											playersToAdd.add(substitute);
-											playersToRemove.add(player);
-											break;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			for (Player player : playersToRemove) {
-				players.remove(player);
-				substitutes.add(player);
-			}
-			for (Player player : playersToAdd) {
-				players.add(player);
-				substitutes.remove(player);
-			}
-			newTeam.setPlayers(players);
-			newTeam.setSubstitutes(substitutes);
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			// Transfer info
+			// Transfer Info
 			Map<Player, Player> transfers = new HashMap<Player, Player>();
-			JSONArray transfersJSON = TeamsAPIData.getTransfers(newTeam.getFantasyFootballId());
+			JSONArray transfersJSON = TeamsAPIData.getTransfers(teamToUpdate.getFantasyFootballId());
 			for (int i = 0; i < transfersJSON.length(); i++) {
 				JSONObject currentTransfer = transfersJSON.getJSONObject(i);
 				if (currentTransfer.getInt("event") == GameweekData.getGameweek()) {
@@ -273,22 +113,66 @@ public class TeamServiceImpl implements TeamService {
 					transfers.put(playerOut, playerIn);
 				}
 			}
-			newTeam.setWeeklyTransfers(transfers);
-			// Transfer hits
-			JSONObject teamHits = TeamsAPIData.getTeamHits(newTeam.getFantasyFootballId());
-			newTeam.setTransferHits(teamHits.getInt("event_transfers_cost"));
+			teamToUpdate.setWeeklyTransfers(transfers);
+			
+			// Transfer Hits Info
+			int totalTransferHitsCost = 0;
+			JSONArray gameweekHistoryJSON = TeamsAPIData.getTeamGameweekHistory(teamToUpdate.getFantasyFootballId());
+			for (int i = 0; i < gameweekHistoryJSON.length(); i++) {
+				JSONObject currentTransfer = gameweekHistoryJSON.getJSONObject(i);
+				totalTransferHitsCost += currentTransfer.getInt("event_transfers_cost");
+			}
+			teamToUpdate.setTransferHits(totalTransferHitsCost);
+
+			// T-1 Total Points (we add current live points to last weeks score for live totals)
+			for (int i = 0; i < gameweekHistoryJSON.length(); i++) {
+				if (i == gameweekHistoryJSON.length() - 2) {
+					JSONObject lastGameweek = gameweekHistoryJSON.getJSONObject(i);
+					teamToUpdate.setTotalPoints(lastGameweek.getInt("total_points"));
+				}
+				if (i == gameweekHistoryJSON.length() - 1) {
+					JSONObject thisGameweek = gameweekHistoryJSON.getJSONObject(i);
+					teamToUpdate.setTransfersThisGameweek(thisGameweek.getInt("event_transfers"));
+				}
+			}
+			
+			// Players info
+			Set<Player> players = new LinkedHashSet<>();
+			Set<Player> substitutes = new LinkedHashSet<>();
+			JSONArray playersJSON = TeamsAPIData.getTeamPlayers(teamToUpdate.getFantasyFootballId());
+			for (int i = 0; i < playersJSON.length(); i++) {
+				// Create Player
+				JSONObject currentPlayer = playersJSON.getJSONObject(i);
+				Player player = playerService.getPlayer(currentPlayer.getInt("element"));
+				if (currentPlayer.getBoolean("is_captain")) {
+					teamToUpdate.setCaptain(player);
+				}
+				if (currentPlayer.getBoolean("is_vice_captain")) {
+					teamToUpdate.setViceCaptain(player);
+				}
+				if (currentPlayer.getInt("position") < 12) {
+					players.add(player);
+				} else {
+					substitutes.add(player);
+				}
+			}
+			teamToUpdate.setPlayers(players);
+			teamToUpdate.setSubstitutes(substitutes);
+			
+			AutomaticSubstitutions autoSub = new AutomaticSubstitutions();
+			teamToUpdate = autoSub.calculateSubstitutions(teamToUpdate);
 
 		} catch (JSONException e) {
-			log.error(e);
+			System.out.println(e);
 		} catch (IOException e) {
 			System.out.println(e);
-			log.error(e);
+			System.out.println(e);
 		}
 	}
 
 	@Override
 	public void deleteTeam(int teamId) {
-		// Probably don't wanna do that
+		// Probably don't want to do that
 	}
 
 }

@@ -29,7 +29,7 @@ public class TeamsAPIData {
 		return FantasyFootballAPI.getJSONArray("https://fantasy.premierleague.com/api/" + "entry/" + Integer.toString(team) + "/transfers/");
 	}
 
-	public static JSONArray getTeamPoints(int team) throws JSONException, IOException {
+	public static JSONArray getTeamGameweekHistory(int team) throws JSONException, IOException {
 		return FantasyFootballAPI.getJSONArrayFromJSONObject("entry/" + Integer.toString(team) + "/history/", null, "current");
 	}
 
