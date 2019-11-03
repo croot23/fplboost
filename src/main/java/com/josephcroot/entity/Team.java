@@ -65,8 +65,11 @@ public class Team {
 	@Column(name = "overall_rank")
 	private int overallRank;
 	
-	@Column(name = "transfer_hits")
+	@Column(name = "hits")
 	private int transferHits;
+	
+	@Column(name = "transfer_hits")
+	private int gameweekTransferHits;
 	
 	@Column(name = "gameweek_rank")
 	private int gameweekRank;
@@ -143,7 +146,7 @@ public class Team {
 	
 	public int getTotalPoints() {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
-			return totalPoints + (firstElevenPoints - transferHits);
+			return totalPoints + (firstElevenPoints - gameweekTransferHits);
 	}
 	public int getSubstitutePoints() {
 		int substitutePoints = 0;
@@ -343,5 +346,12 @@ public class Team {
 		this.transfersThisGameweek = transfers_this_gameweek;
 	}
 
+	public int getGameweekTransferHits() {
+		return gameweekTransferHits;
+	}
+
+	public void setGameweekTransferHits(int gameweekTransferHits) {
+		this.gameweekTransferHits = gameweekTransferHits;
+	}
 	
 }

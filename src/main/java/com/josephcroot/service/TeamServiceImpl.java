@@ -120,7 +120,11 @@ public class TeamServiceImpl implements TeamService {
 			JSONArray gameweekHistoryJSON = TeamsAPIData.getTeamGameweekHistory(teamToUpdate.getFantasyFootballId());
 			for (int i = 0; i < gameweekHistoryJSON.length(); i++) {
 				JSONObject currentTransfer = gameweekHistoryJSON.getJSONObject(i);
-				totalTransferHitsCost += currentTransfer.getInt("event_transfers_cost");
+				int gameweekHits = currentTransfer.getInt("event_transfers_cost");
+				totalTransferHitsCost += gameweekHits;
+				if (i == gameweekHistoryJSON.length()-1) {
+					teamToUpdate.setGameweekTransferHits(gameweekHits);
+				}
 			}
 			teamToUpdate.setTransferHits(totalTransferHitsCost);
 
