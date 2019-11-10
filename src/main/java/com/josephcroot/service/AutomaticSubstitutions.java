@@ -23,7 +23,7 @@ public class AutomaticSubstitutions {
 	Set<Player> playersToAdd = new HashSet<>();
 	Set<Player> playersToRemove = new HashSet<>();
 
-	public void changeFormation(int position, boolean add) {
+	private void changeFormation(int position, boolean add) {
 		if (position == DEFENDER)
 			defenders = (add) ? defenders + 1 : defenders - 1;
 		if (position == MIDFIELDER)
@@ -32,13 +32,13 @@ public class AutomaticSubstitutions {
 			strikers = (add) ? strikers + 1 : strikers - 1;
 	}
 	
-	public boolean playerPlayed(Player player) {
+	private boolean playerPlayed(Player player) {
 		if (player.didNotPlay() == false && player.getMinutesPlayed() > 0)
 			return true;
 		return false;		
 	}
 
-	public boolean checkAnySubstitutesActuallyPlayed(Set<Player> substitutes) {
+	private boolean checkAnySubstitutesActuallyPlayed(Set<Player> substitutes) {
 		for (Player substitute : substitutes) {
 			if (playerPlayed(substitute)) 
 				return true;
@@ -46,7 +46,7 @@ public class AutomaticSubstitutions {
 		return false;
 	}
 
-	public boolean checkAnyPlayersNeedSubstituting(Set<Player> players) {
+	private boolean checkAnyPlayersNeedSubstituting(Set<Player> players) {
 		for (Player player : players) {
 			if (player.didNotPlay() == true)
 				return true;
@@ -54,7 +54,7 @@ public class AutomaticSubstitutions {
 		return false;
 	}
 
-	public boolean canBeReplacedByAnySub(int position) {
+	private boolean canBeReplacedByAnySub(int position) {
 		if (position == GOALKEEPER) { return false; }
 		if (position == DEFENDER && defenders > 3) { return true; }
 		if (position == MIDFIELDER && midfielders > 2) { return true; }
@@ -62,7 +62,7 @@ public class AutomaticSubstitutions {
 		return false;
 	}
 
-	public boolean couldBeReplacedByASubThatHasntPlayedYet(boolean canBeReplacedByAnySub, int playerToBeSubbedPosition,
+	private boolean couldBeReplacedByASubThatHasntPlayedYet(boolean canBeReplacedByAnySub, int playerToBeSubbedPosition,
 			Set<Player> substitutes, Set<Player> playersToAdd) {
 			for (Player substitute : substitutes) {
 				if (!playersToAdd.contains(substitute) && substitute.getPosition() != GOALKEEPER) {
@@ -80,7 +80,7 @@ public class AutomaticSubstitutions {
 		return false;
 	}
 
-	public void makeSubstitution(Player player, Player substitute) {
+	private void makeSubstitution(Player player, Player substitute) {
 		playersToAdd.add(substitute);
 		playersToRemove.add(player);
 		changeFormation(player.getPosition(), REMOVE);

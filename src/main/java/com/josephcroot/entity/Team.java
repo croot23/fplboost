@@ -1,7 +1,9 @@
 package com.josephcroot.entity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,10 +20,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.boot.configurationprocessor.json.JSONException;
+
+import com.josephcroot.fantasyfootballAPI.GameweekData;
+
 @Entity
 @Table(name = "team")
 public class Team {
-
+	
 	@Id
 	@Column(name = "fantasy_football_id")
 	private int fantasyFootballId;
@@ -80,6 +86,18 @@ public class Team {
 	@Column(name = "weekly_transfers")
 	private int transfersThisGameweek;
 	
+	@Column(name = "wildcard_gameweek")
+	private int wildcardGameweek;
+	
+	@Column(name = "triple_captain_gameweek")
+	private int tripleCaptainGameweek;
+	
+	@Column(name = "free_hit_gameweek")
+	private int freeHitGameweek;
+	
+	@Column(name = "bench_boost_gameweek")
+	private int benchBoostGameweek;
+	
 	@ManyToOne
 	@JoinColumn(name = "captain_id")
 	private Player captain;
@@ -116,23 +134,30 @@ public class Team {
 	private Map<Player, Player> weeklyTransfers;
 	
 	public Set<Player> getAllPlayers() {
-		Set<Player> allPlayers = new HashSet<Player>(getPlayers());
+		Set<Player> allPlayers = new LinkedHashSet<Player>(getPlayers());
 		allPlayers.addAll(getSubstitutes());
 		return allPlayers;
 	}
-	public int getFirstElevenGameweekPoints() {
+	public int getFirstElevenGameweekPoints() throws JSONException, IOException {
 		int firstElevenGameweekPoints = 0;
 		Set<Player> firstEleven = new HashSet<Player>(getPlayers());
 		for (Player player : firstEleven) {
 			firstElevenGameweekPoints += player.getGameweekPoints();
 			//If it's the captain the points are doubled remember!
-			if (player == getCaptain())
+			if (player == getCaptain()) {
 				firstElevenGameweekPoints += player.getGameweekPoints();
+				if (GameweekData.getGameweek() == getTripleCaptainGameweek()) {
+					firstElevenGameweekPoints += player.getGameweekPoints();
+				}
+			}
+			if (GameweekData.getGameweek() == getBenchBoostGameweek()) {
+				firstElevenGameweekPoints += getSubstitutePoints();
+			}
 		}
 		return firstElevenGameweekPoints;
 	}
 	
-	public int getGameweekPoints() {
+	public int getGameweekPoints() throws JSONException, IOException {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
 		if (gameweekPoints < firstElevenPoints)
 			return firstElevenPoints;
@@ -144,7 +169,7 @@ public class Team {
 		return gameweekPoints;
 	}
 	
-	public int getTotalPoints() {
+	public int getTotalPoints() throws JSONException, IOException {
 		int firstElevenPoints = getFirstElevenGameweekPoints();
 			return totalPoints + (firstElevenPoints - gameweekTransferHits);
 	}
@@ -352,6 +377,38 @@ public class Team {
 
 	public void setGameweekTransferHits(int gameweekTransferHits) {
 		this.gameweekTransferHits = gameweekTransferHits;
+	}
+
+	public int getWildcardGameweek() {
+		return wildcardGameweek;
+	}
+
+	public void setWildcardGameweek(int wildcardGameweek) {
+		this.wildcardGameweek = wildcardGameweek;
+	}
+
+	public int getTripleCaptainGameweek() {
+		return tripleCaptainGameweek;
+	}
+
+	public void setTripleCaptainGameweek(int tripleCaptainGameweek) {
+		this.tripleCaptainGameweek = tripleCaptainGameweek;
+	}
+
+	public int getFreeHitGameweek() {
+		return freeHitGameweek;
+	}
+
+	public void setFreeHitGameweek(int freeHitGameweek) {
+		this.freeHitGameweek = freeHitGameweek;
+	}
+
+	public int getBenchBoostGameweek() {
+		return benchBoostGameweek;
+	}
+
+	public void setBenchBoostGameweek(int benchBoostGameweek) {
+		this.benchBoostGameweek = benchBoostGameweek;
 	}
 	
 }

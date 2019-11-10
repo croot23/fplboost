@@ -31,3 +31,5 @@ HELP.md
 ### Additional ###
 /node_modules
 .settings
+static/built/bundle.js
+static/built/bundle.js.map

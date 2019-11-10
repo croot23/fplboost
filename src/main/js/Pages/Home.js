@@ -25,7 +25,8 @@ export default class Home extends React.Component {
 				teams: [], 
 				expanded: {},
 				// leagues should be retrieved from the database ideally (//todo)
-				leagues: [{"name": "IBB League", "id" : "269242"},{"name": "RPRemier League", "id" : "257171"}]
+				leagues: [{"name": "IBB League", "id" : "269242"},{"name": "RPRemier League", "id" : "257171"},{"name": "Lambert & Co", "id" : "604843"},{"name": "Essex Cup", "id" : "415897"}],
+				gameweek: 1
 				};
 		this.reload = this.reload.bind(this);
 		this.persistOpenedRows = this.persistOpenedRows.bind(this);
@@ -52,6 +53,11 @@ export default class Home extends React.Component {
 				} else {
 					this.setState({teams: res.data.leagueById.teams});
 				}
+			});
+		fetch({
+			query: "{ gameweek }",
+			}).then(res => {
+				this.setState({gameweek: res.data.gameweek});
 			});
 	}
 	
@@ -141,10 +147,10 @@ class MainPageTable extends React.Component {
 			    </ReactTable>
 			    <br></br>
 			    </div>
-			    <div class='transfer-table'>
+			    <div class='right-side-table additional-transfer-table'>
 			    <ReactTable
-			    	data={combineTransferLists(row.original.weeklyTransfersListIn,row.original.weeklyTransfersListOut)}
-			    	columns={transferTableColumns}
+			    	data={additionalTeamInfo(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.captain.webName, row.original.viceCaptain.webName, calculateBenchPoints(row.original.substitutes))}
+			    	columns={additionalTeamInfoTableHeaders}
 			    	minRows={0}
 			    	showPagination={false}
 					showPaginationTop={false}
@@ -152,10 +158,10 @@ class MainPageTable extends React.Component {
 					showPageSizeOptions={true}>
 			    </ReactTable>
 			    </div>
-			    <div class='transfer-table additional-transfer-table'>
+			    <div class='right-side-table transfer-table'>
 			    <ReactTable
-			    	data={additionalTeamInfo(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.captain.webName, row.original.viceCaptain.webName, calculateBenchPoints(row.original.substitutes))}
-			    	columns={additionalTeamInfoTableHeaders}
+			    	data={combineTransferLists(row.original.weeklyTransfersListIn,row.original.weeklyTransfersListOut)}
+			    	columns={transferTableColumns}
 			    	minRows={0}
 			    	showPagination={false}
 					showPaginationTop={false}

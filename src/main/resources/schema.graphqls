@@ -1,5 +1,7 @@
 type Query {
-  leagueById(id: ID): League 
+  leagueById(id: ID): League
+  playerById(id: ID): Player
+  gameweek: Int
 }
 
 type League {
@@ -27,6 +29,10 @@ type Team {
 	transfersThisGameweek: Int
 	expectedPoints: Int
 	gameweekRank: Int
+	wildcardGameweek: Int
+    tripleCaptainGameweek: Int
+    freeHitGameweek: Int
+    benchBoostGameweek: Int
 	players: [Player]
 	substitutes: [Player]
 	captain: Player

@@ -113,15 +113,15 @@ table thead th {
 	margin: 15px;
 }
 
-.transfer-table {
+.right-side-table {
 	width: 385px !important;
 }
 
-.transfer-table .rt-td {
+.right-side-table .rt-td {
 	padding: 1px 1px !important;
 }
 
-.transfer-table .rt-resizable-header-content {
+.right-side-table .rt-resizable-header-content {
 	font-size: 12px;
 	font-weight: bold;
 	color: #4c16aa;
@@ -141,7 +141,7 @@ table thead th {
 
 @media only screen and (max-width: 1000px) {
 	
-	.transfer-table {
+	.right-side-table {
 		display: none !important;
 	}
 	
@@ -219,7 +219,11 @@ table thead th {
 	padding-right: 20px;
 }
 
-.transfer-table {
+.right-side-table {
 	margin-left: 68%;
 	padding-top: 20px;
+}
+
+.transfer-table {
+	padding-bottom: 20px;
 }

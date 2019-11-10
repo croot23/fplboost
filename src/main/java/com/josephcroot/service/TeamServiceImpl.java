@@ -14,7 +14,6 @@ import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.josephcroot.entity.Player;
@@ -23,7 +22,6 @@ import com.josephcroot.fantasyfootballAPI.GameweekData;
 import com.josephcroot.fantasyfootballAPI.TeamsAPIData;
 import com.josephcroot.repository.TeamRepository;
 
-@Component
 @Service
 public class TeamServiceImpl implements TeamService {
 	
@@ -90,15 +88,19 @@ public class TeamServiceImpl implements TeamService {
 				JSONObject currentChip = chipInfo.getJSONObject(i);
 				if (currentChip.getString("name").equals("freehit")) {
 					teamToUpdate.setFreeHit(true);
+					teamToUpdate.setFreeHitGameweek(currentChip.getInt("event"));
 				}
 				if (currentChip.getString("name").equals("wildcard")) {
 					teamToUpdate.setWildcard(true);
+					teamToUpdate.setWildcardGameweek(currentChip.getInt("event"));
 				}
 				if (currentChip.getString("name").equals("3xc")) {
 					teamToUpdate.setTripleCaptain(true);
+					teamToUpdate.setTripleCaptainGameweek(currentChip.getInt("event"));
 				}
 				if (currentChip.getString("name").equals("bboost")) {
 					teamToUpdate.setBenchBoost(true);
+					teamToUpdate.setBenchBoostGameweek(currentChip.getInt("event"));
 				}
 			}
 			
@@ -164,7 +166,7 @@ public class TeamServiceImpl implements TeamService {
 			teamToUpdate.setSubstitutes(substitutes);
 			
 			AutomaticSubstitutions autoSub = new AutomaticSubstitutions();
-			teamToUpdate = autoSub.calculateSubstitutions(teamToUpdate);
+			autoSub.calculateSubstitutions(teamToUpdate);
 
 		} catch (JSONException e) {
 			System.out.println(e);

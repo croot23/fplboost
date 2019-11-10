@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+  
+  <changeSet author="joseph.croot" id="changelog-1.3" runAlways="false">
+  	
+    <addColumn tableName="team">
+        <column name="wildcard_gameweek" type="INT" defaultValue='0'/>
+       	<column name="triple_captain_gameweek" type="INT" defaultValue='0'/>
+       	<column name="free_hit_gameweek" type="INT" defaultValue='0'/>
+       	<column name="bench_boost_gameweek" type="INT" defaultValue='0'/>
+    </addColumn>
+
+  </changeSet>
+  
+</databaseChangeLog> 

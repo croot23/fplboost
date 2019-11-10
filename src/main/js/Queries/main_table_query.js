@@ -20,6 +20,10 @@ function mainQuery(n) {
         		totalTransfers
         		expectedPoints
         		transferHits
+        		wildcardGameweek
+        		tripleCaptainGameweek
+        		freeHitGameweek
+        		benchBoostGameweek
 				players { 
 					firstName 
 					lastName 

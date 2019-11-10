@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+  
+  <changeSet author="joseph.croot" id="changelog-1.4" runAlways="false">
+  	
+  	<!-- INSERT LEAGUE -->
+  	
+    <insert tableName="league">
+        <column name="fantasy_football_id" value="604843"/>
+        <column name="league_name" value="Lambert &amp; Co"/>
+    </insert>
+    
+    <!-- INSERT TEAMS -->
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="3178921"/>
+        <column name="team_name" value="Christian Pullasicky"/>
+        <column name="manager_name" value="Jon Lambert"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="3589624"/>
+        <column name="team_name" value="Hitters"/>
+        <column name="manager_name" value="Tommy Croot"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="3756576"/>
+        <column name="team_name" value="Multiple Scorgasms"/>
+        <column name="manager_name" value="Daniel Lambert"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="2486262"/>
+        <column name="team_name" value="Salt and Pépé"/>
+        <column name="manager_name" value="Christopher Lambert"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="5017002"/>
+        <column name="team_name" value="Blue Badger FC"/>
+        <column name="manager_name" value="Marcus Lambert"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <insert tableName="team">
+        <column name="fantasy_football_id" value="2189513"/>
+        <column name="team_name" value="Atletico Foot '84"/>
+        <column name="manager_name" value="Paul Lambert"/>
+        <column name="total_points" value="0"/>
+        <column name="form" value="0"/>
+        <column name="team_value" value="100.0"/>
+        <column name="total_transfers" value="0"/>
+        <column name="bank" value="0.0"/>
+        <column name="gameweek_points" value="0"/>
+        <column name="overall_rank" value="0"/>
+        <column name="transfer_hits" value="0"/>
+    </insert>
+    
+    <!-- JOIN TEAMS TO LEAGUE -->
+    
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="3178921"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="3589624"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="3756576"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="2486262"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="5017002"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="2189513"/>
+    </insert>
+    <insert tableName="league_team">
+        <column name="league_id" value="604843"/>
+        <column name="team_id" value="146521"/>
+    </insert>
+
+  </changeSet>
+  
+</databaseChangeLog> 
