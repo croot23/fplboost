@@ -150,9 +150,9 @@ public class Team {
 					firstElevenGameweekPoints += player.getGameweekPoints();
 				}
 			}
-			if (GameweekData.getGameweek() == getBenchBoostGameweek()) {
-				firstElevenGameweekPoints += getSubstitutePoints();
-			}
+		}
+		if (GameweekData.getGameweek() == getBenchBoostGameweek()) {
+			firstElevenGameweekPoints += getSubstitutePoints();
 		}
 		return firstElevenGameweekPoints;
 	}
