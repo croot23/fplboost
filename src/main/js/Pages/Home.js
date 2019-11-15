@@ -8,6 +8,8 @@ import combineTransferLists from '../Tools/combine_transfers_lists.js'
 import calculateBenchPoints from '../Tools/calculate_bench_points.js'
 import additionalTeamInfo from '../Tools/additional_team_info.js'
 import '../../resources/static/css/main.css'
+import getCookie from '../Cookies/get_cookies.js'
+import setCookie from '../Cookies/set_cookies.js'
 const ReactTable = require('react-table').default
 const ReactDOM = require('react-dom');
 const { createApolloFetch } = require('apollo-fetch');
@@ -35,7 +37,15 @@ export default class Home extends React.Component {
 	// Populate the table on initial page load and start the automatic refresh
 	// timer
 	componentDidMount() {
-		this.reload();
+		var last_viewed_league = getCookie('last_viewed_league');
+		var selectBox = document.getElementById("selectLeague");
+		if (last_viewed_league != "") {
+			selectBox.value = last_viewed_league;
+			this.reload(true);
+		} else {
+			selectBox.value = this.state.leagues[0].id;
+			this.reload(true);
+		}
 		setInterval(this.reload.bind(this),100000);
 	}
 	
@@ -50,6 +60,7 @@ export default class Home extends React.Component {
 			}).then(res => {
 				if (leagueChanged) {
 					this.setState({teams: res.data.leagueById.teams, expanded: {}});
+					setCookie('last_viewed_league', selectedValue, '7');
 				} else {
 					this.setState({teams: res.data.leagueById.teams});
 				}
@@ -82,7 +93,7 @@ export default class Home extends React.Component {
 				<select id="selectLeague" onChange={() => this.reload(true)}>
 					{leagues}
 				</select>
-				<MainPageTable teams={this.state.teams} expanded={this.state.expanded} persistOpenedRows={this.persistOpenedRows}></MainPageTable>
+				<MainPageTable teams={this.state.teams} expanded={this.state.expanded} persistOpenedRows={this.persistOpenedRows} gameweek={this.state.gameweek}></MainPageTable>
 			</div>
     	)
     }
@@ -100,9 +111,10 @@ class MainPageTable extends React.Component {
 	
 	render() {
 		
-		// Sort the teams descending by total points before passing to the react
-		// table
-		const data = this.props.teams.sort((a, b) => b.totalPoints - a.totalPoints);
+		// Add gameweek to teams
+		const teamsWithGameweek = this.props.teams.map(originalTeamData => ({...originalTeamData, gameweek: this.props.gameweek}));
+		// Sort the teams descending by total points before passing to the react table
+		const data = teamsWithGameweek.sort((a, b) => b.totalPoints - a.totalPoints);
 		let expandedRows = this.props.expanded;
 		// All the table column information is imported from ./Tools/*.js files
 		const mainTableColumns = mainTableHeaders;

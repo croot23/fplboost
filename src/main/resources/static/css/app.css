@@ -28,3 +28,13 @@ html {
 	margin-right:15px;
 	margin-top:3px;
 }
+
+a.noLink:link {
+	text-decoration: inherit;
+    color: inherit;
+}
+
+a.noLink:visited {
+	text-decoration: inherit;
+    color: inherit;
+}
