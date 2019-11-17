@@ -2,6 +2,7 @@ type Query {
   leagueById(id: ID): League
   playerById(id: ID): Player
   gameweek: Int
+  getAllLeagues: [League]
 }
 
 type League {

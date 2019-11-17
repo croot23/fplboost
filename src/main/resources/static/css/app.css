@@ -38,3 +38,8 @@ a.noLink:visited {
 	text-decoration: inherit;
     color: inherit;
 }
+
+.general-text {
+	font-size: 14px;
+	padding: 20px;
+}

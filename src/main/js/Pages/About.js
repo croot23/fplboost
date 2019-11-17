@@ -4,10 +4,9 @@ export default class Graphs extends React.Component {
     render() {  
       return (
     		  <div class="mainContainer">
-    		  <div style={{ padding: "20px" }}>
+    		  <div className="general-text">
     		  <br></br>
     		  <h3>Why <a class="noLink" href="https://www.fplboost.com">fplboost.com</a>?</h3>
-    		  <br></br>
     		  No more waiting for <a href="fantasy.premierleague.com" target="_blank">fantasy.premierleague.com</a> to get their act together hours after matches end, the league table is live (and auto-updates) with active points.
     		  <br></br>
     		  Auto substitutions happen as soon as they can, no need to wait until the end of the entire gameweek to see if Lundstrum is coming on with 21 points.
@@ -23,7 +22,6 @@ export default class Graphs extends React.Component {
     		  <br></br>
     		  <br></br>
     		  <h3>Code details</h3>
-    		  <br></br>
     		  Created by Joseph Croot.
     		  <br></br>
     		  Code can be viewed at <a href="https://github.com/croot23/fplboost" target="_blank">https://github.com/croot23/fplboost</a>

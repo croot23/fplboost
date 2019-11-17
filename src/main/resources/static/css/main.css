@@ -227,3 +227,10 @@ table thead th {
 .transfer-table {
 	padding-bottom: 20px;
 }
+
+.-headerGroups {
+	background: white !important;
+}
+.rt-noData {
+	margin-top: 50px;
+}

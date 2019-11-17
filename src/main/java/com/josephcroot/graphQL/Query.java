@@ -1,6 +1,7 @@
 package com.josephcroot.graphQL;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class Query implements GraphQLQueryResolver {
 	
 	public int gameweek() throws JSONException, IOException {
 		return GameweekData.getGameweek();
+	}
+	
+	public List<League> getAllLeagues() {
+		return (List<League>) LeagueRepository.findAll();
 	}
 
 }
