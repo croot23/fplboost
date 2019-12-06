@@ -10,10 +10,10 @@ import additionalTeamInfo from '../Tools/additional_team_info.js'
 import '../../resources/static/css/main.css'
 import getCookie from '../Cookies/get_cookies.js'
 import setCookie from '../Cookies/set_cookies.js'
-const ReactTable = require('react-table').default
-const ReactDOM = require('react-dom');
 const { createApolloFetch } = require('apollo-fetch');
 const client = require('../client');
+import ReactTable from 'react-table-6';
+import 'react-table-6/react-table.css';
 const fetch = createApolloFetch({
 	uri: window.location.href.replace("#/","")+'graphql',
 });

@@ -31,6 +31,7 @@ public class PlayerServiceImpl implements PlayerService {
 		try {
 			updatePlayerInfo();
 		} catch (JSONException e) {
+			System.out.println(e);
 		}
 	}
 

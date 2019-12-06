@@ -3,6 +3,7 @@ package com.josephcroot.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.josephcroot.entity.HistoricGameweekData;
 import com.josephcroot.entity.Player;
 import com.josephcroot.entity.Team;
 import com.josephcroot.fantasyfootballAPI.GameweekData;
@@ -36,7 +38,6 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	@Scheduled(fixedRate = 180000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
-		System.out.println("Updating Teams");
 		updateTeamInfo();
 	}
 
@@ -165,8 +166,48 @@ public class TeamServiceImpl implements TeamService {
 			teamToUpdate.setPlayers(players);
 			teamToUpdate.setSubstitutes(substitutes);
 			
+			/* Make automatic substitutes */
 			AutomaticSubstitutions autoSub = new AutomaticSubstitutions();
 			autoSub.calculateSubstitutions(teamToUpdate);
+			
+			/* Set Historic gameweek Info */
+			Set<HistoricGameweekData> historicGameweek = new HashSet<HistoricGameweekData>();
+			JSONArray gameweekArray = TeamsAPIData.getTeamGameweekHistory(teamToUpdate.getFantasyFootballId());
+			for (int i = 0; i < gameweekArray.length()-1; i++) {
+				JSONObject currentGameweek = gameweekArray.getJSONObject(i);
+				HistoricGameweekData gameweek = new HistoricGameweekData();
+				gameweek.setFantasyFootballId(teamToUpdate.getFantasyFootballId());
+				gameweek.setGameweek(i+1);
+				String id =  Integer.toString(teamToUpdate.getFantasyFootballId())+ Integer.toString(i+1).trim();
+				gameweek.setId(Integer.parseInt(id));
+				gameweek.setGameweekPoints(currentGameweek.getInt("points"));
+				gameweek.setTotalPoints(currentGameweek.getInt("total_points"));
+				gameweek.setGameweekRank(currentGameweek.getInt("rank"));
+				gameweek.setOverallRank(currentGameweek.getInt("overall_rank"));
+				gameweek.setTeamValue(currentGameweek.getInt("bank")+currentGameweek.getInt("value"));
+				gameweek.setTransfersMade(currentGameweek.getInt("event_transfers"));
+				gameweek.setHitsTaken(currentGameweek.getInt("event_transfers_cost"));
+				gameweek.setPointsOnTheBench(currentGameweek.getInt("points_on_bench"));
+				historicGameweek.add(gameweek);
+			}
+			
+			/* Set the current gameweeks historic gameweek entry */
+			HistoricGameweekData gameweek = new HistoricGameweekData();
+			gameweek.setFantasyFootballId(teamToUpdate.getFantasyFootballId());
+			gameweek.setGameweek(gameweekArray.length());
+			String id =  Integer.toString(teamToUpdate.getFantasyFootballId())+ Integer.toString(gameweekArray.length()).trim();
+			gameweek.setId(Integer.parseInt(id));
+			gameweek.setGameweekPoints(teamToUpdate.getCurrentFantasyGameweekPoints());
+			gameweek.setTotalPoints(teamToUpdate.getTotalPoints());
+			gameweek.setGameweekRank(teamToUpdate.getGameweekRank());
+			gameweek.setOverallRank(teamToUpdate.getOverallRank());
+			gameweek.setTeamValue((int) (teamToUpdate.getTeamValue()*10));
+			gameweek.setTransfersMade(teamToUpdate.getTransfersThisGameweek());
+			gameweek.setHitsTaken(0);
+			gameweek.setPointsOnTheBench(0);
+			historicGameweek.add(gameweek);
+			
+			teamToUpdate.setHistoricGameweekData(historicGameweek);
 
 		} catch (JSONException e) {
 			System.out.println(e);

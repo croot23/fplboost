@@ -40,6 +40,7 @@ type Team {
 	viceCaptain: Player
 	weeklyTransfersListOut: [Player]
 	weeklyTransfersListIn: [Player]
+	historicGameweekData : [historicGameweekData]
 }
 type Player {
 	fantasyFootballId: ID
@@ -61,4 +62,17 @@ type Player {
 	assists: Int
 	goalsScored: Int
 	changePercentage: Int
+}
+
+type historicGameweekData {
+	fantasyFootballId: Int
+	gameweek: Int
+	gameweekPoints: Int
+	totalPoints: Int
+	gameweekRank: Int
+	overallRank: Int
+	teamValue: Int
+	transfersMade: Int
+	hitsTaken: Int
+	pointsOnTheBench: Int
 }

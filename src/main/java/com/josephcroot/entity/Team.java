@@ -18,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -133,6 +134,10 @@ public class Team {
 	@MapKeyJoinColumn(name="player_in")
 	private Map<Player, Player> weeklyTransfers;
 	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="historic_team_gameweek_data_id")
+	private Set<HistoricGameweekData> historicGameweekData;
+	
 	public Set<Player> getAllPlayers() {
 		Set<Player> allPlayers = new LinkedHashSet<Player>(getPlayers());
 		allPlayers.addAll(getSubstitutes());
@@ -189,6 +194,14 @@ public class Team {
 	public void setSubstitutes(Set<Player> substitutes) {
 		this.substitutes = substitutes;
 	}
+	public Set<HistoricGameweekData> getHistoricGameweekData() {
+		return historicGameweekData;
+	}
+
+	public void setHistoricGameweekData(Set<HistoricGameweekData> historicGameweekData) {
+		this.historicGameweekData = historicGameweekData;
+	}
+
 	public Set<Player> getPlayers() {
 		return players;
 	}
