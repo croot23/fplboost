@@ -8,8 +8,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -27,7 +28,7 @@ import com.josephcroot.repository.TeamRepository;
 @Service
 public class TeamServiceImpl implements TeamService {
 	
-	final static Logger log = Logger.getLogger(TeamServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(TeamServiceImpl.class);
 
 	@Autowired
 	private TeamRepository teamRepository;
@@ -38,6 +39,7 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	@Scheduled(fixedRate = 180000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
+		logger.info("Updating Teams");
 		updateTeamInfo();
 	}
 
@@ -91,9 +93,12 @@ public class TeamServiceImpl implements TeamService {
 					teamToUpdate.setFreeHit(true);
 					teamToUpdate.setFreeHitGameweek(currentChip.getInt("event"));
 				}
+				teamToUpdate.setWildcard(false);
 				if (currentChip.getString("name").equals("wildcard")) {
-					teamToUpdate.setWildcard(true);
-					teamToUpdate.setWildcardGameweek(currentChip.getInt("event"));
+					if (currentChip.getInt("event") > 20) {
+						teamToUpdate.setWildcard(true);
+						teamToUpdate.setWildcardGameweek(currentChip.getInt("event"));
+					}
 				}
 				if (currentChip.getString("name").equals("3xc")) {
 					teamToUpdate.setTripleCaptain(true);
@@ -210,10 +215,9 @@ public class TeamServiceImpl implements TeamService {
 			teamToUpdate.setHistoricGameweekData(historicGameweek);
 
 		} catch (JSONException e) {
-			System.out.println(e);
+			logger.warn(e);
 		} catch (IOException e) {
-			System.out.println(e);
-			System.out.println(e);
+			logger.warn(e);
 		}
 	}
 

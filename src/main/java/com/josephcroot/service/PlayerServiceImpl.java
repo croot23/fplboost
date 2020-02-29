@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -21,6 +23,8 @@ import com.josephcroot.repository.PlayerRepository;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
+	
+	private static final Logger logger = LogManager.getLogger(PlayerServiceImpl.class);	
 
 	@Autowired
 	private PlayerRepository PlayerRepository;
@@ -29,9 +33,10 @@ public class PlayerServiceImpl implements PlayerService {
 	@Scheduled(fixedDelay = 60000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		try {
+			logger.info("Updating players");
 			updatePlayerInfo();
 		} catch (JSONException e) {
-			System.out.println(e);
+			logger.warn(e);
 		}
 	}
 
@@ -99,6 +104,7 @@ public class PlayerServiceImpl implements PlayerService {
 				return true;
 				}
 			} catch (ParseException e) {
+				logger.warn(e);
 		}
 		return false;
 	}

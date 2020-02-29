@@ -2,6 +2,8 @@ package com.josephcroot.fantasyfootballAPI;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -11,10 +13,12 @@ public class PlayersAPIData {
 	
 	private static JSONObject playerInfo;
 	
+	private static final Logger logger = LogManager.getLogger(PlayersAPIData	.class);
+	
 	/* Scehdule to update player JSONObject */
 	@Scheduled(fixedDelay = 300000)
 	public void updatePlayers() throws JSONException, IOException {
-		System.out.println("Updating players");
+		logger.info("Updating All Player Info");
 		playerInfo = updatePlayerInfo();
 	}
 
@@ -44,5 +48,4 @@ public class PlayersAPIData {
 			playerInfo = FantasyFootballAPI.getJSONObject("bootstrap-static/", null);
 		return playerInfo;
 	}
-
 }
