@@ -29,7 +29,7 @@ import com.josephcroot.repository.TeamRepository;
 public class TeamServiceImpl implements TeamService {
 	
 	private static final Logger logger = LogManager.getLogger(TeamServiceImpl.class);
-
+	
 	@Autowired
 	private TeamRepository teamRepository;
 

@@ -8,16 +8,18 @@ import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
+@Component	
 public class PlayersAPIData {
 	
 	private static JSONObject playerInfo;
 	
-	private static final Logger logger = LogManager.getLogger(PlayersAPIData	.class);
+	private static final Logger logger = LogManager.getLogger(PlayersAPIData.class);
 	
 	/* Scehdule to update player JSONObject */
 	@Scheduled(fixedDelay = 300000)
-	public void updatePlayers() throws JSONException, IOException {
+	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		logger.info("Updating All Player Info");
 		playerInfo = updatePlayerInfo();
 	}

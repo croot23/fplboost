@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.josephcroot.entity.Player;
+import com.josephcroot.fantasyfootballAPI.GameweekData;
 import com.josephcroot.fantasyfootballAPI.PlayersAPIData;
 import com.josephcroot.repository.PlayerRepository;
 
@@ -25,7 +26,7 @@ import com.josephcroot.repository.PlayerRepository;
 public class PlayerServiceImpl implements PlayerService {
 	
 	private static final Logger logger = LogManager.getLogger(PlayerServiceImpl.class);	
-
+	
 	@Autowired
 	private PlayerRepository PlayerRepository;
 	
@@ -68,6 +69,8 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	public void updatePlayer(Player player) throws JSONException, IOException {
+		//if (player.getWebName().contentEquals("Salah"));
+		//	logger.debug("Updating main player info");
 		JSONObject playerInfo = PlayersAPIData.getPlayer(player.getFantasyFootballId());
 		player.setFirstName(playerInfo.getString("first_name"));
 		player.setLastName(playerInfo.getString("second_name"));
@@ -86,12 +89,22 @@ public class PlayerServiceImpl implements PlayerService {
 		JSONArray playerGameweekInfo = PlayersAPIData.getPlayerGameweekInfo(player.getFantasyFootballId());
 		int lastObjectInArray = playerGameweekInfo.length() - 1;
 		JSONObject playerGameweekDetails = (JSONObject) playerGameweekInfo.getJSONObject(lastObjectInArray);
-		player.setDidNotPlay(didNotPlay(playerGameweekDetails));
-		player.setMinutesPlayed(Integer.parseInt(playerGameweekDetails.get("minutes").toString()));
-		player.setGoalsScored(Integer.parseInt(playerGameweekDetails.get("goals_scored").toString()));
-		player.setAssists(Integer.parseInt(playerGameweekDetails.get("assists").toString()));
-		player.setCleanSheet(Integer.parseInt(playerGameweekDetails.get("clean_sheets").toString()) == 1 ? true : false);
-		player.setBonusPoints(Integer.parseInt(playerGameweekDetails.get("bonus").toString()));
+		// Handle if player doesn't have a fixture
+		if ((playerGameweekDetails.getInt("round")) != GameweekData.getGameweek()) {
+			player.setDidNotPlay(true);
+			player.setMinutesPlayed(0);
+			player.setAssists(0);
+			player.setGoalsScored(0);
+			player.setCleanSheet(false);
+			player.setBonusPoints(0);
+		} else {
+			player.setDidNotPlay(didNotPlay(playerGameweekDetails));
+			player.setMinutesPlayed(Integer.parseInt(playerGameweekDetails.get("minutes").toString()));
+			player.setGoalsScored(Integer.parseInt(playerGameweekDetails.get("goals_scored").toString()));
+			player.setAssists(Integer.parseInt(playerGameweekDetails.get("assists").toString()));
+			player.setCleanSheet(Integer.parseInt(playerGameweekDetails.get("clean_sheets").toString()) == 1 ? true : false);
+			player.setBonusPoints(Integer.parseInt(playerGameweekDetails.get("bonus").toString()));
+		}
 	}
 	
 	static SimpleDateFormat fantasyFootballDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
