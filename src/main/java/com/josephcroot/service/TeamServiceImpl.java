@@ -37,7 +37,7 @@ public class TeamServiceImpl implements TeamService {
 	private PlayerService playerService;
 
 	@Override
-	//@Scheduled(fixedRate = 180000)
+	@Scheduled(fixedRate = 180000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		logger.info("Updating Teams");
 		updateTeamInfo();
