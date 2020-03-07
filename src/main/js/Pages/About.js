@@ -26,7 +26,7 @@ export default class Graphs extends React.Component {
     		  <br></br>
     		  Code can be viewed at <a href="https://github.com/croot23/fplboost" target="_blank">https://github.com/croot23/fplboost</a>
     		  <br></br>
-    		  Built using java, spring boot, maven, hibernate, liquibase, mysql, javascript, graphQL & react
+    		  Built primarily using spring boot, java, react & graphQL, with a bit of maven, hibernate, liquibase, mysql, javascript & of course a load of npm modules
     		  </div>
     		  </div>
     		  )

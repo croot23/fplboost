@@ -57,6 +57,7 @@ export default class Home extends React.Component {
 					this.setState({teams: res.data.leagueById.teams});
 				}
 			});
+		highlightPlayer();
 	}
 	
 	// Function to highlight players based on search
