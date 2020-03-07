@@ -30,7 +30,7 @@ public class GameweekData {
 	}
 	
 	/* Schedule to poll API and update the gameweek */
-	@Scheduled(fixedDelay = 100000)
+	//@Scheduled(fixedDelay = 100000)
 	public void updateGameweek() throws JSONException, IOException {
 		setGameweek();
 	}

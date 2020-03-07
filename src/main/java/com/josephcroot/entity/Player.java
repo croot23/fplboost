@@ -84,7 +84,15 @@ public class Player {
 	}
 
 	public String getWebName() {
-		return webName;
+		if (webName.contentEquals("Alexander-Arnold")) {
+			return "TAA";
+		} else if (webName.contentEquals("Callum Wilson")) {
+			return "C Wilson";
+		} else if (webName.contentEquals("Calvert-Lewin")){
+			return "DCL";
+		} else {
+			return webName;
+		}
 	}
 
 	public void setWebName(String webName) {

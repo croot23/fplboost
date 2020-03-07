@@ -8,6 +8,8 @@ import combineTransferLists from '../Tools/combine_transfers_lists.js'
 import calculateBenchPoints from '../Tools/calculate_bench_points.js'
 import additionalTeamInfo from '../Tools/additional_team_info.js'
 import '../../resources/static/css/main.css'
+import '../../resources/static/css/generic_table.css'
+import '../../resources/static/css/homepage_table.css'
 import getCookie from '../Cookies/get_cookies.js'
 import setCookie from '../Cookies/set_cookies.js'
 const { createApolloFetch } = require('apollo-fetch');
@@ -120,6 +122,8 @@ class MainPageTable extends React.Component {
 		const mainTableColumns = mainTableHeaders;
 		const subTableColumns = playerTableHeaders;
 		const transferTableColumns = transferTableHeaders;
+		
+		console.log(data);
 		
 		  // Render the react tables
 		return <ReactTable

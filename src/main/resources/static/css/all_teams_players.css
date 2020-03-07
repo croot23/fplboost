@@ -1,0 +1,47 @@
+.allTeamsPlayersTable table tbody td {
+  font-size: 10px;
+  text-align: center;
+}
+.allTeamsPlayersTable table thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
+}
+
+.allTeamsPlayersTable .-headerGroups .rt-tr {
+	font-size: 16px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+.allTeamsPlayersTable .rt-td {
+	font-size: 11px !important;
+	padding-left: 3px !important;
+	padding-right: 3px !important;
+}
+
+.allTeamsPlayersTable .-odd > :first-child {
+	font-size: 14px !important;
+	font-style: italic;
+}
+
+.allTeamsPlayersTable .-even > :first-child {
+	font-size: 14px !important;
+	font-style: italic;
+}
+
+.allTeamsPlayersTable .rt-noData {
+	margin-top: 50px;
+}
+
+.allTeamsPlayersTable .rt-thead.-header{
+	display: none;
+}
+
+mark{
+    background: orange;
+    color: black;
+}
+

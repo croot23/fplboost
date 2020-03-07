@@ -12726,6 +12726,48 @@ exports.push([module.i, ".ReactTable{position:relative;display:-webkit-box;displ
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/all_teams_players.css":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/all_teams_players.css ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".allTeamsPlayersTable table tbody td {\r\n  font-size: 10px;\r\n  text-align: center;\r\n}\r\n.allTeamsPlayersTable table thead th {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  color: #FFFFFF;\r\n  text-align: center;\r\n  border-left: 2px solid #FFFFFF;\r\n}\r\n\r\n.allTeamsPlayersTable .-headerGroups .rt-tr {\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.allTeamsPlayersTable .rt-td {\r\n\tfont-size: 11px !important;\r\n\tpadding-left: 3px !important;\r\n\tpadding-right: 3px !important;\r\n}\r\n\r\n.allTeamsPlayersTable .-odd > :first-child {\r\n\tfont-size: 14px !important;\r\n\tfont-style: italic;\r\n}\r\n\r\n.allTeamsPlayersTable .-even > :first-child {\r\n\tfont-size: 14px !important;\r\n\tfont-style: italic;\r\n}\r\n\r\n.allTeamsPlayersTable .rt-noData {\r\n\tmargin-top: 50px;\r\n}\r\n\r\n.allTeamsPlayersTable .rt-thead.-header{\r\n\tdisplay: none;\r\n}\r\n\r\nmark{\r\n    background: orange;\r\n    color: black;\r\n}\r\n\r\n", ""]);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/generic_table.css":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/generic_table.css ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n}\r\ntd, th {\r\n    padding: 0.5rem;\r\n}\r\n\r\ntable {\r\n  font-family: \"Times New Roman\", Times, serif;\r\n  border: 1px solid #FFFFFF;\r\n  text-align: center;\r\n  border-collapse: collapse;\r\n  width:100%;\r\n}\r\ntable td, table.paleBlueRows th {\r\n  border: 1px solid #FFFFFF;\r\n  padding: 3px 2px;\r\n}\r\ntable tr:nth-child(even) {\r\n  background: #D0E4F5;\r\n}\r\ntable thead {\r\n  background: #0B6FA4;\r\n  border-bottom: 5px solid #FFFFFF;\r\n}\r\ntable thead th {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  color: #FFFFFF;\r\n  text-align: center;\r\n  border-left: 2px solid #FFFFFF;\r\n}\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n\r\n.rt-tbody {\r\n\tmin-width: 340px !important;\r\n}\r\n.rt-thead {\r\n\tmin-width: 340px !important;\r\n}\r\n\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\t\r\n\t.centre_header_text {\r\n\t\tmargin-left: 5% !important;\r\n\t}\r\n\t\r\n}\r\n\r\n.-headerGroups {\r\n\tbackground: white !important;\r\n}\r\n.rt-noData {\r\n\tmargin-top: 50px;\r\n}", ""]);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/homepage_table.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/homepage_table.css ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".teamTable table tbody td {\r\n  font-size: 14px;\r\n  text-align: center;\r\n}\r\n.teamTable table thead th {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  color: #FFFFFF;\r\n  text-align: center;\r\n  border-left: 2px solid #FFFFFF;\r\n}\r\n\r\n.teamTable .sub-table .rt-tr .rt-th:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\t\r\n.teamTable .sub-table .rt-tr .rt-td:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\r\n.teamTable .rt-resizable-header-content {\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.teamTable .rt-td {\r\n\tfont-size: 14px !important;\r\n}\r\n\r\n.teamTable .sub-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.teamTable .sub-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.teamTable .sub-table {\r\n\tmax-width: 850px;\r\n\tmin-width: 600px !important;\r\n}\r\n\r\n.teamTable .ReactTable.substitutes .rt-thead.-header {\r\n\tdisplay: none;\r\n}\r\n\r\n.teamTable .additional-transfer-table .rt-thead.-header{\r\n\tdisplay: none;\r\n}\r\n\r\n.teamTable .right-side-table {\r\n\twidth: 385px !important;\r\n}\r\n\r\n.teamTable .right-side-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.teamTable .right-side-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n@media only screen and (min-width: 1000px) {\r\n\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\t\r\n\t.teamTable .right-side-table {\r\n\t\tdisplay: none !important;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-tbody  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table > .rt-thead  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable .teamTable > .rt-table {\r\n\t\twidth: 1010px !important;\r\n\t}\r\n\t\r\n\t.teamTable .sub-table {\r\n\twidth: 100% !important;\r\n\t}\r\n\t\r\n}\r\n\r\n.teamTable .sub-table-container {\r\n\twidth: 99%;\r\n\tmargin: auto;\r\n}\r\n\r\n.teamTable .sub-table {\r\n\tfloat: left;\r\n\twidth: 70%;\r\n\tpadding-top: 20px;\r\n\tpadding-left: 20px;\r\n\tpadding-right: 20px;\r\n}\r\n\r\n.teamTable .right-side-table {\r\n\tmargin-left: 68%;\r\n\tpadding-top: 20px;\r\n}\r\n\r\n.teamTable .transfer-table {\r\n\tpadding-bottom: 20px;\r\n}\r\n\r\n.teamTable .rt-noData {\r\n\tmargin-top: 50px;\r\n}", ""]);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/main.css":
 /*!**************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/main.css ***!
@@ -12735,7 +12777,7 @@ exports.push([module.i, ".ReactTable{position:relative;display:-webkit-box;displ
 
 exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n}\r\ntd, th {\r\n    padding: 0.5rem;\r\n}\r\n\r\ntable {\r\n  font-family: \"Times New Roman\", Times, serif;\r\n  border: 1px solid #FFFFFF;\r\n  text-align: center;\r\n  border-collapse: collapse;\r\n  width:100%;\r\n}\r\ntable td, table.paleBlueRows th {\r\n  border: 1px solid #FFFFFF;\r\n  padding: 3px 2px;\r\n}\r\ntable tbody td {\r\n  font-size: 14px;\r\n  text-align: center;\r\n}\r\ntable tr:nth-child(even) {\r\n  background: #D0E4F5;\r\n}\r\ntable thead {\r\n  background: #0B6FA4;\r\n  border-bottom: 5px solid #FFFFFF;\r\n}\r\ntable thead th {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  color: #FFFFFF;\r\n  text-align: center;\r\n  border-left: 2px solid #FFFFFF;\r\n}\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n.mainContainer {\r\n\tmax-width: 1310px;\r\n\tmargin: auto;\r\n}\r\n.comingSoon {\r\n\tdisplay: block;\r\n\tmargin: 0 auto;\r\n}\r\n.navbar-nav a {\r\n\tcolor: #c9c6c5 !important;\r\n\ttext-decoration: none !important;\r\n}\r\n.navbar-nav a:hover {\r\n  color: white !important;\r\n}\r\n.dark {\r\n\tbackground-color: #1d1a1f;\r\n}\r\n\r\n.rt-tbody {\r\n\tmin-width: 340px !important;\r\n}\r\n.rt-thead {\r\n\tmin-width: 340px !important;\r\n}\r\n\r\n.sub-table .rt-tr .rt-th:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\t\r\n.sub-table .rt-tr .rt-td:nth-child(12n+12) {\r\n    display: none;\r\n}\r\n\r\n.rt-td {\r\n\ttext-align: center;\r\n}\r\n\r\n.rt-resizable-header-content {\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.rt-td {\r\n\tfont-size: 14px !important;\r\n}\r\n\r\n.sub-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.sub-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n.sub-table {\r\n\tmax-width: 850px;\r\n\tmin-width: 600px !important;\r\n}\r\n\r\n.ReactTable.substitutes .rt-thead.-header {\r\n\tdisplay: none;\r\n}\r\n\r\n.additional-transfer-table .rt-thead.-header{\r\n\tdisplay: none;\r\n}\r\n\r\n\r\n#selectLeague {\r\n\tmargin: 15px;\r\n}\r\n\r\n.right-side-table {\r\n\twidth: 385px !important;\r\n}\r\n\r\n.right-side-table .rt-td {\r\n\tpadding: 1px 1px !important;\r\n}\r\n\r\n.right-side-table .rt-resizable-header-content {\r\n\tfont-size: 12px;\r\n\tfont-weight: bold;\r\n\tcolor: #4c16aa;\r\n}\r\n\r\n@media only screen and (min-width: 1000px) {\r\n\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(12n+12) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\t\r\n\t.right-side-table {\r\n\t\tdisplay: none !important;\r\n\t}\r\n\t\r\n\t.centre_header_text {\r\n\t\tmargin-left: 5% !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {\r\n\t\tdisplay: none;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-tbody  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table > .rt-thead  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable  {\r\n\t\twidth: 975px !important;\r\n\t\tmin-width: 975px !important;\r\n\t}\r\n\t\r\n\t.teamTable > .rt-table {\r\n\t\twidth: 1010px !important;\r\n\t}\r\n\t\r\n\t.sub-table {\r\n\twidth: 100% !important;\r\n\t}\r\n\t\r\n}\r\n\r\n.sub-table-container {\r\n\twidth: 99%;\r\n\tmargin: auto;\r\n}\r\n\r\n.sub-table {\r\n\tfloat: left;\r\n\twidth: 70%;\r\n\tpadding-top: 20px;\r\n\tpadding-left: 20px;\r\n\tpadding-right: 20px;\r\n}\r\n\r\n.right-side-table {\r\n\tmargin-left: 68%;\r\n\tpadding-top: 20px;\r\n}\r\n\r\n.transfer-table {\r\n\tpadding-bottom: 20px;\r\n}\r\n\r\n.-headerGroups {\r\n\tbackground: white !important;\r\n}\r\n.rt-noData {\r\n\tmargin-top: 50px;\r\n}", ""]);
+exports.push([module.i, ".mainContainer {\r\n\tmax-width: 1310px;\r\n\tmargin: auto;\r\n}\r\n.comingSoon {\r\n\tdisplay: block;\r\n\tmargin: 0 auto;\r\n}\r\n.navbar-nav a {\r\n\tcolor: #c9c6c5 !important;\r\n\ttext-decoration: none !important;\r\n}\r\n.navbar-nav a:hover {\r\n  color: white !important;\r\n}\r\n.dark {\r\n\tbackground-color: #1d1a1f;\r\n}\r\n\r\n#selectLeague, #filter {\r\n\tmargin: 15px;\r\n\theight: 35px;\r\n\twidth: 200px;\r\n}\r\n\r\n#filter {\r\n\tposition: absolute;\r\n\tright: 0px;\r\n}\r\n", ""]);
 
 
 /***/ }),
@@ -73183,6 +73225,307 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./src/main/js/Pages/All_Teams.js":
+/*!****************************************!*\
+  !*** ./src/main/js/Pages/All_Teams.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Tools_all_teams_columns_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Tools/all_teams_columns.js */ "./src/main/js/Tools/all_teams_columns.js");
+/* harmony import */ var _Queries_all_teams_query_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Queries/all_teams_query.js */ "./src/main/js/Queries/all_teams_query.js");
+/* harmony import */ var _Tools_all_teams_info_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Tools/all_teams_info.js */ "./src/main/js/Tools/all_teams_info.js");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../resources/static/css/main.css */ "./src/main/resources/static/css/main.css");
+/* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _resources_static_css_all_teams_players_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../resources/static/css/all_teams_players.css */ "./src/main/resources/static/css/all_teams_players.css");
+/* harmony import */ var _resources_static_css_all_teams_players_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_all_teams_players_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Cookies/get_cookies.js */ "./src/main/js/Cookies/get_cookies.js");
+/* harmony import */ var _Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Cookies/set_cookies.js */ "./src/main/js/Cookies/set_cookies.js");
+/* harmony import */ var react_table_6__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-table-6 */ "./node_modules/react-table-6/es/index.js");
+/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-table-6/react-table.css */ "./node_modules/react-table-6/react-table.css");
+/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_9__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+var _require = __webpack_require__(/*! apollo-fetch */ "./node_modules/apollo-fetch/dist/index.js"),
+    createApolloFetch = _require.createApolloFetch;
+
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+
+
+
+var fetch = createApolloFetch({
+  uri: window.location.href.replace("#/", "") + 'graphql'
+});
+
+var Home =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Home, _React$Component);
+
+  // Create initial state
+  function Home(props) {
+    var _this;
+
+    _classCallCheck(this, Home);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+    _this.state = {
+      teams: [],
+      // leagues should be retrieved from the database ideally (//todo)
+      leagues: [{
+        "name": "IBB League",
+        "id": "269242"
+      }, {
+        "name": "RPRemier League",
+        "id": "257171"
+      }, {
+        "name": "Lambert & Co",
+        "id": "604843"
+      }, {
+        "name": "Essex Cup",
+        "id": "415897"
+      }]
+    };
+    _this.reload = _this.reload.bind(_assertThisInitialized(_this));
+    return _this;
+  } // Populate the table on initial page load and start the automatic refresh
+  // timer
+
+
+  _createClass(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var last_viewed_league = Object(_Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_6__["default"])('last_viewed_league');
+      var selectBox = document.getElementById("selectLeague");
+
+      if (last_viewed_league != "") {
+        selectBox.value = last_viewed_league;
+        this.reload(true);
+      } else {
+        selectBox.value = this.state.leagues[0].id;
+        this.reload(true);
+      }
+    } // Function to update the table when the league changes and automatically
+    // reload the table with league information at set intervals
+
+  }, {
+    key: "reload",
+    value: function () {
+      var _reload = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(leagueChanged) {
+        var _this2 = this;
+
+        var selectBox, selectedValue;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                selectBox = document.getElementById("selectLeague");
+                selectedValue = selectBox.options[selectBox.selectedIndex].value;
+                fetch({
+                  // The query is built ina function imported from ./Tools/*.js files
+                  query: Object(_Queries_all_teams_query_js__WEBPACK_IMPORTED_MODULE_2__["default"])(selectedValue)
+                }).then(function (res) {
+                  if (leagueChanged) {
+                    _this2.setState({
+                      teams: res.data.leagueById.teams,
+                      expanded: {}
+                    });
+
+                    Object(_Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_7__["default"])('last_viewed_league', selectedValue, '7');
+                  } else {
+                    _this2.setState({
+                      teams: res.data.leagueById.teams
+                    });
+                  }
+                });
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function reload(_x) {
+        return _reload.apply(this, arguments);
+      }
+
+      return reload;
+    }() // Function to highlight players based on search
+
+  }, {
+    key: "highlightPlayer",
+    value: function highlightPlayer() {
+      var markInstance = new Mark(document.querySelector(".allTeamsPlayersTable .rt-tbody")); // Read the keyword
+
+      var keyword = document.getElementById("filter").value;
+      markInstance.unmark({
+        done: function done() {
+          markInstance.mark(keyword);
+        }
+      });
+      console.log(document.getElementById("filter").value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var leagues = this.state.leagues.map(function (league) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LeagueOption, {
+          league: league
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "mainContainer mainTable"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "selectLeague",
+        onChange: function onChange() {
+          return _this3.reload(true);
+        }
+      }, leagues), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PlayerFilter, {
+        highlightPlayer: this.highlightPlayer
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainPageTable, {
+        teams: this.state.teams
+      }));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+var PlayerFilter =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(PlayerFilter, _React$Component2);
+
+  function PlayerFilter() {
+    _classCallCheck(this, PlayerFilter);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlayerFilter).apply(this, arguments));
+  }
+
+  _createClass(PlayerFilter, [{
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "filter",
+        placeholder: " Type a players name...",
+        onKeyUp: function onKeyUp() {
+          return _this4.props.highlightPlayer();
+        }
+      });
+    }
+  }]);
+
+  return PlayerFilter;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var LeagueOption =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(LeagueOption, _React$Component3);
+
+  function LeagueOption() {
+    _classCallCheck(this, LeagueOption);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(LeagueOption).apply(this, arguments));
+  }
+
+  _createClass(LeagueOption, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: this.props.league.id
+      }, this.props.league.name);
+    }
+  }]);
+
+  return LeagueOption;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var MainPageTable =
+/*#__PURE__*/
+function (_React$Component4) {
+  _inherits(MainPageTable, _React$Component4);
+
+  function MainPageTable() {
+    _classCallCheck(this, MainPageTable);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainPageTable).apply(this, arguments));
+  }
+
+  _createClass(MainPageTable, [{
+    key: "render",
+    value: function render() {
+      // Sort the teams descending by total points before passing to the react table
+      var sortedTeams = this.props.teams.sort(function (a, b) {
+        return b.totalPoints - a.totalPoints;
+      });
+      var tableColumns = _Tools_all_teams_columns_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+      var data = Object(_Tools_all_teams_info_js__WEBPACK_IMPORTED_MODULE_3__["default"])(sortedTeams);
+      console.log(data); // Render the react tables
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        data: data,
+        columns: tableColumns,
+        className: "-striped -highlight allTeamsPlayersTable",
+        minRows: 0,
+        showPagination: false,
+        showPaginationTop: false,
+        showPaginationBottom: true,
+        showPageSizeOptions: true
+      });
+    }
+  }]);
+
+  return MainPageTable;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/***/ }),
+
 /***/ "./src/main/js/Pages/Graphs.js":
 /*!*************************************!*\
   !*** ./src/main/js/Pages/Graphs.js ***!
@@ -73268,11 +73611,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Tools/additional_team_info.js */ "./src/main/js/Tools/additional_team_info.js");
 /* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../resources/static/css/main.css */ "./src/main/resources/static/css/main.css");
 /* harmony import */ var _resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_main_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Cookies/get_cookies.js */ "./src/main/js/Cookies/get_cookies.js");
-/* harmony import */ var _Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Cookies/set_cookies.js */ "./src/main/js/Cookies/set_cookies.js");
-/* harmony import */ var react_table_6__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-table-6 */ "./node_modules/react-table-6/es/index.js");
-/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-table-6/react-table.css */ "./node_modules/react-table-6/react-table.css");
-/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _resources_static_css_generic_table_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../resources/static/css/generic_table.css */ "./src/main/resources/static/css/generic_table.css");
+/* harmony import */ var _resources_static_css_generic_table_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_generic_table_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _resources_static_css_homepage_table_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../resources/static/css/homepage_table.css */ "./src/main/resources/static/css/homepage_table.css");
+/* harmony import */ var _resources_static_css_homepage_table_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_resources_static_css_homepage_table_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Cookies/get_cookies.js */ "./src/main/js/Cookies/get_cookies.js");
+/* harmony import */ var _Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Cookies/set_cookies.js */ "./src/main/js/Cookies/set_cookies.js");
+/* harmony import */ var react_table_6__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-table-6 */ "./node_modules/react-table-6/es/index.js");
+/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-table-6/react-table.css */ "./node_modules/react-table-6/react-table.css");
+/* harmony import */ var react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_table_6_react_table_css__WEBPACK_IMPORTED_MODULE_15__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -73300,6 +73647,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -73366,7 +73715,7 @@ function (_React$Component) {
   _createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var last_viewed_league = Object(_Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_10__["default"])('last_viewed_league');
+      var last_viewed_league = Object(_Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_12__["default"])('last_viewed_league');
       var selectBox = document.getElementById("selectLeague");
 
       if (last_viewed_league != "") {
@@ -73406,7 +73755,7 @@ function (_React$Component) {
                       expanded: {}
                     });
 
-                    Object(_Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_11__["default"])('last_viewed_league', selectedValue, '7');
+                    Object(_Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_13__["default"])('last_viewed_league', selectedValue, '7');
                   } else {
                     _this2.setState({
                       teams: res.data.leagueById.teams
@@ -73536,9 +73885,10 @@ function (_React$Component3) {
 
       var mainTableColumns = _Tools_main_table_columns_js__WEBPACK_IMPORTED_MODULE_1__["default"];
       var subTableColumns = _Tools_player_table_columns_js__WEBPACK_IMPORTED_MODULE_2__["default"];
-      var transferTableColumns = _Tools_transfer_table_columns_js__WEBPACK_IMPORTED_MODULE_3__["default"]; // Render the react tables
+      var transferTableColumns = _Tools_transfer_table_columns_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+      console.log(data); // Render the react tables
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_14__["default"], {
         data: data,
         columns: mainTableColumns,
         className: "-striped -highlight teamTable",
@@ -73556,7 +73906,7 @@ function (_React$Component3) {
             "class": "sub-table-container"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             "class": "sub-table"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_14__["default"], {
             data: row.original.players.sort(function (a, b) {
               return a.position - b.position;
             }),
@@ -73566,7 +73916,7 @@ function (_React$Component3) {
             showPaginationTop: false,
             showPaginationBottom: true,
             showPageSizeOptions: true
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_14__["default"], {
             className: "substitutes",
             data: row.original.substitutes.sort(function (a, b) {
               return a.position - b.position;
@@ -73579,7 +73929,7 @@ function (_React$Component3) {
             showPageSizeOptions: true
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             "class": "right-side-table additional-transfer-table"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_14__["default"], {
             data: Object(_Tools_additional_team_info_js__WEBPACK_IMPORTED_MODULE_8__["default"])(row.original.totalTransfers, row.original.transferHits, row.original.gameweekRank, row.original.overallRank, row.original.expectedPoints, row.original.captain.webName, row.original.viceCaptain.webName, Object(_Tools_calculate_bench_points_js__WEBPACK_IMPORTED_MODULE_7__["default"])(row.original.substitutes)),
             columns: _Tools_additional_team_info_columns_js__WEBPACK_IMPORTED_MODULE_4__["default"],
             minRows: 0,
@@ -73589,7 +73939,7 @@ function (_React$Component3) {
             showPageSizeOptions: true
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             "class": "right-side-table transfer-table"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_table_6__WEBPACK_IMPORTED_MODULE_14__["default"], {
             data: Object(_Tools_combine_transfers_lists_js__WEBPACK_IMPORTED_MODULE_6__["default"])(row.original.weeklyTransfersListIn, row.original.weeklyTransfersListOut),
             columns: transferTableColumns,
             minRows: 0,
@@ -73605,6 +73955,23 @@ function (_React$Component3) {
 
   return MainPageTable;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/***/ }),
+
+/***/ "./src/main/js/Queries/all_teams_query.js":
+/*!************************************************!*\
+  !*** ./src/main/js/Queries/all_teams_query.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function allTeamsQuery(n) {
+  return "{leagueById(id: " + n + ") { \n\t\t\tteams { \n        \t\tteamName\n        \t\ttotalPoints\n\t\t\t\tplayers {\n\t\t\t\t\twebName\n\t\t\t\t\tposition\n\t\t\t\t\tprice\n        \t\t}\n        \t\tsubstitutes {\n\t\t\t\t\twebName\n\t\t\t\t\tposition\n\t\t\t\t\tprice\n        \t\t}\n\t\t\t}\n\t\t}\n\t}";
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (allTeamsQuery);
 
 /***/ }),
 
@@ -73706,6 +74073,172 @@ var transferTableHeaders = [{
   }]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (transferTableHeaders);
+
+/***/ }),
+
+/***/ "./src/main/js/Tools/all_teams_columns.js":
+/*!************************************************!*\
+  !*** ./src/main/js/Tools/all_teams_columns.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var allTeamsTableHeaders = [{
+  Header: 'Team Name',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Team Name',
+    accessor: 'teamName',
+    width: 170
+  }]
+}, {
+  Header: 'Goalkeepers',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'GK',
+    accessor: 'gk1',
+    width: 72
+  }, {
+    Header: 'GK',
+    accessor: 'gk2',
+    width: 72
+  }]
+}, {
+  Header: 'Defenders',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Def',
+    accessor: 'def1',
+    width: 72
+  }, {
+    Header: 'Def',
+    accessor: 'def2',
+    width: 72
+  }, {
+    Header: 'Def',
+    accessor: 'def3',
+    width: 72
+  }, {
+    Header: 'Def',
+    accessor: 'def4',
+    width: 72
+  }, {
+    Header: 'Def',
+    accessor: 'def5',
+    width: 72
+  }]
+}, {
+  Header: 'Midfielders',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Mid',
+    accessor: 'mid1',
+    width: 72
+  }, {
+    Header: 'Mid',
+    accessor: 'mid2',
+    width: 72
+  }, {
+    Header: 'Mid',
+    accessor: 'mid3',
+    width: 72
+  }, {
+    Header: 'Mid',
+    accessor: 'mid4',
+    width: 72
+  }, {
+    Header: 'Mid',
+    accessor: 'mid5',
+    width: 72
+  }]
+}, {
+  Header: 'Forwards',
+  headerClassName: 'my-favorites-column-header-group',
+  columns: [{
+    Header: 'Fwd',
+    accessor: 'fwd1',
+    width: 72
+  }, {
+    Header: 'Fwd',
+    accessor: 'fwd2',
+    width: 72
+  }, {
+    Header: 'Fwd',
+    accessor: 'fwd3',
+    width: 72
+  }]
+}];
+/* harmony default export */ __webpack_exports__["default"] = (allTeamsTableHeaders);
+
+/***/ }),
+
+/***/ "./src/main/js/Tools/all_teams_info.js":
+/*!*********************************************!*\
+  !*** ./src/main/js/Tools/all_teams_info.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function allTeamsInfo(teams) {
+  var allTeams = [];
+  var numberOfTeams = teams.length; // Function to add players in one position to a temporary array
+
+  function addPlayersToTempPositionArray(playersArray, position, tempArray) {
+    for (var j = 0; j < playersArray.length; j++) {
+      if (playersArray[j].position == position) {
+        tempArray.push({
+          "webName": playersArray[j].webName
+        });
+      }
+    }
+  } // Function to add a temporary player array to a team object
+
+
+  function addTempArraysToTeamObject(team, tempArray, position) {
+    var propertyNameBeginning = position == 1 ? "gk" : position == 2 ? "def" : position == 3 ? "mid" : "fwd";
+
+    for (var j = 0; j < tempArray.length; j++) {
+      var propertyName = propertyNameBeginning + (j + 1);
+      team[propertyName] = tempArray[j].webName;
+    }
+  } // Loop through teams and add players to a new team object
+
+
+  for (var i = 0; i < numberOfTeams; i++) {
+    var tempGoalkeepers = [];
+    var tempDefenders = [];
+    var tempMidfielders = [];
+    var tempForwards = [];
+    addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 1, tempGoalkeepers);
+    addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 2, tempDefenders);
+    addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 3, tempMidfielders);
+    addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 4, tempForwards);
+    var team = {
+      "teamName": teams[i].teamName,
+      "totalPoints": teams[i].totalPoints
+    };
+    addTempArraysToTeamObject(team, tempGoalkeepers, 1);
+    addTempArraysToTeamObject(team, tempDefenders, 2);
+    addTempArraysToTeamObject(team, tempMidfielders, 3);
+    addTempArraysToTeamObject(team, tempForwards, 4);
+    allTeams.push(team);
+    team = {};
+  }
+
+  return allTeams.sort(function (a, b) {
+    return b.totalPoints - a.totalPoints;
+  });
+  ;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (allTeamsInfo);
 
 /***/ }),
 
@@ -74042,10 +74575,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/Nav.js */ "./src/main/js/Components/Nav.js");
 /* harmony import */ var _Pages_Graphs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Graphs.js */ "./src/main/js/Pages/Graphs.js");
 /* harmony import */ var _Pages_Home_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Home.js */ "./src/main/js/Pages/Home.js");
-/* harmony import */ var _Pages_About_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/About.js */ "./src/main/js/Pages/About.js");
-/* harmony import */ var _Pages_404_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/404.js */ "./src/main/js/Pages/404.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Pages_All_Teams_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/All_Teams.js */ "./src/main/js/Pages/All_Teams.js");
+/* harmony import */ var _Pages_About_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/About.js */ "./src/main/js/Pages/About.js");
+/* harmony import */ var _Pages_404_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/404.js */ "./src/main/js/Pages/404.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -74069,6 +74603,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 __webpack_require__(/*! babel-core/register */ "./node_modules/babel-core/register.js");
 
 __webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/index.js");
+
 
 
 
@@ -74107,21 +74642,21 @@ function (_React$Component) {
     key: "render",
     // Main render method
     value: function render() {
-      return React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["HashRouter"], null, React.createElement(_Components_Nav_js__WEBPACK_IMPORTED_MODULE_0__["default"], null), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
+      return React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["HashRouter"], null, React.createElement(_Components_Nav_js__WEBPACK_IMPORTED_MODULE_0__["default"], null), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Switch"], null, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/",
         component: _Pages_Home_js__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
+      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         path: "/graphs/",
         component: _Pages_Graphs_js__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
+      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         path: "/all_teams/",
-        component: _Pages_Graphs_js__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
+        component: _Pages_All_Teams_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         path: "/about/",
-        component: _Pages_About_js__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
-        component: _Pages_404_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+        component: _Pages_About_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
+        component: _Pages_404_js__WEBPACK_IMPORTED_MODULE_5__["default"]
       })));
     }
   }]);
@@ -74162,6 +74697,81 @@ module.exports = rest.wrap(mime, {
     'Accept': 'application/hal+json'
   }
 });
+
+/***/ }),
+
+/***/ "./src/main/resources/static/css/all_teams_players.css":
+/*!*************************************************************!*\
+  !*** ./src/main/resources/static/css/all_teams_players.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!./all_teams_players.css */ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/all_teams_players.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {};
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+/***/ }),
+
+/***/ "./src/main/resources/static/css/generic_table.css":
+/*!*********************************************************!*\
+  !*** ./src/main/resources/static/css/generic_table.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!./generic_table.css */ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/generic_table.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {};
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+/***/ }),
+
+/***/ "./src/main/resources/static/css/homepage_table.css":
+/*!**********************************************************!*\
+  !*** ./src/main/resources/static/css/homepage_table.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!./homepage_table.css */ "./node_modules/css-loader/dist/cjs.js!./src/main/resources/static/css/homepage_table.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {};
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
 
 /***/ }),
 

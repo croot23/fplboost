@@ -1,0 +1,167 @@
+.teamTable table tbody td {
+  font-size: 14px;
+  text-align: center;
+}
+.teamTable table thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
+}
+
+.teamTable .sub-table .rt-tr .rt-th:nth-child(12n+12) {
+    display: none;
+}
+	
+.teamTable .sub-table .rt-tr .rt-td:nth-child(12n+12) {
+    display: none;
+}
+
+.teamTable .rt-resizable-header-content {
+	font-size: 16px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+.teamTable .rt-td {
+	font-size: 14px !important;
+}
+
+.teamTable .sub-table .rt-td {
+	padding: 1px 1px !important;
+}
+
+.teamTable .sub-table .rt-resizable-header-content {
+	font-size: 12px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+.teamTable .sub-table {
+	max-width: 850px;
+	min-width: 600px !important;
+}
+
+.teamTable .ReactTable.substitutes .rt-thead.-header {
+	display: none;
+}
+
+.teamTable .additional-transfer-table .rt-thead.-header{
+	display: none;
+}
+
+.teamTable .right-side-table {
+	width: 385px !important;
+}
+
+.teamTable .right-side-table .rt-td {
+	padding: 1px 1px !important;
+}
+
+.teamTable .right-side-table .rt-resizable-header-content {
+	font-size: 12px;
+	font-weight: bold;
+	color: #4c16aa;
+}
+
+@media only screen and (min-width: 1000px) {
+
+	.teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(12n+12) {
+		display: none;
+	}
+	
+	.teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(12n+12) {
+		display: none;
+	}
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	
+	.teamTable .right-side-table {
+		display: none !important;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(6n+6) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(6n+6) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(7n+7) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(7n+7) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(8n+8) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(8n+8) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-thead > .rt-tr > .rt-th:nth-child(9n+9) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-tbody > .rt-tr-group > .rt-tr > .rt-td:nth-child(9n+9) {
+		display: none;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-tbody  {
+		width: 975px !important;
+		min-width: 975px !important;
+	}
+	
+	.teamTable .teamTable > .rt-table > .rt-thead  {
+		width: 975px !important;
+		min-width: 975px !important;
+	}
+	
+	.teamTable .teamTable  {
+		width: 975px !important;
+		min-width: 975px !important;
+	}
+	
+	.teamTable .teamTable > .rt-table {
+		width: 1010px !important;
+	}
+	
+	.teamTable .sub-table {
+	width: 100% !important;
+	}
+	
+}
+
+.teamTable .sub-table-container {
+	width: 99%;
+	margin: auto;
+}
+
+.teamTable .sub-table {
+	float: left;
+	width: 70%;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.teamTable .right-side-table {
+	margin-left: 68%;
+	padding-top: 20px;
+}
+
+.teamTable .transfer-table {
+	padding-bottom: 20px;
+}
+
+.teamTable .rt-noData {
+	margin-top: 50px;
+}
