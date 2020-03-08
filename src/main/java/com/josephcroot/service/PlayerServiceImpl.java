@@ -69,8 +69,6 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	public void updatePlayer(Player player) throws JSONException, IOException {
-		//if (player.getWebName().contentEquals("Salah"));
-		//	logger.debug("Updating main player info");
 		JSONObject playerInfo = PlayersAPIData.getPlayer(player.getFantasyFootballId());
 		player.setFirstName(playerInfo.getString("first_name"));
 		player.setLastName(playerInfo.getString("second_name"));

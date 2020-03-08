@@ -62,7 +62,6 @@ export default class Home extends React.Component {
 	
 	// Function to highlight players based on search
 	highlightPlayer() {
-		console.log("here");
 		const markInstance = new Mark(document.querySelector(".allTeamsPlayersTable .rt-tbody"));
 		// Read the keyword
 		var keyword = document.getElementById("filter").value;
@@ -71,7 +70,6 @@ export default class Home extends React.Component {
 		    	markInstance.mark(keyword);
 		    }
 		 });
-		console.log(document.getElementById("filter").value);
 	}
 	
     render() { 
