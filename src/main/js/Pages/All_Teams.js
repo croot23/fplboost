@@ -1,9 +1,9 @@
 import React from 'react';
-import allTeamsTableHeaders from '../Tools/all_teams_columns.js'
+import allTeamsTableHeaders from '../Tools/Tables/Columns/all_teams_columns.js'
 import allTeamsQuery from '../Queries/all_teams_query.js'
-import allTeamsInfo from '../Tools/all_teams_info.js'
+import allTeamsInfo from '../Tools/Tables/Data/all_teams_info.js'
 import '../../resources/static/css/main.css'
-import '../../resources/static/css/all_teams_players.css'
+import '../../resources/static/css/Tables/all_teams_players.css'
 import getCookie from '../Cookies/get_cookies.js'
 import setCookie from '../Cookies/set_cookies.js'
 const { createApolloFetch } = require('apollo-fetch');
@@ -46,7 +46,7 @@ export default class Home extends React.Component {
 	async reload(leagueChanged) {
 		var selectBox = document.getElementById("selectLeague");
 		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-		fetch({
+		await fetch({
 			// The query is built ina function imported from ./Tools/*.js files
 			query: allTeamsQuery(selectedValue),
 			}).then(res => {
@@ -57,11 +57,12 @@ export default class Home extends React.Component {
 					this.setState({teams: res.data.leagueById.teams});
 				}
 			});
-		highlightPlayer();
+		this.highlightPlayer();
 	}
 	
 	// Function to highlight players based on search
 	highlightPlayer() {
+		console.log("here");
 		const markInstance = new Mark(document.querySelector(".allTeamsPlayersTable .rt-tbody"));
 		// Read the keyword
 		var keyword = document.getElementById("filter").value;
