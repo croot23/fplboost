@@ -18,7 +18,7 @@ public class PlayersAPIData {
 	private static final Logger logger = LogManager.getLogger(PlayersAPIData.class);
 	
 	/* Scehdule to update player JSONObject */
-	@Scheduled(fixedDelay = 300000)
+	//@Scheduled(fixedDelay = 300000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		logger.info("Updating All Player Info");
 		playerInfo = updatePlayerInfo();
