@@ -1,4 +1,5 @@
-function combineTransferLists(weeklyTransfersListIn, weeklyTransfersListOut) {
+/* Method to combine the transfer lists into one array */
+export default function combineTransferLists(weeklyTransfersListIn, weeklyTransfersListOut) {
 	
 	var transfers = [];
 	var numberOfTransfers = weeklyTransfersListIn.length;
@@ -26,5 +27,3 @@ function combineTransferLists(weeklyTransfersListIn, weeklyTransfersListOut) {
 	
 	return transfers;
 }
-
-export default combineTransferLists

@@ -21,6 +21,7 @@ import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OrderBy;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 
 import com.josephcroot.fantasyfootballAPI.GameweekData;
@@ -136,6 +137,7 @@ public class Team {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="historic_team_gameweek_data_id")
+	@OrderBy(clause = "gameweek ASC")
 	private Set<HistoricGameweekData> historicGameweekData;
 	
 	public Set<Player> getAllPlayers() {
@@ -227,7 +229,11 @@ public class Team {
 	}
 
 	public String getManagerName() {
+		if (managerName.contentEquals("Nik Goodley")) {
+			return "Lord of the Pit";
+		} else {
 		return managerName;
+		}
 	}
 
 	public void setManagerName(String managerName) {

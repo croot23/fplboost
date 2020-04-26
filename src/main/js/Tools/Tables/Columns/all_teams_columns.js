@@ -85,5 +85,4 @@ const allTeamsTableHeaders = [{
 				width:72,
 			  }]
 		  	}];
-
-export default allTeamsTableHeaders
+export default allTeamsTableHeaders;

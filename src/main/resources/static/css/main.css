@@ -17,13 +17,37 @@
 	background-color: #1d1a1f;
 }
 
-#selectLeague, #filter {
+.dropdown, #tableCellHighlighter {
 	margin: 15px;
 	height: 35px;
 	width: 200px;
 }
 
 #filter {
-	position: absolute;
-	right: 0px;
+	float: right;
+}
+
+.mr-auto a {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.spinner {
+	margin-top: 100px;
+	margin-right: auto;
+    margin-left: auto;
+    width: 100px;
+}
+
+.spinner-graph {
+	margin-top: -570px !important;
+	z-index: 2;
+}
+
+.spinner-hide {
+	display: none;
+}
+
+.rt-noData {
+	display: none !important;
 }

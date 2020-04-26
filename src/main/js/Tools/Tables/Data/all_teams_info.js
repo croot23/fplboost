@@ -1,55 +1,23 @@
-function allTeamsInfo(teams) {
+/* Function to order players by position with a numbered property (e.g. gk1, gk2) so they can be individually referenced in a react table */
+export default function allTeamsInfo(teams) {
 	
-	var allTeams = [];
-	var numberOfTeams = teams.length;
-	
-	// Function to add players in one position to a temporary array
-	function addPlayersToTempPositionArray(playersArray, position, tempArray) {
-		for (var j=0; j < playersArray.length; j++) {
-			if (playersArray[j].position == position) {
-				tempArray.push({"webName" : playersArray[j].webName})
-			}
-		}
+	// Filters players on position, then adds a numbered position property (gk1, gk2) to a team object
+	const addPlayers = (team, players) => {
+		[1,2,3,4].forEach((playerPosition) => players.filter((player) => player.position == playerPosition).map((player, index) => {
+			var positionText = (playerPosition == 1) ? "gk" : (playerPosition == 2) ? "def" : (playerPosition == 3) ? "mid" : "fwd";
+			team[positionText+(index+1)] = player.webName
+		}))
 	}
 	
-	// Function to add a temporary player array to a team object
-	function addTempArraysToTeamObject(team, tempArray, position) {
-		var propertyNameBeginning = (position == 1) ? "gk" : (position == 2) ? "def" : (position == 3) ? "mid" : "fwd";
-		for (var j=0; j < tempArray.length; j++) {
-			var propertyName = propertyNameBeginning+(j+1);
-			team[propertyName] = tempArray[j].webName;
-		}
-	}
-	
-	// Loop through teams and add players to a new team object
-	for (let i=0; i < numberOfTeams; i++) {
-		
-		var tempGoalkeepers = [];
-		var tempDefenders = [];
-		var tempMidfielders = [];
-		var tempForwards = [];
-		
-		addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 1, tempGoalkeepers);
-		addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 2, tempDefenders);
-		addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 3, tempMidfielders);
-		addPlayersToTempPositionArray(teams[i].players.concat(teams[i].substitutes), 4, tempForwards);
-		
+	var allTeams = teams.map((originalTeam => {
 		var team = {
-			"teamName" : teams[i].teamName,
-			"totalPoints" : teams[i].totalPoints,
+				"teamName" : originalTeam.teamName,
+				"totalPoints" : originalTeam.totalPoints,
 		};
-		
-		addTempArraysToTeamObject(team, tempGoalkeepers, 1);
-		addTempArraysToTeamObject(team, tempDefenders, 2);
-		addTempArraysToTeamObject(team, tempMidfielders, 3);
-		addTempArraysToTeamObject(team, tempForwards, 4);
-		
-		allTeams.push(team);
-		team = {};
-	}
+		addPlayers(team, originalTeam.players.concat(originalTeam.substitutes));
+		return team;
+	}));
 	
-	return allTeams.sort((a, b) => b.totalPoints - a.totalPoints);;
-
+	return allTeams.sort((a, b) => b.totalPoints - a.totalPoints);
+	
 }
-
-export default allTeamsInfo

@@ -21,16 +21,21 @@
   "homepage": "localhost:8080",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
+    "apexcharts": "^3.17.0",
     "apollo-fetch": "^0.7.0",
     "bootstrap": "^4.3.1",
-    "react": "^16.11.0",
+    "nouislider-react": "^3.3.7",
+    "react": "^16.13.1",
+    "react-apexcharts": "^1.3.6",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
+    "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.1.2",
     "react-table": "^6.10.3",
     "react-table-6": "^6.11.0",
     "react-table-v6": "^6.8.6",
-    "rest": "^1.3.1"
+    "rest": "^1.3.1",
+    "style-loader": "^1.1.3"
   },
   "scripts": {
     "watch": "webpack --watch -d"
@@ -46,7 +51,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^3.2.0",
-    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }

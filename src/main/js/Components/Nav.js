@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Navbar, Nav, NavItem, MenuItem } from 'react-bootstrap';
 
+/* Renders the navigation bar at the top of every page */
  export default class NavHeader extends React.Component {
     render() {  
       return (
@@ -16,10 +17,10 @@ import { Button, Navbar, Nav, NavItem, MenuItem } from 'react-bootstrap';
 			  <Navbar.Toggle aria-controls="basic-navbar-nav" />
 			  <Navbar.Collapse id="basic-navbar-nav">
 			    <Nav className="mr-auto">
-			      <Nav.Link><Link to="/">Home</Link></Nav.Link>
-			      <Nav.Link className='hide_on_mobile'><Link to="/graphs/">Graphs</Link></Nav.Link>
-			      <Nav.Link className='hide_on_mobile'><Link to="/all_teams/">All Teams</Link></Nav.Link>
-			      <Nav.Link><Link to="/about/">About</Link></Nav.Link>
+			      <Link to="/">Home</Link>
+			      <Link className='hide_on_mobile' to="/graphs/">Graphs</Link>
+			      <Link className='hide_on_mobile' to="/all_teams/">All Teams</Link>
+			      <Link to="/about/">About</Link>
 			    </Nav>
 			  </Navbar.Collapse>
 			</Navbar>

@@ -1,12 +1,6 @@
-function calculateBenchPoints(substitutes) {
+/* Method to calculate the points on a teams bench */
+export default function calculateBenchPoints(substitutes) {
 	
-	let pointsOnTheBench = 0;
+	return substitutes.reduce((previous, current) => previous + current.gameweekPoints, 0);
 	
-	substitutes.forEach(function(sub) {
-		pointsOnTheBench += sub.gameweekPoints;
-	});
-	
-	return pointsOnTheBench;
 }
-
-export default calculateBenchPoints

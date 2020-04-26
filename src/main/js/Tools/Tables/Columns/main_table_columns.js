@@ -84,6 +84,4 @@ const mainTableHeaders = [{
 			accessor: 'totalPoints',
 			width:110,
 			  }];
-
-
-export default mainTableHeaders
+export default mainTableHeaders;

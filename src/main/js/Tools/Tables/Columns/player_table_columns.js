@@ -1,3 +1,5 @@
+import React from 'react';
+
 const playerTableHeaders = [{
 			    Header: 'Name',
 			    accessor: 'webName',
@@ -60,5 +62,4 @@ const playerTableHeaders = [{
 				accessor: 'gameweekPoints',
 				width:65,
 			}];
-
-export default playerTableHeaders
+export default playerTableHeaders;

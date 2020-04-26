@@ -17,8 +17,7 @@ export default class Graphs extends React.Component {
     		  <br></br>
     		  See your entire team of players form, goals scored, clean sheets and bonus points all one one page.
     		  <br></br>
-    		  <br></br>
-    		  With more great features, analysis and graphs in the pipeline, make sure you bookmark fplboost.com as your guide to your fpl leagues 
+    		  As well as great visualisations on the graphs page, to track your progress against others in your league.
     		  <br></br>
     		  <br></br>
     		  <h3>Code details</h3>
@@ -26,7 +25,7 @@ export default class Graphs extends React.Component {
     		  <br></br>
     		  Code can be viewed at <a href="https://github.com/croot23/fplboost" target="_blank">https://github.com/croot23/fplboost</a>
     		  <br></br>
-    		  Built primarily using spring boot, java, react & graphQL, with a bit of maven, hibernate, liquibase, mysql, javascript & of course a load of npm modules
+    		  Built primarily using spring boot, java, react & graphQL, with a bit of maven, hibernate, liquibase, mysql, javascript & a load of npm modules
     		  </div>
     		  </div>
     		  )

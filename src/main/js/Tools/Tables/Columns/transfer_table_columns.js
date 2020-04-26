@@ -1,3 +1,5 @@
+import React from 'react';
+
 const transferTableHeaders = [{
 		Header: 'Weekly Transfers',
 		headerClassName: 'my-favorites-column-header-group',
@@ -19,5 +21,4 @@ const transferTableHeaders = [{
 				  width:55,
 			  	}]
 		}];
-
-export default transferTableHeaders
+export default transferTableHeaders;

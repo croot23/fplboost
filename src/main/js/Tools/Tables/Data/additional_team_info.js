@@ -1,4 +1,5 @@
-function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, captain, viceCaptain, benchPoints) {
+/* Function to create a key value object array of additional team info */
+export default function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, expectedPoints, captain, viceCaptain, benchPoints) {
 	
 	var rows = [];
 
@@ -22,5 +23,3 @@ function additionalTeamInfo(totalTransfers, hits, gameweekRank, overallRank, exp
 	
 	return rows;
 }
-
-export default additionalTeamInfo

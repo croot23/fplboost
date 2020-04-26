@@ -1,4 +1,5 @@
-function allTeamsQuery(n) {
+/* GraphQL query to return the relevant info for the All Teams table */
+export default function allTeamsQuery(n) {
 	return `{leagueById(id: `+n+`) { 
 			teams { 
         		teamName
@@ -17,4 +18,3 @@ function allTeamsQuery(n) {
 		}
 	}`
 }
-export default allTeamsQuery

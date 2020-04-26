@@ -1,4 +1,5 @@
-function getCookie(cname) {
+/* Function to get a cookie */
+export default function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
@@ -13,4 +14,3 @@ function getCookie(cname) {
   }
   return "";
 }
-export default getCookie

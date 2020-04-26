@@ -1,4 +1,5 @@
-function mainQuery(n) {
+/* GraphQL query to return all league, team, and player information */
+export default function leagueQuery(n) {
 	return `{leagueById(id: `+n+`) {
 			name 
 			teams { 
@@ -77,4 +78,3 @@ function mainQuery(n) {
 		}
 	}`
 }
-export default mainQuery

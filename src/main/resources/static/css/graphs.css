@@ -1,0 +1,13 @@
+.noUi-target {
+    width: 500px;
+	float: right;
+	margin: 15px;
+}
+
+.mixed-chart {
+	margin: auto;
+}
+
+.apexcharts-pan-icon, .apexcharts-zoomin-icon, .apexcharts-zoomout-icon, .apexcharts-pan-icon, .apexcharts-reset-icon, .apexcharts-reset-icon, .apexcharts-menu-icon, .apexcharts-zoom-icon {
+	display: none !important;
+}

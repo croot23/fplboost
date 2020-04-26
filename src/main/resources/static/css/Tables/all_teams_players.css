@@ -45,3 +45,7 @@ mark{
     color: black;
 }
 
+#tableCellHighlighter {
+	float: right;
+}
+

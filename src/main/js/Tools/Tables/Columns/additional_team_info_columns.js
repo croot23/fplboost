@@ -1,4 +1,6 @@
-const transferTableHeaders = [{
+import React from 'react';
+
+const additionalTeamInfoTableHeaders = [{
 	Header: 'Additional Team Info',
 	headerClassName: 'my-favorites-column-header-group',
 	columns: [{
@@ -11,5 +13,4 @@ const transferTableHeaders = [{
 				width:190,
 			  }]
 	}];
-
-export default transferTableHeaders
+export default additionalTeamInfoTableHeaders;
