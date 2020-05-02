@@ -78188,7 +78188,7 @@ function (_React$Component) {
   _createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
+      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_7__["default"])(this.state.leagues);
       this.reload(true);
     } // Function to update the table when the league changes and automatically
     // reload the table with league information at set intervals
@@ -78310,8 +78310,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Queries_graph_query_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Queries/graph_query.js */ "./src/main/js/Queries/graph_query.js");
 /* harmony import */ var _Tools_Charts_filter_data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Tools/Charts/filter_data.js */ "./src/main/js/Tools/Charts/filter_data.js");
 /* harmony import */ var _Tools_Charts_combine_gameweek_totals_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Tools/Charts/combine_gameweek_totals.js */ "./src/main/js/Tools/Charts/combine_gameweek_totals.js");
-/* harmony import */ var _Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Cookies/get_cookies.js */ "./src/main/js/Cookies/get_cookies.js");
-/* harmony import */ var _Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Cookies/set_cookies.js */ "./src/main/js/Cookies/set_cookies.js");
+/* harmony import */ var _Tools_Charts_chart_colours_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Tools/Charts/chart_colours.js */ "./src/main/js/Tools/Charts/chart_colours.js");
+/* harmony import */ var _Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Cookies/get_cookies.js */ "./src/main/js/Cookies/get_cookies.js");
+/* harmony import */ var _Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Cookies/set_cookies.js */ "./src/main/js/Cookies/set_cookies.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -78342,6 +78343,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
  // Functions
+
 
 
 
@@ -78412,6 +78414,7 @@ function (_React$Component) {
         chart: {
           id: "basic-bar"
         },
+        colors: Object(_Tools_Charts_chart_colours_js__WEBPACK_IMPORTED_MODULE_10__["default"])(),
         stroke: {
           width: 1
         }
@@ -78430,11 +78433,11 @@ function (_React$Component) {
   _createClass(Graphs, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
+      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_6__["default"])(this.state.leagues);
 
       if (window.innerWidth < 1350) {
         this.setState({
-          chartWidth: "800px"
+          chartWidth: "600px"
         });
       }
 
@@ -78457,8 +78460,7 @@ function (_React$Component) {
               case 0:
                 selectedLeague = document.getElementById("selectLeague").options[document.getElementById("selectLeague").options.selectedIndex].value;
                 selectedChartOption = document.getElementById("selectChartOption").options[document.getElementById("selectChartOption").options.selectedIndex].value;
-                selectedChartOptionText = document.getElementById("selectChartOption").options[document.getElementById("selectChartOption").options.selectedIndex].innerHTML; //this.setState({series: [{ name: "", data: [] }]});
-
+                selectedChartOptionText = document.getElementById("selectChartOption").options[document.getElementById("selectChartOption").options.selectedIndex].innerHTML;
                 this.setState({
                   isLoading: "spinner spinner-graph"
                 });
@@ -78478,7 +78480,7 @@ function (_React$Component) {
                     series: Object(_Tools_Charts_filter_data_js__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_Tools_Charts_combine_gameweek_totals_js__WEBPACK_IMPORTED_MODULE_9__["default"])(res.data.leagueById.teams, selectedChartOptionText), _this2.state.filterStart, _this2.state.filterEnd)
                   });
 
-                  Object(_Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_11__["default"])('last_viewed_league', selectedLeague, '7');
+                  Object(_Cookies_set_cookies_js__WEBPACK_IMPORTED_MODULE_12__["default"])('last_viewed_league', selectedLeague, '7');
                 });
 
               case 7:
@@ -78675,7 +78677,7 @@ function (_React$Component) {
   _createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
+      Object(_Tools_Misc_set_initial_league_js__WEBPACK_IMPORTED_MODULE_7__["default"])(this.state.leagues);
       this.reload(true);
       setInterval(this.reload.bind(this), 100000);
     } // Function to update the table when the league changes and automatically reload the table with league information at set intervals
@@ -78701,7 +78703,6 @@ function (_React$Component) {
                 this.setState({
                   isLoading: "spinner"
                 });
-                console.log(this.state.isLoading);
                 fetch({
                   query: "{ gameweek }"
                 }).then(function (res) {
@@ -78709,7 +78710,7 @@ function (_React$Component) {
                     gameweek: res.data.gameweek
                   });
                 });
-                _context.next = 8;
+                _context.next = 7;
                 return fetch({
                   // The query is built ina function imported from ./Tools/*.js files
                   query: Object(_Queries_league_query_js__WEBPACK_IMPORTED_MODULE_8__["default"])(selectedValue)
@@ -78728,12 +78729,12 @@ function (_React$Component) {
                   }
                 });
 
-              case 8:
+              case 7:
                 this.setState({
                   isLoading: "spinner-hide"
                 });
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -78850,6 +78851,22 @@ function leagueQuery(n) {
 
 /***/ }),
 
+/***/ "./src/main/js/Tools/Charts/chart_colours.js":
+/*!***************************************************!*\
+  !*** ./src/main/js/Tools/Charts/chart_colours.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return chartColours; });
+function chartColours() {
+  return ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800', '#f7ce52', '#494a4a', '#26f0f0'];
+}
+
+/***/ }),
+
 /***/ "./src/main/js/Tools/Charts/combine_gameweek_totals.js":
 /*!*************************************************************!*\
   !*** ./src/main/js/Tools/Charts/combine_gameweek_totals.js ***!
@@ -78946,14 +78963,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* Functoin to set initial league on page load from either a cookie or first dropdown option */
 
-function setInitialLeague() {
+function setInitialLeague(leagues) {
   var last_viewed_league = Object(_Cookies_get_cookies_js__WEBPACK_IMPORTED_MODULE_0__["default"])('last_viewed_league');
+  console.log(last_viewed_league);
   var selectBox = document.getElementById("selectLeague");
 
   if (last_viewed_league != "") {
     selectBox.value = last_viewed_league;
   } else {
-    selectBox.value = this.state.leagues[0].id;
+    selectBox.value = leagues[0].id;
   }
 }
 

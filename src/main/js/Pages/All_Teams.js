@@ -35,7 +35,7 @@ export default class Home extends React.Component {
 	// Populate the table on initial page load and start the automatic refresh
 	// timer
 	componentDidMount() {
-		setInitialLeague();
+		setInitialLeague(this.state.leagues);
 		this.reload(true);
 	}
 	

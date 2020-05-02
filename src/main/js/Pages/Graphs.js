@@ -11,6 +11,7 @@ import setInitialLeague from '../Tools/Misc/set_initial_league.js'
 import mainGraphQuery from '../Queries/graph_query.js'
 import filterDataSet from '../Tools/Charts/filter_data.js'
 import combineGameweekTotals from '../Tools/Charts/combine_gameweek_totals.js'
+import chartColours from '../Tools/Charts/chart_colours.js'
 import getCookie from '../Cookies/get_cookies.js'
 import setCookie from '../Cookies/set_cookies.js'
 const { createApolloFetch } = require('apollo-fetch');
@@ -37,13 +38,14 @@ export default class Graphs extends React.Component {
 	    		{"name": "Transfers", "id" : "transfersMade"},
 	    		{"name": "Transfers (Total)", "id" : "transfersMade"},
 	    		{"name": "Team Value", "id" : "teamValue"}],
-	    	gameweek: 2,
+			gameweek: 2,
 	    	filterStart: 1,
 	    	filterEnd: 5,
 	    	options: {
 	    		chart: {
 	    			id: "basic-bar"
-	    		},
+				},
+				colors : chartColours(),
 	    	stroke: {
 	    	    width: 1,
 	    	}
@@ -56,9 +58,9 @@ export default class Graphs extends React.Component {
 	  }
 	
 	componentDidMount() {
-		setInitialLeague();
+		setInitialLeague(this.state.leagues);
 		if (window.innerWidth <  1350) {
-	    	this.setState({chartWidth: "800px"});
+	    	this.setState({chartWidth: "600px"});
 	    }
 		this.reload(true);
 	}
@@ -69,7 +71,6 @@ export default class Graphs extends React.Component {
 		var selectedLeague = document.getElementById("selectLeague").options[document.getElementById("selectLeague").options.selectedIndex].value;
 		var selectedChartOption = document.getElementById("selectChartOption").options[document.getElementById("selectChartOption").options.selectedIndex].value;
 		var selectedChartOptionText = document.getElementById("selectChartOption").options[document.getElementById("selectChartOption").options.selectedIndex].innerHTML;
-		//this.setState({series: [{ name: "", data: [] }]});
 		this.setState({isLoading: "spinner spinner-graph"});
 		fetch({
 			query: "{ gameweek }",
@@ -98,7 +99,7 @@ export default class Graphs extends React.Component {
     	);
     	const chartOptions = this.state.chartOptions.map(options =>
 			<DropdownOptions options={options}></DropdownOptions>
-    	);
+		);
     	return (
     		<div>
     			<div className="mainContainer">

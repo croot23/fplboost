@@ -36,7 +36,7 @@ export default class Home extends React.Component {
 	
 	// Populate the table on initial page load and start the automatic refresh timer
 	componentDidMount() {
-		setInitialLeague();
+		setInitialLeague(this.state.leagues);
 		this.reload(true);
 		setInterval(this.reload.bind(this),100000);
 	}
@@ -47,7 +47,6 @@ export default class Home extends React.Component {
 		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 		this.setState({teams: []});
 		this.setState({isLoading: "spinner"});
-		console.log(this.state.isLoading);
 		fetch({
 			query: "{ gameweek }",
 			}).then(res => {
