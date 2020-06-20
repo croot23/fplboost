@@ -75,7 +75,7 @@ export default class Graphs extends React.Component {
 		fetch({
 			query: "{ gameweek }",
 			}).then(res => {
-				this.setState({gameweek: res.data.gameweek-5});
+				this.setState({gameweek: res.data.gameweek});
 			});
 		await fetch({
 			// The query is built ina function imported from ./Tools/*.js files

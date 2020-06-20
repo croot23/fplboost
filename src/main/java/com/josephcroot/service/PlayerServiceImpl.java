@@ -31,7 +31,7 @@ public class PlayerServiceImpl implements PlayerService {
 	private PlayerRepository PlayerRepository;
 	
 	@Transactional
-	//@Scheduled(fixedDelay = 60000)
+	@Scheduled(fixedDelay = 60000)
 	public void scheduleFixedDelayTask() throws JSONException, IOException {
 		try {
 			logger.info("Updating players");
