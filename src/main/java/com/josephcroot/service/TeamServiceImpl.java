@@ -206,7 +206,7 @@ public class TeamServiceImpl implements TeamService {
 			gameweek.setTotalPoints(teamToUpdate.getTotalPoints());
 			gameweek.setGameweekRank(teamToUpdate.getGameweekRank());
 			gameweek.setOverallRank(teamToUpdate.getOverallRank());
-			gameweek.setTeamValue((int) (teamToUpdate.getTeamValue()*10));
+			gameweek.setTeamValue((int) (teamToUpdate.getTeamValue()));
 			gameweek.setTransfersMade(teamToUpdate.getTransfersThisGameweek());
 			gameweek.setHitsTaken(0);
 			gameweek.setPointsOnTheBench(0);
