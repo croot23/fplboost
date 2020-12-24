@@ -21,7 +21,7 @@ const fetch = createApolloFetch({
 });
 
 class App extends React.Component {
-	
+// new comment	
 	// Main render method
 	render() {
 		return (
