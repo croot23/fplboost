@@ -29,6 +29,7 @@ import com.josephcroot.repository.TeamRepository;
 public class TeamServiceImpl implements TeamService {
 	
 	private static final Logger logger = LogManager.getLogger(TeamServiceImpl.class);
+	private static final Integer secondWildcardGameweek = 17;
 	
 	@Autowired
 	private TeamRepository teamRepository;
@@ -95,7 +96,8 @@ public class TeamServiceImpl implements TeamService {
 				}
 				teamToUpdate.setWildcard(false);
 				if (currentChip.getString("name").equals("wildcard")) {
-					if (currentChip.getInt("event") > 20) {
+					if ((GameweekData.getGameweek() < secondWildcardGameweek && currentChip.getInt("event") < secondWildcardGameweek) 
+						|| GameweekData.getGameweek() >= secondWildcardGameweek && currentChip.getInt("event") >= secondWildcardGameweek) {
 						teamToUpdate.setWildcard(true);
 						teamToUpdate.setWildcardGameweek(currentChip.getInt("event"));
 					}

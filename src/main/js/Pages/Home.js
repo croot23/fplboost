@@ -27,7 +27,7 @@ export default class Home extends React.Component {
 				teams: [], 
 				expanded: {},
 				// leagues should be retrieved from the database ideally (//todo)
-				leagues: [{"name": "IBB League", "id" : "269242"},{"name": "RPRemier League", "id" : "257171"},{"name": "Lambert & Co", "id" : "604843"},{"name": "Essex Cup", "id" : "415897"}],
+				leagues: [{"name": "IBB League", "id" : "126680"},{"name": "RPRemier League", "id" : "127482"},{"name": "Lambert League", "id" : "717398"}],
 				gameweek: 1
 				};
 		this.reload = this.reload.bind(this);

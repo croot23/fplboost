@@ -35,6 +35,7 @@
       <column name="team" type="INT(3)" defaultValue='null'/>
       <column name="injured" type="BIT" defaultValue='0'/>
       <column name="did_not_play" type="BIT" defaultValue='0'/>
+      <column name="price_change_percentage" type="DECIMAL(3,2)" defaultValue='null'/>
     </createTable>
     
     <!-- CREATE TEAM TABLE -->

@@ -26,11 +26,9 @@ export default class Graphs extends React.Component {
 
 	    this.state = {
 	    	isLoading: "spinner",
-	    	leagues: [{"name": "IBB League", "id" : "269242"},
-	    		{"name": "RPRemier League", "id" : "257171"},
-	    		{"name": "Lambert & Co", "id" : "604843"},
-	    		{"name": "Essex Cup", "id" : "415897"}
-	    		],
+			leagues: [{"name": "IBB League", "id" : "126680"},
+			{"name": "RPRemier League", "id" : "127482"},
+			{"name": "Lambert League", "id" : "717398"}],
 	    	chartOptions: [{"name": "Total Points", "id" : "totalPoints"},
 	    		{"name": "Overall Rank", "id" : "overallRank"},
 	    		{"name": "Points Hits Taken", "id" : "hitsTaken"},
