@@ -21,7 +21,7 @@
   "homepage": "localhost:8080",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
-    "apexcharts": "^3.17.0",
+    "apexcharts": "^3.24.0",
     "apollo-fetch": "^0.7.0",
     "bootstrap": "^4.3.1",
     "nouislider-react": "^3.3.7",
